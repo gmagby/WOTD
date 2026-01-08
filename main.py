@@ -1,5 +1,4 @@
 import streamlit as st
-import tkinter as tk
 import wotd
 from wotd import WordVariant, list_of_word_variants
 
@@ -16,3 +15,4 @@ st.markdown(
 )
 
 st.image("https://images.unsplash.com/photo-1535930749574-1399327ce78f?q=80&w=1936&auto=format&fit=crop")
+
