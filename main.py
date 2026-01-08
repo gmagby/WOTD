@@ -13,10 +13,11 @@ st.markdown(
     f'Type of speech: {list_of_word_variants[0].type_of_speech}')
 st.markdown(
     f'Date first used: {list_of_word_variants[0].date}')
-st.markdown(
-    f'{list_of_word_variants[0].etymology}')
+# st.markdown(
+#     f'{list_of_word_variants[0].etymology}')
 
 st.image("https://images.unsplash.com/photo-1535930749574-1399327ce78f?q=80&w=1936&auto=format&fit=crop")
+
 
 
 
