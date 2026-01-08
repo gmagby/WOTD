@@ -1,6 +1,7 @@
 import streamlit as st
 import wotd
 from wotd import WordVariant, list_of_word_variants
+from PIL import Image
 
 NUM = len(list_of_word_variants)
 st.header("Word of the Day", divider="rainbow")
@@ -16,7 +17,10 @@ st.markdown(
 # st.markdown(
 #     f'{list_of_word_variants[0].etymology}')
 
-st.image("https://brucewaynefitness.substack.com/p/the-stoicism-of-the-batman")
+# st.image("https://images.unsplash.com/photo-1535930749574-1399327ce78f?q=80&w=1936&auto=format&fit=crop")
+example_img = Image.open("stoic.jpg")
+st.image(example_img)
+
 
 
 
