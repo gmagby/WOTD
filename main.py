@@ -8,7 +8,7 @@ st.header("Word of the Day", divider="rainbow")
 st.subheader(wotd.WORD)
 
 def more_definitions():
-    for t in range (len(list_of_word_variants)):
+    for t in range (NUM):
         st.markdown(
             f'{list_of_word_variants[t].definition}')
         st.markdown(
@@ -30,7 +30,7 @@ def first_definition(On=True):
         # st.markdown(
         #     f'{list_of_word_variants[0].etymology}')
     else:
-        return
+        st.markdown()
 
 first_definition(True)
 
