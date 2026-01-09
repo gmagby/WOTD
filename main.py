@@ -30,11 +30,10 @@ def first_definition(On=True):
         # st.markdown(
         #     f'{list_of_word_variants[0].etymology}')
 
-first_definition(True)
+visible = first_definition()
 
 if st.button("More Definitions"):
-    first_definition(False)
-    more_definitions()
+    visible = more_definitions()
 
 
 # st.image("https://images.unsplash.com/photo-1535930749574-1399327ce78f?q=80&w=1936&auto=format&fit=crop")
