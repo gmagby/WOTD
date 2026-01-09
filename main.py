@@ -20,10 +20,10 @@ st.markdown(
 # st.image("https://images.unsplash.com/photo-1535930749574-1399327ce78f?q=80&w=1936&auto=format&fit=crop")
 # Open 'data/report.txt' for writing ('w')
 with open(f'Photos/{wotd.WORD}.jpg', 'r') as file:
-    photo = file.read()
+    file.read()
 
 
-example_img = Image.open(f'{photo}.jpg')
+example_img = Image.open(f'{file}.jpg')
 st.image(example_img)
 
 
