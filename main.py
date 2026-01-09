@@ -30,7 +30,7 @@ def first_definition(On=True):
         # st.markdown(
         #     f'{list_of_word_variants[0].etymology}')
     else:
-        st.markdown()
+        st.markdown('')
 
 first_definition(True)
 
