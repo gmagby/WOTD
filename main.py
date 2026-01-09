@@ -30,9 +30,9 @@ def first_definition():
     #     f'{list_of_word_variants[0].etymology}')
 
 first_definition()
-
-if st.button("More Definitions"):
-    more_definitions()
+#
+# if st.button("More Definitions"):
+#     more_definitions()
 
 
 # st.image("https://images.unsplash.com/photo-1535930749574-1399327ce78f?q=80&w=1936&auto=format&fit=crop")
