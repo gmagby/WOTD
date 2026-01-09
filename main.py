@@ -27,8 +27,8 @@ def first_definition(On=True):
             f'Type of speech: **{list_of_word_variants[0].type_of_speech}**')
         st.markdown(
             f'Date first used: **{list_of_word_variants[0].date}**')
-        # st.markdown(
-        #     f'{list_of_word_variants[0].etymology}')
+        st.markdown(
+            f'{list_of_word_variants[0].etymology}')
 
 first_definition(True)
 
