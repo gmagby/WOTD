@@ -16,7 +16,7 @@ def more_definitions():
         st.markdown(
             f'Date first used: {list_of_word_variants[t].date}')
         st.markdown(
-            f'{list_of_word_variants[t+1].etymology}')
+            f'{list_of_word_variants[t].etymology}')
         st.header("",divider="rainbow")
 
 
