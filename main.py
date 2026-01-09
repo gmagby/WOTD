@@ -29,8 +29,6 @@ def first_definition(On=True):
             f'Date first used: **{list_of_word_variants[0].date}**')
         # st.markdown(
         #     f'{list_of_word_variants[0].etymology}')
-    else:
-        return None
 
 first_definition(True)
 
