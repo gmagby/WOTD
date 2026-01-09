@@ -30,7 +30,7 @@ def first_definition():
     #     f'{list_of_word_variants[0].etymology}')
 
 first_definition()
-#
+
 # if st.button("More Definitions"):
 #     more_definitions()
 
