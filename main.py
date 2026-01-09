@@ -18,7 +18,12 @@ st.markdown(
 #     f'{list_of_word_variants[0].etymology}')
 
 # st.image("https://images.unsplash.com/photo-1535930749574-1399327ce78f?q=80&w=1936&auto=format&fit=crop")
-example_img = Image.open(f'{wotd.WORD}.jpg')
+# Open 'data/report.txt' for writing ('w')
+with open(f'Photos/{wotd.WORD}.jpg', 'r') as file:
+    photo = file.read()
+
+
+example_img = Image.open(f'{photo}.jpg')
 st.image(example_img)
 
 
