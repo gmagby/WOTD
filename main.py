@@ -18,7 +18,7 @@ st.markdown(
 #     f'{list_of_word_variants[0].etymology}')
 
 # st.image("https://images.unsplash.com/photo-1535930749574-1399327ce78f?q=80&w=1936&auto=format&fit=crop")
-example_img = Image.open("Stoic.jpg")
+example_img = Image.open(f'{wotd.WORD}.jpg')
 st.image(example_img)
 
 
