@@ -35,7 +35,7 @@ def first_definition(On=True):
 first_definition(True)
 
 if st.button("More Definitions"):
-    first_definition(On = False)
+    first_definition(False)
     more_definitions()
 
 
