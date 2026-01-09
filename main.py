@@ -19,17 +19,18 @@ def more_definitions():
             f'{list_of_word_variants[t].etymology}')
         st.header("",divider="rainbow")
 
-
-st.markdown(
-    f'{list_of_word_variants[0].definition}')
-st.markdown(
-    f'Type of speech: **{list_of_word_variants[0].type_of_speech}**')
-st.markdown(
-    f'Date first used: **{list_of_word_variants[0].date}**')
-# st.markdown(
-#     f'{list_of_word_variants[0].etymology}')
-if st.button("More Definitions"):
-    more_definitions()
+def first_definition():
+    st.markdown(
+        f'{list_of_word_variants[0].definition}')
+    st.markdown(
+        f'Type of speech: **{list_of_word_variants[0].type_of_speech}**')
+    st.markdown(
+        f'Date first used: **{list_of_word_variants[0].date}**')
+    # st.markdown(
+    #     f'{list_of_word_variants[0].etymology}')
+    if st.button("More Definitions"):
+        more_definitions()
+first_definition()
 
 # st.image("https://images.unsplash.com/photo-1535930749574-1399327ce78f?q=80&w=1936&auto=format&fit=crop")
 # Open 'data/report.txt' for writing ('w')
