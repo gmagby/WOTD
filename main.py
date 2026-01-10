@@ -10,7 +10,9 @@ st.subheader(wotd.WORD)
 def more_definitions():
     for t in range (NUM):
         st.markdown(
-            f'{list_of_word_variants[t].definition}')
+            f'{"someone or something intensely disliked or loathed —usually used in the phrase be anathema (to)",
+                "one that is cursed by ecclesiastical authority",
+                "a ban or curse solemnly pronounced by ecclesiastical authority and accompanied by excommunication"}')
         st.markdown(
             f'Type of Speech: **{list_of_word_variants[t].type_of_speech}**')
         st.markdown(
