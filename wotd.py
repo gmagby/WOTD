@@ -37,7 +37,7 @@ def cleaner(clean_text):
     # clean_text = re.sub(r"[()\"#/@;<>{}=~|?]", '', clean_text)
     clean_text = re.sub(r"[^a-zA-Z0-9:]", " ", clean_text)
     clean_text = re.sub(r"dst1", "", clean_text)
-    clean_text = re.sub(r"ds1", "", clean_text)
+    clean_text = re.sub(r"ds 1", "", clean_text)
     clean_text = re.sub(r"it", "", clean_text)
 
     clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
