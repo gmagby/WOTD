@@ -23,7 +23,9 @@ def more_definitions():
 
 def first_definition():
     st.markdown(
-        f'{list_of_word_variants[0].definition}')
+            f'{"someone or something intensely disliked or loathed —usually used in the phrase be anathema (to)",
+                "one that is cursed by ecclesiastical authority",
+                "a ban or curse solemnly pronounced by ecclesiastical authority and accompanied by excommunication"}')
     st.markdown(
         f'Type of speech: **{list_of_word_variants[0].type_of_speech}**')
     st.markdown(
@@ -43,6 +45,7 @@ first_definition()
 
 example_img = Image.open(f'{wotd.WORD}.jpg')
 st.image(example_img)
+
 
 
 
