@@ -11,15 +11,13 @@ TYPE_OF_SPEECH_KEY = 'fl'
 DATE_KEY = 'date'
 ETYMOLOGY_KEY = 'et'
 NONE_RESULT = 'No info available'
-file_name = "Former Words of the day"
-
+file_name ="Former Words of the day"
 
 def get_response_dictionary(ref, word, key):
     url = f"https://www.dictionaryapi.com/api/v3/references/{ref}/json/{word}?key={key}"
     response = requests.get(url)
     print(url)
     return response.json()
-
 
 # def offline_data():
 #     try:
@@ -41,17 +39,16 @@ def cleaner(clean_text):
     clean_text = re.sub(r"dst1", "", clean_text)
     clean_text = re.sub(r"ds1", "", clean_text)
     clean_text = re.sub(r"ds|||b|", "", clean_text)
+    
 
     clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
     return clean_text
-
 
 def list_manager(data, syntax):
     return [
         cleaner(item.get(syntax, NONE_RESULT)) if item.get(syntax) else NONE_RESULT
         for item in data
     ]
-
 
 data = get_response_dictionary(REF_DICTIONARY, WORD, DICTIONARY_KEY)
 
@@ -60,14 +57,12 @@ type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
 etymology_list = list_manager(data, ETYMOLOGY_KEY)
 date_list = list_manager(data, DATE_KEY)
 
-
 class WordVariant:
     def __init__(self, definition, type_of_speech, date, etymology):
         self.definition = definition
         self.type_of_speech = type_of_speech
         self.date = date
         self.etymology = etymology
-
 
 def create_word_variants(definitions, types_of_speech, dates, etymologies):
     return [
@@ -79,6 +74,9 @@ def create_word_variants(definitions, types_of_speech, dates, etymologies):
 list_of_word_variants = create_word_variants(definition_list, type_of_speech_list, date_list, etymology_list)
 
 print(cleaner(etymology_list))
+
+
+
 
 
 
