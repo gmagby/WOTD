@@ -34,11 +34,11 @@ def get_response_dictionary(ref, word, key):
 
 def cleaner(clean_text):
     clean_text = str(clean_text)
-    # clean_text = re.sub(r"[()\"#/@;<>{}=~|?]", '', clean_text)
+    clean_text = re.sub(r"[()\"#/@;<>{}=~|?]", '', clean_text)
     clean_text = re.sub(r"[^a-zA-Z0-9:]", " ", clean_text)
     clean_text = re.sub(r"dst1", "", clean_text)
     clean_text = re.sub(r"ds1", "", clean_text)
-    clean_text = re.sub(r"{ds||1|b|}", "", clean_text)
+    clean_text = re.sub(r"ds||1|b|", "", clean_text)
     
 
     clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
@@ -74,6 +74,7 @@ def create_word_variants(definitions, types_of_speech, dates, etymologies):
 list_of_word_variants = create_word_variants(definition_list, type_of_speech_list, date_list, etymology_list)
 
 print(cleaner(etymology_list))
+
 
 
 
