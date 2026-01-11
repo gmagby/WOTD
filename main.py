@@ -30,11 +30,11 @@ def first_definition():
     #     f'{list_of_word_variants[0].etymology}')
     st.markdown(
         '''Instructions on how to make WOTD into a widget on your homescreen.
-        Safari Instructions:
-        https://docs.google.com/presentation/d/1ICISEQxe1UuQ7Z3xBA9gU8fPLrTMFCbIZSy9M_au0HY/edit?usp=sharing
+        [Safari Instructions:]
+        (https://docs.google.com/presentation/d/1ICISEQxe1UuQ7Z3xBA9gU8fPLrTMFCbIZSy9M_au0HY/edit?usp=sharing)
         
-        - Chrome instructions:
-        https://docs.google.com/presentation/d/1B5HWIi_X_8wNhbKWEcTfKhnWs4DfLsemZEEiym612Y8/edit?usp=sharing
+        [Chrome instructions:]
+        (https://docs.google.com/presentation/d/1B5HWIi_X_8wNhbKWEcTfKhnWs4DfLsemZEEiym612Y8/edit?usp=sharing)
         '''
     )
 
