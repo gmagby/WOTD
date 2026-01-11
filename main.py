@@ -21,7 +21,7 @@ def more_definitions():
 
 def first_definition():
     st.markdown(
-        "traveling from place to place")
+        "One who travels from place to place")
     st.markdown(
         f'Type of speech: **{list_of_word_variants[0].type_of_speech}**')
     st.markdown(
@@ -54,6 +54,7 @@ if st.button("Instructions to add WOTD to your homescreen"):
 
 example_img = Image.open(f'{wotd.WORD}.jpg')
 st.image(example_img)
+
 
 
 
