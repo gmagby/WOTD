@@ -28,6 +28,7 @@ def first_definition():
         f'Date first used: **{list_of_word_variants[0].date}**')
     # st.markdown(
     #     f'{list_of_word_variants[0].etymology}')
+def instructions_app():
     st.markdown(
         '''Instructions on how to make WOTD into a widget on your homescreen.''')
     st.markdown('''
@@ -39,6 +40,8 @@ def first_definition():
     )
 
 first_definition()
+if st.button("Instructions to add WOTD to your homescreen"):
+    instructions_app()
 
 # if st.button("More Definitions"):
 #     more_definitions()
