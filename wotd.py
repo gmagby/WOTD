@@ -5,7 +5,7 @@ WORD = 'Endeavor'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
-Thesaurus_key = '2431331e-690c-4d83-96ac-1f4e9cb350d5'
+THESAURUS_KEY = '2431331e-690c-4d83-96ac-1f4e9cb350d5'
 DEFINITION_KEY = 'shortdef'
 TYPE_OF_SPEECH_KEY = 'fl'
 DATE_KEY = 'date'
@@ -40,7 +40,7 @@ def cleaner(clean_text):
     clean_text = re.sub(r"[^a-zA-Z0-9:]", " ", clean_text)
     clean_text = re.sub(r"dst1", "", clean_text)
     clean_text = re.sub(r"ds1", "", clean_text)
-    # clean_text = re.sub(r"ds||||", "", clean_text)
+    #clean_text = re.sub(r"ds|||b|", "", clean_text)
 
     clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
     return clean_text
@@ -74,6 +74,7 @@ def create_word_variants(definitions, types_of_speech, dates, etymologies):
         WordVariant(definition, type_of_speech, date, etymology)
         for definition, type_of_speech, date, etymology in zip(definitions, types_of_speech, dates, etymologies)
     ]
+
 
 
 list_of_word_variants = create_word_variants(definition_list, type_of_speech_list, date_list, etymology_list)
