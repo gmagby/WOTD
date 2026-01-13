@@ -54,4 +54,3 @@ if st.button("More Definitions"):
 
 #example_img = Image.open(f'{wotd.WORD}.jpg')
 # st.image(example_img)
-
