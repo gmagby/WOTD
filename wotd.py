@@ -1,11 +1,11 @@
 import re
 import requests
 
-WORD = 'Endeavor'
+WORD = 'Ill'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
-THESAURUS_KEY = '2431331e-690c-4d83-96ac-1f4e9cb350d5'
+Thesaurus_key = '2431331e-690c-4d83-96ac-1f4e9cb350d5'
 DEFINITION_KEY = 'shortdef'
 TYPE_OF_SPEECH_KEY = 'fl'
 DATE_KEY = 'date'
@@ -74,7 +74,6 @@ def create_word_variants(definitions, types_of_speech, dates, etymologies):
         WordVariant(definition, type_of_speech, date, etymology)
         for definition, type_of_speech, date, etymology in zip(definitions, types_of_speech, dates, etymologies)
     ]
-
 
 
 list_of_word_variants = create_word_variants(definition_list, type_of_speech_list, date_list, etymology_list)
