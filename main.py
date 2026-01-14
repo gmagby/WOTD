@@ -33,7 +33,7 @@ def first_definition():
 
     st.markdown(
         "The Latin verb mandare means 'to order, commit to one's charge', literally 'to give into [one's] hand,' combining manus ('hand') and dare ('to give')")
-    st.markdown("countermand, mandate, command, mandatary, mandatory, and remand all come from this latin/french origin")
+    st.markdown("countermand, mandate, command, mandatary, mandatory, and remand all come from this Latin origin")
 
 
 def instructions_app():
