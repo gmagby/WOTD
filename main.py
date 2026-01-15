@@ -26,14 +26,16 @@ def first_definition():
         f'Type of speech: **{list_of_word_variants[0].type_of_speech}**')
     st.markdown(
         f'Date first used: **{list_of_word_variants[0].date}**')
-    st.markdown(f'late Middle English: from Old French contremander (verb),  contremand (noun),  from medieval Latin contramandare,  from contra- ‘against’ + mandare ‘to order’.'
-    )
-
-    st.header("",divider="green")
-
     st.markdown(
-        "The Latin verb mandare means 'to order, commit to one's charge', literally 'to give into [one's] hand,' combining manus ('hand') and dare ('to give')")
-    st.markdown("countermand, mandate, command, mandatary, mandatory, and remand all come from this Latin origin")
+        f'Date first used: **{list_of_word_variants[0].etymology}**')
+    # st.markdown(f'late Middle English: from Old French contremander (verb),  contremand (noun),  from medieval Latin contramandare,  from contra- ‘against’ + mandare ‘to order’.'
+    # )
+    #
+    # st.header("",divider="green")
+    #
+    # st.markdown(
+    #     "The Latin verb mandare means 'to order, commit to one's charge', literally 'to give into [one's] hand,' combining manus ('hand') and dare ('to give')")
+    # st.markdown("countermand, mandate, command, mandatary, mandatory, and remand all come from this Latin origin")
 
 
 def instructions_app():
