@@ -27,7 +27,7 @@ def first_definition():
     st.markdown(
         f'Date first used: **{list_of_word_variants[0].date}**')
     st.markdown(
-        f'Date first used: **{list_of_word_variants[0].etymology}**')
+        f'"New Latin, from yttria yttrium oxide (Y2O3), irregular from Ytterby, town in southern Sweden"')
     # st.markdown(f'late Middle English: from Old French contremander (verb),  contremand (noun),  from medieval Latin contramandare,  from contra- ‘against’ + mandare ‘to order’.'
     # )
     #
