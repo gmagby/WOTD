@@ -26,10 +26,6 @@ def first_definition():
         f'Type of speech: **{list_of_word_variants[0].type_of_speech}**')
     st.markdown(
         f'Date first used: **{list_of_word_variants[0].date}**')
-    st.markdown(
-        f'"New Latin, from yttria yttrium oxide (Y2O3), irregular from Ytterby, town in southern Sweden"')
-    # st.markdown(f'late Middle English: from Old French contremander (verb),  contremand (noun),  from medieval Latin contramandare,  from contra- ‘against’ + mandare ‘to order’.'
-    # )
     #
     # st.header("",divider="green")
     #
@@ -58,10 +54,9 @@ if st.button("Instructions to add WOTD to your homescreen"):
 if st.button("More Definitions"):
     more_definitions()
 
-example_img = Image.open(f'{wotd.WORD}1.jpg')
+example_img = Image.open(f'{wotd.WORD}.jpg')
 st.image(example_img)
-example_img = Image.open(f'{wotd.WORD}2.jpg')
-st.image(example_img)
+img)
 
 
 
