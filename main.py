@@ -21,7 +21,9 @@ def more_definitions():
 
 def first_definition():
     st.markdown(
-        f'{list_of_word_variants[0].definition}')
+        f'{"characterized by or appealing to self-indulgence",
+            "marked by decay or decline",
+            "of or relating to a group of late 19th century French and English writers emphasizing artificial and unconventional subjects : of or relating to the decadents"}')
     st.markdown(
         f'Type of speech: **{list_of_word_variants[0].type_of_speech}**')
     st.markdown(
