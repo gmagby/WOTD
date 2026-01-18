@@ -54,11 +54,12 @@ if st.button("Instructions to add WOTD to your homescreen"):
 if st.button("More Definitions"):
     more_definitions()
 
-example_img = Image.open(f'{wotd.WORD}.jpg')
-st.image(example_img)
+#example_img = Image.open(f'{wotd.WORD}.jpg')
+#st.image(example_img)
 
 
 
 
 # st.image("https://images.unsplash.com/photo-1535930749574-1399327ce78f?q=80&w=1936&auto=format&fit=crop")
 # Open 'data/report.txt' for writing ('w')
+
