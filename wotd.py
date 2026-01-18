@@ -25,6 +25,33 @@ def get_response_dictionary(ref, word, key):
 #     try:
 #         if os.path.exists(file_name):
 #             with open(file_name, "r") as f:
+import re
+import requests
+
+WORD = 'Decadent'
+REF_DICTIONARY = "collegiate"
+REF_THESAURUS = "thesaurus"
+DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
+Thesaurus_key = '2431331e-690c-4d83-96ac-1f4e9cb350d5'
+DEFINITION_KEY = 'shortdef'
+TYPE_OF_SPEECH_KEY = 'fl'
+DATE_KEY = 'date'
+ETYMOLOGY_KEY = 'et'
+NONE_RESULT = 'No info available'
+file_name = "Former Words of the day"
+
+
+def get_response_dictionary(ref, word, key):
+    url = f"https://www.dictionaryapi.com/api/v3/references/{ref}/json/{word}?key={key}"
+    response = requests.get(url)
+    print(url)
+    return response.json()
+
+
+# def offline_data():
+#     try:
+#         if os.path.exists(file_name):
+#             with open(file_name, "r") as f:
 #                 new_data = json.loads(f.read())
 #                 return new_data
 #
