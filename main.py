@@ -21,7 +21,7 @@ def more_definitions():
 
 def first_definition():
     st.markdown(
-        f'Type of speech: **{list_of_word_variants[0].definition}**')
+        f'**{list_of_word_variants[0].definition}**')
 
     st.markdown(
         f'Type of speech: **{list_of_word_variants[0].type_of_speech}**')
