@@ -54,8 +54,8 @@ first_definition()
 if st.button("Instructions to add WOTD to your homescreen"):
     instructions_app()
 
-if st.button("More Definitions"):
-    more_definitions()
+# if st.button("More Definitions"):
+#     more_definitions()
 
 example_img = Image.open(f'{wotd.WORD}.jpg')
 st.image(example_img)
