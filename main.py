@@ -6,7 +6,7 @@ from PIL import Image
 num = len(list_of_word_variants)
 st.title("Word of the Day")
 st.header(wotd.WORD)
-st.markdown(f'**{list_of_word_variants[0].type_of_speech}**', divider="rainbow")
+st.markdown(f'**{list_of_word_variants[0].type_of_speech}**')
 
 def more_definitions():
     for t in range (num):
