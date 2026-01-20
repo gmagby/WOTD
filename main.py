@@ -5,8 +5,8 @@ from PIL import Image
 
 num = len(list_of_word_variants)
 st.title("Word of the Day")
-st.header(wotd.WORD, divider="rainbow")
-st.subheader(f'Type of Speech: **{list_of_word_variants[0].type_of_speech}**')
+st.header(wotd.WORD)
+st.subheader(f'Type of Speech: **{list_of_word_variants[0].type_of_speech}**', divider="rainbow")
 
 def more_definitions():
     for t in range (num):
