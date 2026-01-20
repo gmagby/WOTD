@@ -30,8 +30,8 @@ def more_definitions():
 def first_definition():
     st.text(
         f'**{list_of_word_variants[FAVORED].definition}**')
-    st.markdown(
-        f'Type of speech: **{list_of_word_variants[FAVORED].type_of_speech}**')
+    # st.markdown(
+    #     f'Type of speech: **{list_of_word_variants[FAVORED].type_of_speech}**')
     st.markdown(
         f'Date first used: **{list_of_word_variants[FAVORED].date}**')
     #
