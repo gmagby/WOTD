@@ -34,12 +34,8 @@ def first_definition():
     #     f'Type of speech: **{list_of_word_variants[FAVORED].type_of_speech}**')
     st.markdown(
         f'Date first used: **{list_of_word_variants[FAVORED].date}**')
-    #
+
     # st.header("",divider="green")
-    #
-    # st.markdown(
-    #     "The Latin verb mandare means 'to order, commit to one's charge', literally 'to give into [one's] hand,' combining manus ('hand') and dare ('to give')")
-    # st.markdown("countermand, mandate, command, mandatary, mandatory, and remand all come from this Latin origin")
 
 
 def instructions_app():
