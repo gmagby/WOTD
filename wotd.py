@@ -36,11 +36,12 @@ def get_response_dictionary(ref, word, key):
 
 def cleaner(clean_text):
     clean_text = str(clean_text)
-    clean_text = re.sub("{ds||2||}", "", clean_text)
+    clean_text = re.sub(r"{ds||2||}", "", clean_text)
     clean_text = re.sub(r"[()\"#/@<>{}=~|?]", ' ', clean_text)
     # clean_text = re.sub(r"[^a-zA-Z0-9:]", " ", clean_text)
     clean_text = re.sub(r"dst1", "", clean_text)
     clean_text = re.sub(r"ds1", "", clean_text)
+    clean_text = re.sub(r", ", "\n", clean_text)
 
 
     clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces

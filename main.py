@@ -3,12 +3,12 @@ import wotd
 from wotd import list_of_word_variants
 from PIL import Image
 
-NUM = len(list_of_word_variants)
+num = len(list_of_word_variants)
 st.header("Word of the Day", divider="rainbow")
 st.subheader(wotd.WORD)
 
 def more_definitions():
-    for t in range (NUM):
+    for t in range (num):
         st.markdown(
             f'{list_of_word_variants[t].definition}')
         st.markdown(
@@ -52,8 +52,9 @@ first_definition()
 if st.button("Instructions to add WOTD to your homescreen"):
     instructions_app()
 
-# if st.button("More Definitions"):
-#     more_definitions()
+if num > 1:
+    st.button("More Definitions")
+    more_definitions()
 
 example_img = Image.open(f'{wotd.WORD}.jpg')
 st.image(example_img)
