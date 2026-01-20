@@ -26,7 +26,7 @@ def more_definitions():
 
 def first_definition():
     st.text(
-        f'**{list_of_word_variants[0].definition}**', style='text-align: center')
+        f'**{list_of_word_variants[0].definition}**')
     st.markdown(
         f'Type of speech: **{list_of_word_variants[0].type_of_speech}**')
     st.markdown(
