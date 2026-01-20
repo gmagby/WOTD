@@ -4,20 +4,25 @@ from wotd import list_of_word_variants
 from PIL import Image
 
 num = len(list_of_word_variants)
-st.header("Word of the Day", divider="rainbow")
-st.subheader(wotd.WORD)
+st.title("Word of the Day")
+st.header(wotd.WORD)
+st.subheader(f'Type of Speech: **{list_of_word_variants[0].type_of_speech}**')
 
 def more_definitions():
     for t in range (num):
-        st.markdown(
-            f'{list_of_word_variants[t].definition}')
-        st.markdown(
-            f'Type of Speech: **{list_of_word_variants[t].type_of_speech}**')
-        st.markdown(
-            f'Date first used: **{list_of_word_variants[t].date}**')
-        # st.markdown(
-        #     f'{list_of_word_variants[t].etymology}')
-        st.header("",divider="rainbow")
+        if list_of_word_variants[t].definition == 'No info available':
+            pass
+
+        else:
+            st.markdown(
+                f'{list_of_word_variants[t].definition}', size=25)
+
+            st.markdown(
+                f'Date first used: **{list_of_word_variants[t].date}**')
+            # st.markdown(
+            #     f'{list_of_word_variants[t].etymology}')
+            st.header("", divider="rainbow")
+
 
 def first_definition():
     st.markdown(
