@@ -53,7 +53,10 @@ if st.button("Instructions to add WOTD to your homescreen"):
     instructions_app()
 
 if num > 0:
-    if st.button("More Definitions"):
+    if list_of_word_variants[1].definition == 'No info available':
+        pass
+    else:
+        st.button("More Definitions")
         more_definitions()
 
 example_img = Image.open(f'{wotd.WORD}.jpg')
