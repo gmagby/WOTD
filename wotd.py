@@ -37,7 +37,7 @@ def get_response_dictionary(ref, word, key):
 def cleaner(clean_text):
     clean_text = str(clean_text)
     print(clean_text)
-    clean_text = re.sub(r", ", ", \n ", clean_text)
+    clean_text = re.sub(r",", ", \n ", clean_text)
     clean_text = re.sub(r"{ds||||}", "", clean_text)
     clean_text = re.sub(r"{dst1||]||}", "", clean_text)
     clean_text = re.sub(r"dst1", " ", clean_text)
