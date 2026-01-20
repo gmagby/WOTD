@@ -5,7 +5,7 @@ from PIL import Image
 
 num = len(list_of_word_variants)
 st.title("Word of the Day")
-st.header(wotd.WORD)
+st.header(wotd.WORD, style='text-align: center')
 st.subheader(f'**{list_of_word_variants[0].type_of_speech}**', divider="rainbow")
 
 def more_definitions():
@@ -25,9 +25,8 @@ def more_definitions():
 
 
 def first_definition():
-    st.markdown(
-        f'**{list_of_word_variants[0].definition}**', size=25)
-
+    st.text(
+        f'**{list_of_word_variants[0].definition}**', style='text-align: center')
     st.markdown(
         f'Type of speech: **{list_of_word_variants[0].type_of_speech}**')
     st.markdown(
