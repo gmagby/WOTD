@@ -53,8 +53,8 @@ if st.button("Instructions to add WOTD to your homescreen"):
     instructions_app()
 
 if num > 1:
-    st.button("More Definitions")
-    more_definitions()
+    if st.button("More Definitions"):
+        more_definitions()
 else:
     pass
 
