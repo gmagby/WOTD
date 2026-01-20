@@ -41,7 +41,7 @@ def cleaner(clean_text):
     # clean_text = re.sub(r"[^a-zA-Z0-9:]", " ", clean_text)
     clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
     clean_text = re.sub(r"dst1", '', clean_text)
-    clean_text = re.sub(r",", ' \n', clean_text)
+    clean_text = re.sub(r",", ', \n', clean_text)
     print(clean_text)
     return clean_text
 
