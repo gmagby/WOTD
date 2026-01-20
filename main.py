@@ -4,9 +4,11 @@ from wotd import list_of_word_variants
 from PIL import Image
 
 num = len(list_of_word_variants)
+FAVORED = 1
+
 st.header("Word of the Day", divider="rainbow")
 st.subheader(wotd.WORD)
-st.markdown(f'**{list_of_word_variants[0].type_of_speech}**')
+st.markdown(f'**{list_of_word_variants[FAVORED].type_of_speech}**')
 
 def more_definitions():
     for t in range (num):
@@ -26,11 +28,11 @@ def more_definitions():
 
 def first_definition():
     st.text(
-        f'**{list_of_word_variants[0].definition}**')
+        f'**{list_of_word_variants[FAVORED].definition}**')
     st.markdown(
-        f'Type of speech: **{list_of_word_variants[0].type_of_speech}**')
+        f'Type of speech: **{list_of_word_variants[FAVORED].type_of_speech}**')
     st.markdown(
-        f'Date first used: **{list_of_word_variants[0].date}**')
+        f'Date first used: **{list_of_word_variants[FAVORED].date}**')
     #
     # st.header("",divider="green")
     #
@@ -60,7 +62,7 @@ if num > 0:
     if list_of_word_variants[1].definition == 'No info available':
         pass
     else:
-        if st.button("More Definitions"):
+        if st.button("All Definitions"):
             more_definitions()
 
 example_img = Image.open(f'{wotd.WORD}.jpg')
