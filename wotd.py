@@ -45,7 +45,6 @@ def cleaner(clean_text):
     clean_text = re.sub(r"dst1", "", clean_text)
     clean_text = re.sub(r"ds1", "", clean_text)
     # clean_text = re.sub(r", ", ", ", clean_text)
-    # clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
     print(clean_text)
     return clean_text
 
