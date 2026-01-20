@@ -55,8 +55,6 @@ if st.button("Instructions to add WOTD to your homescreen"):
 if num > 0:
     if st.button("More Definitions"):
         more_definitions()
-else:
-    pass
 
 example_img = Image.open(f'{wotd.WORD}.jpg')
 st.image(example_img)
