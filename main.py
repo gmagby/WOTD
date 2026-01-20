@@ -18,7 +18,8 @@ def more_definitions():
         else:
             st.markdown(
                 f'{list_of_word_variants[t].definition}')
-
+            st.markdown(
+                f'**{list_of_word_variants[t].type_of_speech}**')
             st.markdown(
                 f'Date first used: **{list_of_word_variants[t].date}**')
             # st.markdown(
