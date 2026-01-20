@@ -4,7 +4,7 @@ from wotd import list_of_word_variants
 from PIL import Image
 
 num = len(list_of_word_variants)
-st.title("Word of the Day")
+st.title("Word of the Day", size=100)
 st.header(wotd.WORD, divider="rainbow")
 st.subheader(f'Type of Speech: **{list_of_word_variants[0].type_of_speech}**')
 
