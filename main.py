@@ -29,7 +29,7 @@ def more_definitions():
 
 def first_definition():
     st.markdown(
-        f'**{list_of_word_variants[FAVORED].definition}**')
+        f'{list_of_word_variants[FAVORED].definition}')
     # st.markdown(
     #     f'Type of speech: **{list_of_word_variants[FAVORED].type_of_speech}**')
     st.markdown(
