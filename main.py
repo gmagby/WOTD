@@ -60,8 +60,8 @@ if num > 0:
     if list_of_word_variants[1].definition == 'No info available':
         pass
     else:
-        st.button("More Definitions")
-        more_definitions()
+        if st.button("More Definitions"):
+            more_definitions()
 
 example_img = Image.open(f'{wotd.WORD}.jpg')
 st.image(example_img)
