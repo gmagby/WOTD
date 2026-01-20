@@ -38,7 +38,7 @@ def cleaner(clean_text):
     clean_text = str(clean_text)
     print(clean_text)
     clean_text = re.sub(r"{ds||||}", "", clean_text)
-    clean_text = re.sub(r"{dst1|'|]||}", "", clean_text)
+    clean_text = re.sub(r"{dst1||]||}", "", clean_text)
     clean_text = re.sub(r"dst1", " ", clean_text)
     clean_text = re.sub(r"[()\"#[/@<>{}=~|?]", ' ', clean_text)
     # clean_text = re.sub(r"[^a-zA-Z0-9:]", " ", clean_text)
