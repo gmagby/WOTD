@@ -11,6 +11,17 @@ st.header("Word of the Day", divider="rainbow")
 st.subheader(wotd.WORD)
 st.markdown(f'**{list_of_word_variants[FAVORED].type_of_speech}**')
 
+def first_definition():
+    for t in range (wotd.number_of_split_def):
+        st.markdown(wotd.split_up_definitions[t])
+
+    # st.markdown(
+    #     f'Type of speech: **{list_of_word_variants[FAVORED].type_of_speech}**')
+    st.markdown(
+        f'Date first used: **{list_of_word_variants[FAVORED].date}**')
+
+    # st.header("",divider="green")
+
 def more_definitions():
     for t in range (num):
         if list_of_word_variants[t].definition == 'No info available':
@@ -27,17 +38,6 @@ def more_definitions():
             #     f'{list_of_word_variants[t].etymology}')
             st.header("", divider="rainbow")
 
-
-def first_definition():
-    for t in range (wotd.number_of_split_def):
-        st.markdown(wotd.split_up_definitions[t])
-
-    # st.markdown(
-    #     f'Type of speech: **{list_of_word_variants[FAVORED].type_of_speech}**')
-    st.markdown(
-        f'Date first used: **{list_of_word_variants[FAVORED].date}**')
-
-    # st.header("",divider="green")
 
 
 def instructions_app():
