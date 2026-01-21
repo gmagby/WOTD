@@ -91,5 +91,5 @@ def split_up(data,number,key):
     return deep_list
 
 split_up_definitions = split_up(data,0,DEFINITION_KEY)
-number = len(split_up_definitions)
+number_of_split_def = len(split_up_definitions)
 print(split_up_definitions)

@@ -1,10 +1,12 @@
 import streamlit as st
 import wotd
 from wotd import list_of_word_variants
+from wotd import split_up_definitions
+from wotd import number_of_split_def
 from PIL import Image
 
 num = len(list_of_word_variants)
-FAVORED = 1
+FAVORED = 0
 
 st.header("Word of the Day", divider="rainbow")
 st.subheader(wotd.WORD)
@@ -28,8 +30,9 @@ def more_definitions():
 
 
 def first_definition():
-    st.markdown(
-        f'{list_of_word_variants[FAVORED].definition}')
+    for t in range (number_of_split_def):
+        st.markdown(split_up_definitions[t])
+
     # st.markdown(
     #     f'Type of speech: **{list_of_word_variants[FAVORED].type_of_speech}**')
     st.markdown(
@@ -70,4 +73,3 @@ st.image(example_img)
 
 # st.image("https://images.unsplash.com/photo-1535930749574-1399327ce78f?q=80&w=1936&auto=format&fit=crop")
 # Open 'data/report.txt' for writing ('w')
-
