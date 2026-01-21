@@ -81,15 +81,12 @@ def create_word_variants(definitions, types_of_speech, dates, etymologies):
 
 list_of_word_variants = create_word_variants(definition_list, type_of_speech_list, date_list, etymology_list)
 
-def split_up(data,number,key):
+def split_up(number,key):
     deep_list = []
     for t in data[number][key]:
         deep_list.append(t)
-    #     print(t)
-    # print(len(deep_list))
-    # print(deep_list)
     return deep_list
 
-split_up_definitions = split_up(data,0,DEFINITION_KEY)
+split_up_definitions = split_up(0,DEFINITION_KEY)
 number_of_split_def = len(split_up_definitions)
 print(split_up_definitions)
