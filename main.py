@@ -10,7 +10,6 @@ FAVORED = 0
 st.header("Word of the Day", divider="rainbow")
 st.subheader(wotd.WORD)
 st.markdown(f'**{list_of_word_variants[FAVORED].type_of_speech}**')
-st.header("",divider="green")
 
 def first_definition():
     for t in range (wotd.number_of_split_def):
