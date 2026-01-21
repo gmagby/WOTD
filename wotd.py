@@ -1,7 +1,8 @@
 import re
 import requests
+# from main import FAVORED
 
-WORD = 'Disport'
+WORD = 'Monochromatic'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -36,14 +37,13 @@ def get_response_dictionary(ref, word, key):
 
 def cleaner(clean_text):
     clean_text = str(clean_text)
-    print(clean_text)
     clean_text = re.sub(r"[()\#[/@<>{}=~|?]", '', clean_text)
     # clean_text = re.sub(r"[^a-zA-Z0-9:]", " ", clean_text)
     # clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
     clean_text = re.sub(r"dst1", '', clean_text)
     clean_text = re.sub(r",", ', \n', clean_text)
     clean_text = re.sub(r"]", '\n', clean_text)
-    print(clean_text)
+    clean_text = re.sub(r"ds1a", '\n', clean_text)
     return clean_text
 
 
@@ -55,6 +55,7 @@ def list_manager(data, syntax):
 
 
 data = get_response_dictionary(REF_DICTIONARY, WORD, DICTIONARY_KEY)
+
 
 definition_list = list_manager(data, DEFINITION_KEY)
 type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
@@ -80,3 +81,15 @@ def create_word_variants(definitions, types_of_speech, dates, etymologies):
 
 list_of_word_variants = create_word_variants(definition_list, type_of_speech_list, date_list, etymology_list)
 
+def split_up(data,number,key):
+    deep_list = []
+    for t in data[number][key]:
+        deep_list.append(t)
+    #     print(t)
+    # print(len(deep_list))
+    # print(deep_list)
+    return deep_list
+
+split_up_definitions = split_up(data,0,DEFINITION_KEY)
+number = len(split_up_definitions)
+print(split_up_definitions)
