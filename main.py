@@ -20,7 +20,7 @@ def first_definition():
     st.markdown(
         f'Date first used: **{list_of_word_variants[FAVORED].date}**')
 
-    # st.header("",divider="green")
+    st.header("",divider="green")
 
 def more_definitions():
     for t in range (num):
