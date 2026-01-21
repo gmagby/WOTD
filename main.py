@@ -19,7 +19,7 @@ def first_definition():
     # st.markdown(
     #     f'Type of speech: **{list_of_word_variants[FAVORED].type_of_speech}**')
     st.markdown(
-        f'Date first used: **{list_of_word_variants[FAVORED].date}**')
+        f'Date first used: {list_of_word_variants[FAVORED].date}')
 
 
 def more_definitions():
