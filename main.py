@@ -32,7 +32,7 @@ def more_definitions():
             st.markdown(
                 f'**{list_of_word_variants[t].type_of_speech}**')
             st.markdown(
-                f'Date first used: **{list_of_word_variants[t].date}**')
+                f'Date first used: {list_of_word_variants[t].date}')
             # st.markdown(
             #     f'{list_of_word_variants[t].etymology}')
             st.header("", divider="rainbow")
