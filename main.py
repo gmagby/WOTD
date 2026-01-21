@@ -58,7 +58,7 @@ first_definition()
 if st.button("Instructions to add WOTD to your homescreen"):
     instructions_app()
 
-if num > 0:
+if num > 1:
     if list_of_word_variants[1].definition == 'No info available':
         pass
     else:
