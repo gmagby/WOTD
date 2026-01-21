@@ -10,6 +10,7 @@ FAVORED = 0
 st.header("Word of the Day", divider="rainbow")
 st.subheader(wotd.WORD)
 st.markdown(f'**{list_of_word_variants[FAVORED].type_of_speech}**')
+st.header("",divider="green")
 
 def first_definition():
     for t in range (wotd.number_of_split_def):
@@ -20,7 +21,6 @@ def first_definition():
     st.markdown(
         f'Date first used: **{list_of_word_variants[FAVORED].date}**')
 
-    st.header("",divider="green")
 
 def more_definitions():
     for t in range (num):
