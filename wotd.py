@@ -1,6 +1,5 @@
 import re
 import requests
-# from main import FAVORED
 
 WORD = 'Monochromatic'
 REF_DICTIONARY = "collegiate"
