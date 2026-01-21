@@ -1,8 +1,7 @@
 import streamlit as st
 import wotd
 from wotd import list_of_word_variants
-from wotd import split_up_definitions
-from wotd import number_of_split_def
+
 from PIL import Image
 
 num = len(list_of_word_variants)
@@ -30,8 +29,8 @@ def more_definitions():
 
 
 def first_definition():
-    for t in range (number_of_split_def):
-        st.markdown(split_up_definitions[t])
+    for t in range (wotd.number_of_split_def):
+        st.markdown(wotd.split_up_definitions[t])
 
     # st.markdown(
     #     f'Type of speech: **{list_of_word_variants[FAVORED].type_of_speech}**')
