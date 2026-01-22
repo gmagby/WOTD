@@ -1,7 +1,7 @@
 import re
 import requests
 
-WORD = 'Monochromatic'
+WORD = 'anapestic'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -12,7 +12,6 @@ DATE_KEY = 'date'
 ETYMOLOGY_KEY = 'et'
 NONE_RESULT = 'No info available'
 file_name = "Former Words of the day"
-
 
 def get_response_dictionary(ref, word, key):
     url = f"https://www.dictionaryapi.com/api/v3/references/{ref}/json/{word}?key={key}"
@@ -34,15 +33,26 @@ def get_response_dictionary(ref, word, key):
 #     except ValueError:
 #         messagebox.showerror("Error", "Something went wrong.")
 
-def cleaner(clean_text):
+def clean_text(text):
+    cleaned_text = []
+    for item in text:
+        if isinstance(item, str):
+            cleaned_text.append(item.replace('{bc}', '').replace('{sx|', '').replace('||', '').replace('}', '').replace('{dx_def}', '').replace('{dxt|', '').replace('{/dx_def}', '').replace('{wi}', '').replace('{/wi}', '').replace('{d_link|', '').replace('|', '').replace('}', ''))
+        elif isinstance(item, list):
+            for sub_item in item:
+                cleaned_text.append(sub_item['t'].replace('{wi}', '').replace('{/wi}', ''))
+    return '\n'.join(cleaned_text)
+
+def cleaner(clean_text, sharp=None):
     clean_text = str(clean_text)
+    if sharp:
+        clean_text = re.sub(r"[^a-zA-Z0-9:]", " ", clean_text)
+        clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
+        clean_text = re.sub(r"bc", '', clean_text)
     clean_text = re.sub(r"[()\#[/@<>{}=~|?]", '', clean_text)
-    # clean_text = re.sub(r"[^a-zA-Z0-9:]", " ", clean_text)
-    # clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
     clean_text = re.sub(r"dst1", '', clean_text)
-    clean_text = re.sub(r",", ', \n', clean_text)
-    clean_text = re.sub(r"]", '\n', clean_text)
-    clean_text = re.sub(r"ds1a", '\n', clean_text)
+    clean_text = re.sub(r"]", '', clean_text)
+    clean_text = re.sub(r"ds1a", '', clean_text)
     return clean_text
 
 
@@ -80,12 +90,33 @@ def create_word_variants(definitions, types_of_speech, dates, etymologies):
 
 list_of_word_variants = create_word_variants(definition_list, type_of_speech_list, date_list, etymology_list)
 
-def split_up(number,key):
-    deep_list = []
-    for t in data[number][key]:
-        deep_list.append(t)
-    return deep_list
+# Text to List Converter
+def split_text(text):
+    return text.split(',')
 
-split_up_definitions = split_up(0,DEFINITION_KEY)
-number_of_split_def = len(split_up_definitions)
-print(split_up_definitions)
+def long_definition(iteration):
+    dt_list = []
+    for definition in data[iteration]['def']:
+        for sense in definition['sseq']:
+            for item in sense:
+                if isinstance(item, list) and len(item) > 1 and 'dt' in item[1]:
+                    dt_list.extend([dt[1] for dt in item[1]['dt'] if isinstance(dt, list)])
+    # print(dt_list)
+    return dt_list
+
+# Text to List Converter
+def split_text(text):
+    return text.split(',')
+
+formated_definition = split_text(list_of_word_variants[0].definition)
+
+print(formated_definition)
+
+def first_definition():
+    for t in range (len(formated_definition)):
+        print(formated_definition[t])
+
+    print(
+        f'Date first used: {list_of_word_variants[0].date}')
+
+first_definition()

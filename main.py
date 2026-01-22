@@ -3,21 +3,26 @@ import wotd
 from wotd import list_of_word_variants
 from PIL import Image
 
+favored = 0
 num = len(list_of_word_variants)
-FAVORED = 0
 
 st.header("Word of the Day", divider="rainbow")
 st.subheader(wotd.WORD)
-st.markdown(f'**{list_of_word_variants[FAVORED].type_of_speech}**')
+st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
+
+# Text to List Converter
+def split_text(text):
+    return text.split(',')
+
+formated_definition = split_text(list_of_word_variants[favored].definition)
+
 
 def first_definition():
-    for t in range (wotd.number_of_split_def):
-        st.markdown(wotd.split_up_definitions[t])
+    for t in range (len(formated_definition)):
+        st.markdown(formated_definition[t])
 
-    # st.markdown(
-    #     f'Type of speech: **{list_of_word_variants[FAVORED].type_of_speech}**')
     st.markdown(
-        f'Date first used: {list_of_word_variants[FAVORED].date}')
+        f'Date first used: {list_of_word_variants[favored].date}')
 
 
 def more_definitions():
