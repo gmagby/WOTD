@@ -53,6 +53,9 @@ def cleaner(clean_text, sharp=None):
     clean_text = re.sub(r"dst1", '', clean_text)
     clean_text = re.sub(r"]", '', clean_text)
     clean_text = re.sub(r"ds1a", '', clean_text)
+    clean_text = re.sub(r"dst", '', clean_text)
+    clean_text = re.sub(r"issue'", '', clean_text)
+    clean_text = re.sub(r"'", '', clean_text)
     return clean_text
 
 
