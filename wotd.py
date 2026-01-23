@@ -107,9 +107,6 @@ def long_definition(iteration):
     # print(dt_list)
     return dt_list
 
-# Text to List Converter
-def split_text(text):
-    return text.split(',')
 
 formated_definition = split_text(list_of_word_variants[0].definition)
 
