@@ -1,7 +1,7 @@
 import re
 import requests
 
-WORD = 'Debouch'
+WORD = 'aver'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -53,7 +53,7 @@ def cleaner(clean_text, sharp=None):
     clean_text = re.sub(r"dst1", '', clean_text)
     clean_text = re.sub(r"]", '', clean_text)
     clean_text = re.sub(r"ds1a", '', clean_text)
-    clean_text = re.sub(r"dst", '', clean_text)
+    clean_text = re.sub(r"ds2", '', clean_text)
     clean_text = re.sub(r"issue'", '', clean_text)
     # clean_text = re.sub(r"", '', clean_text)
     return clean_text
