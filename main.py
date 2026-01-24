@@ -73,7 +73,7 @@ example_img = Image.open(f'{wotd.WORD}.jpg')
 st.image(example_img)
 
 st.subheader("Click below to learn how others have used this word.")
-st.markdown('''https://www.merriam-webster.com/sentences/aver''')
+st.header('''https://www.merriam-webster.com/sentences/aver''')
 
 
 # st.image("https://images.unsplash.com/photo-1535930749574-1399327ce78f?q=80&w=1936&auto=format&fit=crop")
