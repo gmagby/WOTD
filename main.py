@@ -75,7 +75,7 @@ st.image(example_img)
 st.title("Click below to learn how others have used this word.")
 
 url = "https://www.merriam-webster.com/sentences/aver"
-st.link_button("Go to Google", url)
+st.link_button("Merriam-Webster", url)
 
 
 
