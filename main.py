@@ -68,8 +68,6 @@ if num > 1:
             more_definitions()
 else:
     pass
-example_img1 = Image.open(f'{wotd.WORD}1.jpg')
-st.image(example_img1)
 
 example_img = Image.open(f'{wotd.WORD}.jpg')
 st.image(example_img)
