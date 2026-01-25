@@ -4,7 +4,7 @@ from wotd import list_of_word_variants
 from PIL import Image
 
 favored = 0
-num = len(list_of_word_variants)
+# num = len(list_of_word_variants)
 
 st.header("Word of the Day", divider="rainbow")
 st.title(wotd.WORD)
@@ -15,7 +15,7 @@ st.markdown("adjective")
 def split_text(text):
     return text.split(',')
 
-formated_definition = split_text(list_of_word_variants[favored].definition)
+# formated_definition = split_text(list_of_word_variants[favored].definition)
 
 
 def first_definition():
