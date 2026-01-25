@@ -8,7 +8,8 @@ num = len(list_of_word_variants)
 
 st.header("Word of the Day", divider="rainbow")
 st.title(wotd.WORD)
-st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
+# st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
+st.markdown("adjective")
 
 # Text to List Converter
 def split_text(text):
@@ -18,11 +19,18 @@ formated_definition = split_text(list_of_word_variants[favored].definition)
 
 
 def first_definition():
-    for t in range (len(formated_definition)):
-        st.markdown(formated_definition[t])
+    # for t in range (len(formated_definition)):
+    #     st.markdown(formated_definition[t])
 
-    st.markdown(
-        f'Date first used: {list_of_word_variants[favored].date}')
+    st.markdown('Able to accomplish results with autonomy, used especially in reference to artificial intelligence')
+
+    st.markdown('Agentic describes someone or something that is capable of achieving outcomes independently (“functioning like an agent”) or possessing such ability, means, or power (“having agency"). It is especially used with a type of artificial intelligence (AI), often referred to as an AI agent, designed to execute complex tasks autonomously or with little human involvement. In social sciences, agentic is more specifically used to describe people’s self-assertive behaviors or actions directed towards individual accomplishment, status, and independence.')
+
+    # st.markdown(
+    #     f'Date first used: {list_of_word_variants[favored].date}')
+    st.markdown('Date first used: 2024')
+    st.subheader('Prediction')
+    st.markdown('Not officially in the dictionary as of 2026. Will become a household word within 2 years.')
 
 
 def more_definitions():
@@ -72,9 +80,9 @@ else:
 example_img = Image.open(f'{wotd.WORD}.jpg')
 st.image(example_img)
 
-st.subheader("Click below to learn how others have used this word.")
+# st.subheader("Click below to learn how others have used this word.")
 
-url = "https://www.merriam-webster.com/sentences/aver"
+url = "https://www.merriam-webster.com/slang/agentic"
 st.link_button("Merriam-Webster", url)
 
 
