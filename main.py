@@ -1,6 +1,6 @@
 import streamlit as st
 # import wotd
-from wotd import list_of_word_variants
+# from wotd import list_of_word_variants
 from PIL import Image
 
 favored = 0
