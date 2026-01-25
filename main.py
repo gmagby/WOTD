@@ -1,5 +1,5 @@
 import streamlit as st
-import wotd
+# import wotd
 from wotd import list_of_word_variants
 from PIL import Image
 
@@ -7,7 +7,8 @@ favored = 0
 # num = len(list_of_word_variants)
 
 st.header("Word of the Day", divider="rainbow")
-st.title(wotd.WORD)
+# st.title(wotd.WORD)
+st.title('Agentic')
 # st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 st.markdown("adjective")
 
@@ -33,21 +34,21 @@ def first_definition():
     st.markdown('Not officially in the dictionary as of 2026. Will become a household word within 2 years.')
 
 
-def more_definitions():
-    for t in range (num):
-        if list_of_word_variants[t].definition == 'No info available':
-            pass
-
-        else:
-            st.markdown(
-                f'{list_of_word_variants[t].definition}')
-            st.markdown(
-                f'**{list_of_word_variants[t].type_of_speech}**')
-            st.markdown(
-                f'Date first used: {list_of_word_variants[t].date}')
-            # st.markdown(
-            #     f'{list_of_word_variants[t].etymology}')
-            st.header("", divider="rainbow")
+# def more_definitions():
+#     for t in range (num):
+#         if list_of_word_variants[t].definition == 'No info available':
+#             pass
+#
+#         else:
+#             st.markdown(
+#                 f'{list_of_word_variants[t].definition}')
+#             st.markdown(
+#                 f'**{list_of_word_variants[t].type_of_speech}**')
+#             st.markdown(
+#                 f'Date first used: {list_of_word_variants[t].date}')
+#             # st.markdown(
+#             #     f'{list_of_word_variants[t].etymology}')
+#             st.header("", divider="rainbow")
 
 
 
@@ -65,19 +66,20 @@ def instructions_app():
 
 first_definition()
 
-if st.button("Instructions to add WOTD to your homescreen"):
-    instructions_app()
+# if st.button("Instructions to add WOTD to your homescreen"):
+#     instructions_app()
+#
+# if num > 1:
+#     if list_of_word_variants[1].definition == 'No info available':
+#         pass
+#     else:
+#         if st.button("All Definitions"):
+#             more_definitions()
+# else:
+#     pass
 
-if num > 1:
-    if list_of_word_variants[1].definition == 'No info available':
-        pass
-    else:
-        if st.button("All Definitions"):
-            more_definitions()
-else:
-    pass
-
-example_img = Image.open(f'{wotd.WORD}.jpg')
+# example_img = Image.open(f'{wotd.WORD}.jpg')
+example_img = Image.open(f'Agentic.jpg')
 st.image(example_img)
 
 # st.subheader("Click below to learn how others have used this word.")
