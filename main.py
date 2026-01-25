@@ -78,14 +78,16 @@ first_definition()
 # else:
 #     pass
 
+url = "https://www.merriam-webster.com/slang/agentic"
+st.link_button("Merriam-Webster", url)
+
 # example_img = Image.open(f'{wotd.WORD}.jpg')
 example_img = Image.open(f'Agentic.jpg')
 st.image(example_img)
 
 # st.subheader("Click below to learn how others have used this word.")
 
-url = "https://www.merriam-webster.com/slang/agentic"
-st.link_button("Merriam-Webster", url)
+
 
 
 
