@@ -70,7 +70,7 @@ if num > 1:
 else:
     pass
 
-url = "https://www.merriam-webster.com/slang/agentic"
+url = f'https://www.merriam-webster.com/dictionary/{wotd.WORD}'
 st.link_button("Merriam-Webster", url)
 
 example_img = Image.open(f'{wotd.WORD}.jpg')
