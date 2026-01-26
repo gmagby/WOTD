@@ -1,54 +1,46 @@
 import streamlit as st
-# import wotd
-# from wotd import list_of_word_variants
+import wotd
+from wotd import list_of_word_variants
 from PIL import Image
 
 favored = 0
-# num = len(list_of_word_variants)
+num = len(list_of_word_variants)
 
 st.header("Word of the Day", divider="rainbow")
-# st.title(wotd.WORD)
-st.title('Agentic')
-# st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
-st.markdown("adjective")
+st.title(wotd.WORD)
+
+st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
+
 
 # Text to List Converter
 def split_text(text):
     return text.split(',')
 
-# formated_definition = split_text(list_of_word_variants[favored].definition)
+formated_definition = split_text(list_of_word_variants[favored].definition)
 
 
 def first_definition():
-    # for t in range (len(formated_definition)):
-    #     st.markdown(formated_definition[t])
-
-    st.markdown('Able to accomplish results with autonomy, used especially in reference to artificial intelligence')
-
-    st.markdown('Agentic describes someone or something that is capable of achieving outcomes independently (“functioning like an agent”) or possessing such ability, means, or power (“having agency"). It is especially used with a type of artificial intelligence (AI), often referred to as an AI agent, designed to execute complex tasks autonomously or with little human involvement. In social sciences, agentic is more specifically used to describe people’s self-assertive behaviors or actions directed towards individual accomplishment, status, and independence.')
-
-    # st.markdown(
-    #     f'Date first used: {list_of_word_variants[favored].date}')
-    st.markdown('Date first used: 2024')
-    st.subheader('Prediction')
-    st.markdown('Not officially in the dictionary as of 2026. Will become a household word within 2 years.')
+    for t in range (len(formated_definition)):
+        st.markdown(formated_definition[t])
+    st.markdown(
+        f'Date first used: {list_of_word_variants[favored].date}')
 
 
-# def more_definitions():
-#     for t in range (num):
-#         if list_of_word_variants[t].definition == 'No info available':
-#             pass
-#
-#         else:
-#             st.markdown(
-#                 f'{list_of_word_variants[t].definition}')
-#             st.markdown(
-#                 f'**{list_of_word_variants[t].type_of_speech}**')
-#             st.markdown(
-#                 f'Date first used: {list_of_word_variants[t].date}')
-#             # st.markdown(
-#             #     f'{list_of_word_variants[t].etymology}')
-#             st.header("", divider="rainbow")
+def more_definitions():
+    for t in range (num):
+        if list_of_word_variants[t].definition == 'No info available':
+            pass
+
+        else:
+            st.markdown(
+                f'{list_of_word_variants[t].definition}')
+            st.markdown(
+                f'**{list_of_word_variants[t].type_of_speech}**')
+            st.markdown(
+                f'Date first used: {list_of_word_variants[t].date}')
+            # st.markdown(
+            #     f'{list_of_word_variants[t].etymology}')
+            st.header("", divider="rainbow")
 
 
 
@@ -66,24 +58,25 @@ def instructions_app():
 
 first_definition()
 
-# if st.button("Instructions to add WOTD to your homescreen"):
-#     instructions_app()
-#
-# if num > 1:
-#     if list_of_word_variants[1].definition == 'No info available':
-#         pass
-#     else:
-#         if st.button("All Definitions"):
-#             more_definitions()
-# else:
-#     pass
+if st.button("Instructions to add WOTD to your homescreen"):
+    instructions_app()
+
+if num > 1:
+    if list_of_word_variants[1].definition == 'No info available':
+        pass
+    else:
+        if st.button("All Definitions"):
+            more_definitions()
+else:
+    pass
 
 url = "https://www.merriam-webster.com/slang/agentic"
 st.link_button("Merriam-Webster", url)
 
-# example_img = Image.open(f'{wotd.WORD}.jpg')
-example_img = Image.open(f'Agentic.jpg')
+example_img = Image.open(f'{wotd.WORD}.jpg')
 st.image(example_img)
+
+
 
 # st.subheader("Click below to learn how others have used this word.")
 
