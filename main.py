@@ -81,11 +81,12 @@ def find_photo():
     try:
         if Image.open(f'{wotd.WORD}.jpg'):
             example_img = Image.open(f'{wotd.WORD}.jpg')
-        if Image.open(f'{wotd.WORD}.webp'):
+        else:
             example_img = Image.open(f'{wotd.WORD}.webp')
     except FileNotFoundError:
         pass
-    st.image(example_img)
+    return example_img
+st.image(example_img)
 
 # st.image("https://images.unsplash.com/photo-1535930749574-1399327ce78f?q=80&w=1936&auto=format&fit=crop")
 # Open 'data/report.txt' for writing ('w')
