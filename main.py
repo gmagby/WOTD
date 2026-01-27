@@ -83,8 +83,10 @@ def find_photo():
             example_img = Image.open(f'{wotd.WORD}.webp')
             st.image(example_img)
     except FileNotFoundError: pass
+    return
 
-find_photo()
+pic = find_photo()
+st.image(pic)
 
 
 
