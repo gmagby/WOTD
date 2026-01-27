@@ -76,6 +76,13 @@ st.link_button("Merriam-Webster", url)
 example_img = Image.open(f'{wotd.WORD}.jpg')
 st.image(example_img)
 
+# def find_photo():
+#     try:
+#         example_img = Image.open(f'{wotd.WORD}.jpg')
+#         st.image(example_img)
+#     except:
+#         pass
+#
 
 
 # st.subheader("Click below to learn how others have used this word.")
