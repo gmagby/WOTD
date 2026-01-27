@@ -83,6 +83,8 @@ st.image(example_img)
 #         st.image(example_img)
 #     except:
 #         pass
+#         example_img = Image.open(f'{wotd.WORD}.webp')
+# #        st.image(example_img)
 #
 
 
