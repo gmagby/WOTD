@@ -85,5 +85,7 @@ def find_photo():
             st.image(example_img)
     except FileNotFoundError: pass
 
+find_photo()
+
 
 
