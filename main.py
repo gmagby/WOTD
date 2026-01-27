@@ -77,15 +77,14 @@ example_img = Image.open(f'{wotd.WORD}.jpg')
 st.image(example_img)
 
 
-# def find_photo():
-#     try:
-#         example_img = Image.open(f'{wotd.WORD}.jpg')
-#         st.image(example_img)
-#     except:
-#         pass
-#         example_img = Image.open(f'{wotd.WORD}.webp')
-# #        st.image(example_img)
-#
+def find_photo():
+    try:
+        example_img = Image.open(f'{wotd.WORD}.jpg')
+    except FileNotFoundError:
+        example_img = Image.open(f'{wotd.WORD}.webp')
+
+    st.image(example_img)
+
 
 
 # st.subheader("Click below to learn how others have used this word.")
