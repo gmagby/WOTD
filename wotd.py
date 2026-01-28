@@ -2,7 +2,7 @@ import re
 import requests
 
 
-WORD = 'Probative'
+WORD = 'Covetous'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -121,3 +121,20 @@ def first_definition():
         f'Date first used: {list_of_word_variants[0].date}')
 
 first_definition()
+
+import schedule
+import time
+from datetime import datetime
+
+def update_variable():
+    global my_variable
+    my_variable = "Updated value at " + datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    print(my_variable)
+
+my_variable = "Initial value"
+
+schedule.every().day.at("11:00").do(update_variable)
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)
