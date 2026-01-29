@@ -2,7 +2,7 @@ import re
 import requests
 
 
-WORD = 'Covetous'
+WORD = 'Jingoism'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -20,6 +20,7 @@ def get_response_dictionary(ref, word, key):
     print(url)
     return response.json()
 
+data = get_response_dictionary(REF_DICTIONARY, WORD, DICTIONARY_KEY)
 
 # def offline_data():
 #     try:
@@ -65,9 +66,6 @@ def list_manager(data, syntax):
         cleaner(item.get(syntax, NONE_RESULT)) if item.get(syntax) else NONE_RESULT
         for item in data
     ]
-
-
-data = get_response_dictionary(REF_DICTIONARY, WORD, DICTIONARY_KEY)
 
 
 definition_list = list_manager(data, DEFINITION_KEY)
