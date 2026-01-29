@@ -73,7 +73,7 @@ else:
 url = f'https://www.merriam-webster.com/dictionary/{wotd.WORD}'
 st.link_button("Merriam-Webster", url)
 
-example_img1 = Image.open(f'{wotd.WORD}.jpg')
+example_img1 = Image.open(f'{wotd.WORD}1.jpg')
 st.image(example_img1)
 
 example_img2 = Image.open(f'{wotd.WORD}2.jpg')
