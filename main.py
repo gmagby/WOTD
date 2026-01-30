@@ -85,7 +85,5 @@ if num > 1:
         if st.button("All Definitions"):
             more_definitions()
 
-
-
-# example_img = Image.open(f'{wotd.WORD}.webp')
-# st.image(example_img)
+example_img = Image.open(f'{wotd.WORD}.webp')
+st.image(example_img)
