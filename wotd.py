@@ -2,7 +2,7 @@ import re
 import requests
 
 
-WORD = 'Jingoism'
+WORD = 'Pedant'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -69,6 +69,7 @@ def list_manager(data, syntax):
 
 
 definition_list = list_manager(data, DEFINITION_KEY)
+definition_list = ["one who is unimaginative, rigid, or overly concerned with minor details in the presentation or use of knowledge; sometimes, specifically : a person who adheres strictly to formal rules in teaching", "one who makes a show of knowledge", "a male schoolteacher"]
 type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
 etymology_list = list_manager(data, ETYMOLOGY_KEY)
 date_list = list_manager(data, DATE_KEY)
@@ -105,6 +106,7 @@ def long_definition(iteration):
                     dt_list.extend([dt[1] for dt in item[1]['dt'] if isinstance(dt, list)])
     # print(dt_list)
     return dt_list
+
 
 
 formated_definition = split_text(list_of_word_variants[0].definition)

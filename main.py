@@ -20,8 +20,10 @@ formated_definition = split_text(list_of_word_variants[favored].definition)
 
 
 def first_definition():
-    for t in range (len(formated_definition)):
-        st.markdown(formated_definition[t])
+    # for t in range (len(formated_definition)):
+    #     st.markdown(formated_definition[t])
+    for t in range (len(list_of_word_variants)):
+        st.markdown(list_of_word_variants[t])
     st.markdown(
         f'Date first used: {list_of_word_variants[favored].date}')
 
