@@ -78,12 +78,15 @@ if st.button("Instructions to add WOTD to your homescreen"):
 url = f'https://www.merriam-webster.com/dictionary/{wotd.WORD}'
 st.link_button("Merriam-Webster", url)
 
-if num > 1:
-    if list_of_word_variants[1].definition == 'No info available':
-        pass
-    else:
-        if st.button("All Definitions"):
-            more_definitions()
+if st.button("All Definitions"):
+    more_definitions()
+
+# if num > 1:
+#     if list_of_word_variants[1].definition == 'No info available':
+#         pass
+#     else:
+#         if st.button("All Definitions"):
+#             more_definitions()
 
 example_img = Image.open(f'{wotd.WORD}.jpg')
 st.image(example_img)
