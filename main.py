@@ -20,12 +20,17 @@ formated_definition = split_text(list_of_word_variants[favored].definition)
 
 
 def first_definition():
+    st.markdown(
+        "one who is unimaginative, rigid, or overly concerned with minor details in the presentation or use of knowledge; sometimes, specifically : a person who adheres strictly to formal rules in teaching",)
+    st.markdown(
+        "one who makes a show of knowledge",)
+    st.markdown(
+        "a male schoolteacher")
     # for t in range (len(formated_definition)):
     #     st.markdown(formated_definition[t])
-    for t in range (len(list_of_word_variants)):
-        st.markdown(list_of_word_variants[t].definition)
     st.markdown(
         f'Date first used: {list_of_word_variants[favored].date}')
+
 
 
 def more_definitions():
@@ -40,6 +45,8 @@ def more_definitions():
                 f'**{list_of_word_variants[t].type_of_speech}**')
             st.markdown(
                 f'Date first used: {list_of_word_variants[t].date}')
+            st.markdown(list_of_word_variants[t].synonyms)
+            st.markdown(list_of_word_variants[t].antonyms)
             # st.markdown(
             #     f'{list_of_word_variants[t].etymology}')
             st.header("", divider="rainbow")
@@ -60,8 +67,16 @@ def instructions_app():
 
 first_definition()
 
+if st.button('Thesaurus'):
+    st.markdown(list_of_word_variants[favored].synonyms)
+    st.markdown(list_of_word_variants[favored].antonyms)
+
+
 if st.button("Instructions to add WOTD to your homescreen"):
     instructions_app()
+
+url = f'https://www.merriam-webster.com/dictionary/{wotd.WORD}'
+st.link_button("Merriam-Webster", url)
 
 if num > 1:
     if list_of_word_variants[1].definition == 'No info available':
@@ -69,17 +84,8 @@ if num > 1:
     else:
         if st.button("All Definitions"):
             more_definitions()
-else:
-    pass
 
-url = f'https://www.merriam-webster.com/dictionary/{wotd.WORD}'
-st.link_button("Merriam-Webster", url)
 
-# example_img1 = Image.open(f'{wotd.WORD}.jpg')
-# st.image(example_img1)
-#
-# example_img2 = Image.open(f'{wotd.WORD}2.jpg')
-# st.image(example_img2)
-#
-# example_img3 = Image.open(f'{wotd.WORD}3.jpg')
-# st.image(example_img3)
+
+# example_img = Image.open(f'{wotd.WORD}.webp')
+# st.image(example_img)
