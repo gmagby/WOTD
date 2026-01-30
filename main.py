@@ -21,7 +21,7 @@ formated_definition = split_text(list_of_word_variants[favored].definition)
 
 def first_definition():
     st.markdown(
-        "one who is unimaginative, rigid, or overly concerned with minor details in the presentation or use of knowledge; sometimes, specifically : a person who adheres strictly to formal rules in teaching",)
+        "one who is unimaginative, rigid, or overly concerned with minor details in the presentation or use of knowledge; sometimes,  specifically : a person who adheres strictly to formal rules in teaching",)
     st.markdown(
         "one who makes a show of knowledge",)
     st.markdown(
