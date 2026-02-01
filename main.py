@@ -66,12 +66,11 @@ if st.button('Thesaurus'):
     st.markdown(list_of_word_variants[favored].antonyms)
 
 
-if st.button("Instructions to add WOTD to your homescreen"):
-    instructions_app()
-
 url = f'https://www.merriam-webster.com/dictionary/{wotd.WORD}'
 st.link_button("Merriam-Webster", url)
 
+if st.button("Instructions to add WOTD to your homescreen"):
+    instructions_app()
 # if num > 1:
 #     if list_of_word_variants[1].definition == 'No info available':
 #         pass
