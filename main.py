@@ -23,7 +23,9 @@ def first_definition():
     for t in range (len(formated_definition)):
         st.markdown(formated_definition[t])
     st.markdown(
-        f'Date first used: {list_of_word_variants[favored].date}')
+        f'Date first used: Genesis 10:5, 12:2')
+    # st.markdown(
+    #     f'Date first used: {list_of_word_variants[favored].date}')
 
 
 
