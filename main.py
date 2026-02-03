@@ -22,6 +22,8 @@ formated_definition = split_text(list_of_word_variants[favored].definition)
 def first_definition():
     for t in range (len(formated_definition)):
         st.markdown(formated_definition[t])
+        st.markdown(
+            f'"sometimes disparaging"')
     st.markdown(
         f'Date first used: Genesis 10:5, 12:2')
     # st.markdown(
