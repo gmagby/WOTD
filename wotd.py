@@ -72,13 +72,13 @@ def list_manager(data, syntax):
     ]
 
 
-def extract_synonyms(data, nyms):
-    """Extracts synonyms or antonyms from the provided data."""
-    nyms_lists = []  # List to hold lists of synonyms/antonyms for each entry
-
-    for entry in data:
-        entry_nyms_list = [syn for syn_group in entry['meta'].get(nyms, []) for syn in syn_group] or [NONE_RESULT]
-        nyms_lists.append(entry_nyms_list)  # Append the entry's list to the main list
+# def extract_synonyms(data, nyms):
+#     """Extracts synonyms or antonyms from the provided data."""
+#     nyms_lists = []  # List to hold lists of synonyms/antonyms for each entry
+#
+#     for entry in data:
+#         entry_nyms_list = [syn for syn_group in entry['meta'].get(nyms, []) for syn in syn_group] or [NONE_RESULT]
+#         nyms_lists.append(entry_nyms_list)  # Append the entry's list to the main list
 
 
     return nyms_lists
@@ -87,8 +87,10 @@ definition_list = list_manager(data, DEFINITION_KEY)
 type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
 etymology_list = list_manager(data, ETYMOLOGY_KEY)
 date_list = list_manager(data, DATE_KEY)
-synonyms_list = (extract_synonyms(thes_data, SYNONYMS))
-antonyms_list = (extract_synonyms(thes_data, ANTONYMS))
+synonyms_list = list_manager(data, SYNONYMS)
+antonyms_list = list_manager(data, ANTONYMS)
+# synonyms_list = (extract_synonyms(thes_data, SYNONYMS))
+# antonyms_list = (extract_synonyms(thes_data, ANTONYMS))
 
 
 class WordVariant:
@@ -97,8 +99,8 @@ class WordVariant:
         self.type_of_speech = type_of_speech
         self.date = date
         self.etymology = etymology
-        self.synonyms = synonyms
-        self.antonyms = antonyms
+        self.synonyms = None
+        self.antonyms = None
 
 
 def create_word_variants(definitions, types_of_speech, dates, etymologies, synonyms, antonyms):
