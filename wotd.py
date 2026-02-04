@@ -86,10 +86,8 @@ definition_list = list_manager(data, DEFINITION_KEY)
 type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
 etymology_list = et_list_manager(data, ETYMOLOGY_KEY)
 date_list = list_manager(data, DATE_KEY)
-synonyms_list = list_manager(data, SYNONYMS)
-antonyms_list = list_manager(data, ANTONYMS)
-# synonyms_list = (extract_synonyms(thes_data, SYNONYMS))
-# antonyms_list = (extract_synonyms(thes_data, ANTONYMS))
+synonyms_list = (extract_synonyms(thes_data, SYNONYMS))
+antonyms_list = (extract_synonyms(thes_data, ANTONYMS))
 
 
 class WordVariant:
@@ -98,8 +96,8 @@ class WordVariant:
         self.type_of_speech = type_of_speech
         self.date = date
         self.etymology = etymology
-        self.synonyms = None
-        self.antonyms = None
+        self.synonyms = synonyms
+        self.antonyms = antonyms
 
 
 def create_word_variants(definitions, types_of_speech, dates, etymologies, synonyms, antonyms):
