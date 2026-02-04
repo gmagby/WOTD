@@ -1,7 +1,7 @@
 import re
 import requests
 
-WORD = 'Goyim'
+WORD = 'Palaver'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -51,16 +51,20 @@ def clean_text(text):
 def cleaner(clean_text, sharp=None):
     clean_text = str(clean_text)
     if sharp:
-        clean_text = re.sub(r"[^a-zA-Z0-9:]", " ", clean_text)
+        clean_text = re.sub(r"bc}", '', clean_text)
+        clean_text = re.sub(r"dx}", '', clean_text)
+        clean_text = re.sub(r'it}', '', clean_text)
+        clean_text = re.sub(r'text', '', clean_text)
+        clean_text = re.sub(r"'", '', clean_text)
+        clean_text = re.sub(r", P", 'P', clean_text)
+        # clean_text = re.sub(r"[^a-zA-Z0-9:]", " ", clean_text)
         clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
-        clean_text = re.sub(r"bc", '', clean_text)
     clean_text = re.sub(r"[()\#[/@<>{}=~|?]", '', clean_text)
+    # clean_text = re.sub(r"'", '', clean_text)
     clean_text = re.sub(r"dst1", '', clean_text)
     clean_text = re.sub(r"]", '', clean_text)
     clean_text = re.sub(r"ds1a", '', clean_text)
-    clean_text = re.sub(r"ds2", '', clean_text)
-    clean_text = re.sub(r"issue'", '', clean_text)
-    # clean_text = re.sub(r"", '', clean_text)
+    clean_text = re.sub(r"dst", '', clean_text)
     print(clean_text)
     return clean_text
 
@@ -71,6 +75,11 @@ def list_manager(data, syntax):
         for item in data
     ]
 
+def et_list_manager(data, syntax):
+    return [
+        cleaner(item.get(syntax, NONE_RESULT),1) if item.get(syntax) else NONE_RESULT
+        for item in data
+    ]
 
 # def extract_synonyms(data, nyms):
 #     """Extracts synonyms or antonyms from the provided data."""
@@ -85,7 +94,7 @@ def list_manager(data, syntax):
 
 definition_list = list_manager(data, DEFINITION_KEY)
 type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
-etymology_list = list_manager(data, ETYMOLOGY_KEY)
+etymology_list = et_list_manager(data, ETYMOLOGY_KEY)
 date_list = list_manager(data, DATE_KEY)
 synonyms_list = list_manager(data, SYNONYMS)
 antonyms_list = list_manager(data, ANTONYMS)
