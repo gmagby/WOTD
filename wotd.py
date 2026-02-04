@@ -38,15 +38,6 @@ thes_data = get_response_dictionary(REF_THESAURUS, WORD, Thesaurus_key)
 #     except ValueError:
 #         messagebox.showerror("Error", "Something went wrong.")
 
-def clean_text(text):
-    cleaned_text = []
-    for item in text:
-        if isinstance(item, str):
-            cleaned_text.append(item.replace('{bc}', '').replace('{sx|', '').replace('||', '').replace('}', '').replace('{dx_def}', '').replace('{dxt|', '').replace('{/dx_def}', '').replace('{wi}', '').replace('{/wi}', '').replace('{d_link|', '').replace('|', '').replace('}', ''))
-        elif isinstance(item, list):
-            for sub_item in item:
-                cleaned_text.append(sub_item['t'].replace('{wi}', '').replace('{/wi}', ''))
-    return '\n'.join(cleaned_text)
 
 def cleaner(clean_text, sharp=None):
     clean_text = str(clean_text)
@@ -62,6 +53,7 @@ def cleaner(clean_text, sharp=None):
     clean_text = re.sub(r"[()\#[/@<>{}=~|?]", '', clean_text)
     # clean_text = re.sub(r"'", '', clean_text)
     clean_text = re.sub(r"dst1", '', clean_text)
+    clean_text = re.sub(r"conference, discussion", 'conference or discussion', clean_text)
     clean_text = re.sub(r"]", '', clean_text)
     clean_text = re.sub(r"ds1a", '', clean_text)
     clean_text = re.sub(r"dst", '', clean_text)
