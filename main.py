@@ -22,12 +22,8 @@ formated_definition = split_text(list_of_word_variants[favored].definition)
 def first_definition():
     for t in range (len(formated_definition)):
         st.markdown(formated_definition[t])
-        st.markdown(
-            f'"sometimes disparaging"')
     st.markdown(
-        f'Date first used: Genesis 10:5, 12:2')
-    # st.markdown(
-    #     f'Date first used: {list_of_word_variants[favored].date}')
+        f'Date first used: {list_of_word_variants[favored].date}')
 
 
 
@@ -75,12 +71,13 @@ st.link_button("Merriam-Webster", url)
 
 if st.button("Instructions to add WOTD to your homescreen"):
     instructions_app()
-# if num > 1:
-#     if list_of_word_variants[1].definition == 'No info available':
-#         pass
-#     else:
-#         if st.button("All Definitions"):
-#             more_definitions()
+
+if num > 1:
+    if list_of_word_variants[1].definition == 'No info available':
+        pass
+    else:
+        if st.button("All Definitions"):
+            more_definitions()
 
 
 example_img = Image.open(f'{wotd.WORD}.jpg')
