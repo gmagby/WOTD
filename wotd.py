@@ -73,16 +73,14 @@ def et_list_manager(data, syntax):
         for item in data
     ]
 
-# def extract_synonyms(data, nyms):
-#     """Extracts synonyms or antonyms from the provided data."""
-#     nyms_lists = []  # List to hold lists of synonyms/antonyms for each entry
-#
-#     for entry in data:
-#         entry_nyms_list = [syn for syn_group in entry['meta'].get(nyms, []) for syn in syn_group] or [NONE_RESULT]
-#         nyms_lists.append(entry_nyms_list)  # Append the entry's list to the main list
+def extract_synonyms(data, nyms):
+    nyms_lists = []  # List to hold lists of synonyms/antonyms for each entry
 
-
+    for entry in data:
+        entry_nyms_list = [syn for syn_group in entry['meta'].get(nyms, []) for syn in syn_group] or [NONE_RESULT]
+        nyms_lists.append(entry_nyms_list)  # Append the entry's list to the main list
     return nyms_lists
+
 
 definition_list = list_manager(data, DEFINITION_KEY)
 type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
