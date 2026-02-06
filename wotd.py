@@ -1,7 +1,7 @@
 import re
 import requests
 
-WORD = 'Ardor'
+WORD = 'cantala'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -20,10 +20,6 @@ def get_response_dictionary(ref, word, key):
     response = requests.get(url)
     print(url)
     return response.json()
-
-data = get_response_dictionary(REF_DICTIONARY, WORD, DICTIONARY_KEY)
-thes_data = get_response_dictionary(REF_THESAURUS, WORD, Thesaurus_key)
-
 
 # def offline_data():
 #     try:
@@ -81,17 +77,32 @@ def extract_synonyms(data, nyms):
         nyms_lists.append(entry_nyms_list)  # Append the entry's list to the main list
     return nyms_lists
 
+data = get_response_dictionary(REF_DICTIONARY, WORD, DICTIONARY_KEY)
+
+try:
+    thes_data = get_response_dictionary(REF_THESAURUS, WORD, Thesaurus_key)
+    if thes_data:
+        synonyms_list = extract_synonyms(thes_data, SYNONYMS)
+        antonyms_list = extract_synonyms(thes_data, ANTONYMS)
+    else:
+        synonyms_list = NONE_RESULT
+        antonyms_list = NONE_RESULT
+
+except Exception as e:
+    synonyms_list = NONE_RESULT
+    antonyms_list = NONE_RESULT
+    print(f"An error occurred: {e}")
+
 
 definition_list = list_manager(data, DEFINITION_KEY)
 type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
 etymology_list = et_list_manager(data, ETYMOLOGY_KEY)
 date_list = list_manager(data, DATE_KEY)
-synonyms_list = (extract_synonyms(thes_data, SYNONYMS))
-antonyms_list = (extract_synonyms(thes_data, ANTONYMS))
+
 
 
 class WordVariant:
-    def __init__(self, definition, type_of_speech, date, etymology, synonyms, antonyms):
+    def __init__(self, definition, type_of_speech, date, etymology, synonyms=None, antonyms=None):
         self.definition = definition
         self.type_of_speech = type_of_speech
         self.date = date
