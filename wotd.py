@@ -93,6 +93,8 @@ except Exception as e:
     antonyms_list = NONE_RESULT
     print(f"An error occurred: {e}")
 
+print(synonyms_list)
+print(antonyms_list)
 
 definition_list = list_manager(data, DEFINITION_KEY)
 type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)

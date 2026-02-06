@@ -61,9 +61,9 @@ def instructions_app():
 
 first_definition()
 
-if st.button('Thesaurus'):
-    st.markdown(list_of_word_variants[favored].synonyms)
-    st.markdown(list_of_word_variants[favored].antonyms)
+# if st.button('Thesaurus'):
+#     st.markdown(list_of_word_variants[favored].synonyms)
+#     st.markdown(list_of_word_variants[favored].antonyms)
 
 
 url = f'https://www.merriam-webster.com/dictionary/{wotd.WORD}'
