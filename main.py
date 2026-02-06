@@ -25,7 +25,7 @@ def first_definition():
     st.markdown(
         f'Date first used: {list_of_word_variants[favored].date}')
     st.markdown(
-        f'Etymology: {list_of_word_variants[favored].etymology}'
+        f'Etymology:  {list_of_word_variants[favored].etymology}'
     )
 
 
