@@ -48,7 +48,7 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
     clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
     # clean_text = re.sub(r"'", '', clean_text)
-    clean_text = re.sub(r"dst1", '', clean_text)
+    clean_text = re.sub(r"ds1", '', clean_text)
     clean_text = re.sub(r",", ' or', clean_text)
     clean_text = re.sub(r"]", '', clean_text)
     clean_text = re.sub(r"ds1a", '', clean_text)
