@@ -128,8 +128,8 @@ list_of_word_variants = create_word_variants(definition_list, type_of_speech_lis
 formated_definition = split_text(list_of_word_variants[0].definition)
 
 def first_definition():
+    print("Formated Definition:")
     for t in range (len(formated_definition)):
-        print("Formated Definition:")
         print(formated_definition[t])
     print(f'Date first used: {list_of_word_variants[0].date}')
     print(" ")
