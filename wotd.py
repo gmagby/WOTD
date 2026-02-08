@@ -55,6 +55,7 @@ def cleaner(clean_text, sharp=None):
     clean_text = re.sub(r"ds1a", '', clean_text)
     clean_text = re.sub(r"dst", '', clean_text)
     print(clean_text)
+    print(" ")
     return clean_text
 
 
@@ -76,9 +77,16 @@ def extract_synonyms(data, nyms):
     for entry in data:
         entry_nyms_list = [syn for syn_group in entry['meta'].get(nyms, []) for syn in syn_group] or [NONE_RESULT]
         nyms_lists.append(entry_nyms_list)  # Append the entry's list to the main list
+        print(nyms_lists)
+        print(" ")
     return nyms_lists
 
+# Text to List Converter
+def split_text(text):
+    return text.split(', ')
+
 data = get_response_dictionary(REF_DICTIONARY, WORD, DICTIONARY_KEY)
+thes_data = get_response_dictionary(REF_THESAURUS, WORD, Thesaurus_key)
 
 definition_list = list_manager(data, DEFINITION_KEY)
 type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
@@ -86,7 +94,6 @@ etymology_list = et_list_manager(data, ETYMOLOGY_KEY)
 date_list = list_manager(data, DATE_KEY)
 
 try:
-    thes_data = get_response_dictionary(REF_THESAURUS, WORD, Thesaurus_key)
     if thes_data:
         synonyms_list = extract_synonyms(thes_data, SYNONYMS)
         antonyms_list = extract_synonyms(thes_data, ANTONYMS)
@@ -98,10 +105,7 @@ except Exception as e:
     synonyms_list = NONE_RESULT
     antonyms_list = NONE_RESULT
     print(f"An error occurred: {e}")
-
-print(synonyms_list)
-print(antonyms_list)
-
+    print(" ")
 
 class WordVariant:
     def __init__(self, definition, type_of_speech, date, etymology, synonyms=None, antonyms=None):
@@ -118,19 +122,18 @@ def create_word_variants(definitions, types_of_speech, dates, etymologies, synon
         WordVariant(definition, type_of_speech, date, etymology, synonyms, antonyms)
         for definition, type_of_speech, date, etymology, synonyms, antonyms in zip(definitions, types_of_speech, dates, etymologies, synonyms, antonyms)
     ]
-list_of_word_variants = create_word_variants(definition_list, type_of_speech_list, date_list, etymology_list, synonyms_list, antonyms_list)
 
-# Text to List Converter
-def split_text(text):
-    return text.split(',')
+list_of_word_variants = create_word_variants(definition_list, type_of_speech_list, date_list, etymology_list, synonyms_list, antonyms_list)
 
 formated_definition = split_text(list_of_word_variants[0].definition)
 
 def first_definition():
     for t in range (len(formated_definition)):
+        print("Formated Definition:")
         print(formated_definition[t])
-
-    print(
-        f'Date first used: {list_of_word_variants[0].date}')
+    print(f'Date first used: {list_of_word_variants[0].date}')
+    print(" ")
 
 first_definition()
+print(f'Synonyms List: {synonyms_list}')
+print(f'Antonyms List: {antonyms_list}')
