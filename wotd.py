@@ -1,7 +1,7 @@
 import re
 import requests
 
-WORD = 'Steerage'
+WORD = 'Grapheme'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -36,6 +36,7 @@ def get_response_dictionary(ref, word, key):
 
 
 def cleaner(clean_text, sharp=None):
+    print(clean_text)
     clean_text = str(clean_text)
     if sharp:
         clean_text = re.sub(r"bc}", '', clean_text)
@@ -79,6 +80,11 @@ def extract_synonyms(data, nyms):
 
 data = get_response_dictionary(REF_DICTIONARY, WORD, DICTIONARY_KEY)
 
+definition_list = list_manager(data, DEFINITION_KEY)
+type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
+etymology_list = et_list_manager(data, ETYMOLOGY_KEY)
+date_list = list_manager(data, DATE_KEY)
+
 try:
     thes_data = get_response_dictionary(REF_THESAURUS, WORD, Thesaurus_key)
     if thes_data:
@@ -95,12 +101,6 @@ except Exception as e:
 
 print(synonyms_list)
 print(antonyms_list)
-
-definition_list = list_manager(data, DEFINITION_KEY)
-type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
-etymology_list = et_list_manager(data, ETYMOLOGY_KEY)
-date_list = list_manager(data, DATE_KEY)
-
 
 
 class WordVariant:
