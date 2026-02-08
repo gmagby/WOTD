@@ -1,5 +1,5 @@
 import streamlit as st
-import wotd
+from wotd import WORD
 from wotd import list_of_word_variants
 from PIL import Image
 
@@ -7,7 +7,7 @@ favored = 0
 num = len(list_of_word_variants)
 
 st.header("Word of the Day", divider="rainbow")
-st.title(wotd.WORD)
+st.title(WORD)
 
 st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
@@ -70,7 +70,7 @@ first_definition()
 #     st.markdown(list_of_word_variants[favored].antonyms)
 
 
-url = f'https://www.merriam-webster.com/dictionary/{wotd.WORD}'
+url = f'https://www.merriam-webster.com/dictionary/{WORD}'
 st.link_button("Merriam-Webster", url)
 
 if st.button("Instructions to add WOTD to your homescreen"):
@@ -84,5 +84,5 @@ if num > 1:
             more_definitions()
 
 
-example_img = Image.open(f'{wotd.WORD}.jpg')
+example_img = Image.open(f'{WORD}.jpg')
 st.image(example_img)
