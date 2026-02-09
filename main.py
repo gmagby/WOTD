@@ -25,10 +25,10 @@ def first_definition():
         st.markdown(formated_definition[t])
     st.markdown(
         f'Date first used: {list_of_word_variants[favored].date}')
-    if list_of_word_variants[favored].etymology != 'No info available':
-        st.markdown(
-            f'Etymology:  {list_of_word_variants[favored].etymology}'
-    )
+    # if list_of_word_variants[favored].etymology != 'No info available':
+    #     st.markdown(
+    #         f'Etymology:  {list_of_word_variants[favored].etymology}')
+
 
 
 
