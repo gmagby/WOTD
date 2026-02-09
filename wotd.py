@@ -43,14 +43,13 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r"dx}", '', clean_text)
         clean_text = re.sub(r'it}', '', clean_text)
         clean_text = re.sub(r'text', '', clean_text)
-        clean_text = re.sub(r"'", '', clean_text)
-        clean_text = re.sub(r", P", 'P', clean_text)
-        # clean_text = re.sub(r"[^a-zA-Z0-9:]", " ", clean_text)
+        # clean_text = re.sub(r"'", '', clean_text)
+        clean_text = re.sub(r"[^a-zA-Z0-9:]", " ", clean_text)
         clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
     clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
-    # clean_text = re.sub(r"'", '', clean_text)
-    clean_text = re.sub(r"ds1", '', clean_text)
-    # clean_text = re.sub(r",", ' or', clean_text)
+    clean_text = re.sub(r"'", '', clean_text)
+    # clean_text = re.sub(r"ds1", '', clean_text)
+    clean_text = re.sub(r",", ' or', clean_text)
     clean_text = re.sub(r"]", '', clean_text)
     clean_text = re.sub(r"ds1a", '', clean_text)
     clean_text = re.sub(r"dst", '', clean_text)
@@ -83,7 +82,7 @@ def extract_synonyms(data, nyms):
 
 # Text to List Converter
 def split_text(text):
-    return text.split(', ')
+    return text.split('", "')
 
 data = get_response_dictionary(REF_DICTIONARY, WORD, DICTIONARY_KEY)
 thes_data = get_response_dictionary(REF_THESAURUS, WORD, Thesaurus_key)
