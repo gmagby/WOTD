@@ -29,8 +29,7 @@ def first_definition():
         st.markdown(formated_definition[t])
 
     if list_of_word_variants[favored].etymology != 'No info available':
-        for t in range(len(formated_etymology)):
-            st.markdown(formated_etymology[t])
+            st.markdown(formated_etymology)
 
 
 
