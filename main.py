@@ -24,9 +24,9 @@ formated_etymology = split_text(list_of_word_variants[favored].etymology)
 def first_definition():
 
     for t in range (len(formated_definition)):
-        st.markdown(formated_definition[t])
+        st.markdown(f'**{formated_definition[t]}**')
     st.markdown(
-        f'Date first used: {list_of_word_variants[favored].date}')
+        f'**Date first used: {list_of_word_variants[favored].date}**')
 
 
 
@@ -63,7 +63,9 @@ def instructions_app():
         '''
     )
 
+
 first_definition()
+
 if list_of_word_variants[favored].etymology != 'No info available':
     if st.button("Etymology"):
         for t in range(len(formated_definition)):
