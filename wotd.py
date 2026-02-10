@@ -50,11 +50,12 @@ def cleaner(clean_text, sharp=None):
     clean_text = re.sub(r"'", '', clean_text)
     # clean_text = re.sub(r"ds1", '', clean_text)
     # clean_text = re.sub(r",", ' or', clean_text)
+    clean_text = re.sub(r'dst2', '', clean_text)
     clean_text = re.sub(r"]", '', clean_text)
     clean_text = re.sub(r"ds1a", '', clean_text)
     clean_text = re.sub(r"dst", '', clean_text)
     clean_text = re.sub(r"ds1b", '', clean_text)
-    clean_text = re.sub(r"dst2", '', clean_text)
+    clean_text = re.sub(r'dst2', '', clean_text)
     clean_text = re.sub(r"dx_ety", '', clean_text)
     clean_text = re.sub(r"dxt", '', clean_text)
 
