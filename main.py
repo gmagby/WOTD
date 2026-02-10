@@ -31,8 +31,6 @@ def first_definition():
             st.markdown(formated_etymology)
     st.markdown(
         f'Date first used: {list_of_word_variants[favored].date}')
-    st.markdown(f'Synonyms: {list_of_word_variants[favored].synonyms}')
-    st.markdown(f'Antonyms: {list_of_word_variants[favored].antonyms}')
 
 
 
@@ -71,9 +69,9 @@ def instructions_app():
 
 first_definition()
 
-# if st.button('Thesaurus'):
-#     st.markdown(list_of_word_variants[favored].synonyms)
-#     st.markdown(list_of_word_variants[favored].antonyms)
+if st.button('Thesaurus'):
+    st.markdown(list_of_word_variants[favored].synonyms)
+    st.markdown(list_of_word_variants[favored].antonyms)
 
 
 url = f'https://www.merriam-webster.com/dictionary/{WORD}'
