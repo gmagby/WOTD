@@ -1,7 +1,7 @@
 import re
 import requests
 
-WORD = 'Indelibly'
+WORD = 'Intrigue'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -53,6 +53,8 @@ def cleaner(clean_text, sharp=None):
     clean_text = re.sub(r"]", '', clean_text)
     clean_text = re.sub(r"ds1a", '', clean_text)
     clean_text = re.sub(r"dst", '', clean_text)
+    clean_text = re.sub(r"ds1b", '', clean_text)
+    clean_text = re.sub(r"dst2", '', clean_text)
     print(clean_text)
     print(" ")
     return clean_text

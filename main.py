@@ -85,5 +85,8 @@ if num > 1:
             more_definitions()
 
 
-example_img = Image.open(f'{WORD}.jpg')
+example_img = Image.open(f'{WORD}.gif')
 st.image(example_img)
+
+# example_img = Image.open(f'{WORD}.jpg')
+# st.image(example_img)
