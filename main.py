@@ -18,6 +18,7 @@ def split_text(text):
 
 
 formated_definition = split_text(list_of_word_variants[favored].definition)
+formated_etymology = split_text(list_of_word_variants[favored].etymology)
 
 
 def first_definition():
@@ -27,7 +28,7 @@ def first_definition():
         f'Date first used: {list_of_word_variants[favored].date}')
     if list_of_word_variants[favored].etymology != 'No info available':
         st.markdown(
-            f'Etymology:  {list_of_word_variants[favored].etymology}')
+            f'Etymology:  {formated_etymology}')
 
 
 
