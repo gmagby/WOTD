@@ -31,6 +31,8 @@ def first_definition():
             st.markdown(formated_etymology)
     st.markdown(
         f'Date first used: {list_of_word_variants[favored].date}')
+    st.markdown(f'Synonyms: {list_of_word_variants[favored].synonyms}')
+    st.markdown(f'Antonyms: {list_of_word_variants[favored].antonyms}')
 
 
 
