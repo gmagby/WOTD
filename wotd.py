@@ -55,6 +55,9 @@ def cleaner(clean_text, sharp=None):
     clean_text = re.sub(r"dst", '', clean_text)
     clean_text = re.sub(r"ds1b", '', clean_text)
     clean_text = re.sub(r"dst2", '', clean_text)
+    clean_text = re.sub(r"dx_ety", '', clean_text)
+    clean_text = re.sub(r"dxt", '', clean_text)
+
     print(clean_text)
     print(" ")
     return clean_text
