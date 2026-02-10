@@ -73,13 +73,6 @@ if st.button('Thesaurus'):
     st.markdown(list_of_word_variants[favored].synonyms)
     st.markdown(list_of_word_variants[favored].antonyms)
 
-
-url = f'https://www.merriam-webster.com/dictionary/{WORD}'
-st.link_button("Merriam-Webster", url)
-
-if st.button("Instructions to add WOTD to your homescreen"):
-    instructions_app()
-
 if num > 1:
     if list_of_word_variants[1].definition == 'No info available':
         pass
@@ -87,6 +80,12 @@ if num > 1:
         if st.button("All Definitions"):
             more_definitions()
 
+
+url = f'https://www.merriam-webster.com/dictionary/{WORD}'
+st.link_button("Merriam-Webster", url)
+
+if st.button("Instructions to add WOTD to your homescreen"):
+    instructions_app()
 
 example_img = Image.open(f'{WORD}.gif')
 st.image(example_img)
