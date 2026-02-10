@@ -23,13 +23,14 @@ print(len(formated_definition))
 
 
 def first_definition():
-    st.markdown(
-        f'Date first used: {list_of_word_variants[favored].date}')
+
     for t in range (len(formated_definition)):
         st.markdown(formated_definition[t])
 
     if list_of_word_variants[favored].etymology != 'No info available':
             st.markdown(formated_etymology)
+    st.markdown(
+        f'Date first used: {list_of_word_variants[favored].date}')
 
 
 
