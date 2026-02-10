@@ -64,11 +64,8 @@ def instructions_app():
     )
 
 first_definition()
-
-if st.button("Etymology"):
-    if list_of_word_variants[favored].etymology != 'No info available':
-        pass
-    else:
+if list_of_word_variants[favored].etymology != 'No info available':
+    if st.button("Etymology"):
         for t in range(len(formated_definition)):
             st.markdown(formated_definition[t])
 
