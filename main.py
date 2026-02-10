@@ -14,11 +14,12 @@ st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
 # Text to List Converter
 def split_text(text):
-    return text.split('", "')
+    return text.split(',')
 
 
 formated_definition = split_text(list_of_word_variants[favored].definition)
 formated_etymology = split_text(list_of_word_variants[favored].etymology)
+print(len(formated_definition))
 
 
 def first_definition():
