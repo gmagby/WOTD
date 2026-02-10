@@ -18,7 +18,7 @@ def split_text(text):
 
 
 formated_definition = split_text(list_of_word_variants[favored].definition)
-formated_etymology = split_text(list_of_word_variants[favored].etymology)
+formated_etymology = split_text(list_of_word_variants.etymology)
 
 
 def first_definition():
