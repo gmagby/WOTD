@@ -69,8 +69,8 @@ first_definition()
 
 if list_of_word_variants[favored].etymology != 'No info available':
     if st.button("Etymology"):
-        for t in range(len(formated_definition)):
-            st.markdown(formated_definition[t])
+        for t in range(len(formated_etymology)):
+            st.markdown(formated_etymology[t])
 
 if st.button('Thesaurus'):
     st.markdown(list_of_word_variants[favored].synonyms)
