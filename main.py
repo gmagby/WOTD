@@ -8,9 +8,7 @@ num = len(list_of_word_variants)
 
 st.header("Word of the Day", divider="rainbow")
 st.title(WORD)
-
 st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
-
 
 # Text to List Converter
 def split_text(text):
@@ -23,7 +21,7 @@ formated_etymology = split_text(list_of_word_variants[favored].etymology)
 
 def first_definition():
     for t in range (len(formated_definition)):
-        st.markdown(
+        st.write(
             f'{formated_definition[t]}')
 
     st.markdown(
@@ -53,28 +51,32 @@ def more_definitions():
 
 
 def instructions_app():
-    st.markdown(
+    st.sidebar.markdown(
         '''Instructions on how to make WOTD into a widget on your homescreen.''')
-    st.markdown('''
+    st.sidebar.markdown('''
         Safari Instructions:
         (https://docs.google.com/presentation/d/1ICISEQxe1UuQ7Z3xBA9gU8fPLrTMFCbIZSy9M_au0HY/edit?usp=sharing)''')
-    st.markdown('''
+    st.sidebar.markdown('''
         Chrome instructions:
         (https://docs.google.com/presentation/d/1B5HWIi_X_8wNhbKWEcTfKhnWs4DfLsemZEEiym612Y8/edit?usp=sharing)
         '''
     )
 
-
 first_definition()
 
-if list_of_word_variants[favored].etymology != 'No info available':
-    if st.button("Etymology"):
-        for t in range(len(formated_etymology)):
-            st.markdown(formated_etymology[t])
+st.sidebar.title(WORD)
+st.sidebar.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
-if st.button('Thesaurus'):
-    st.markdown(list_of_word_variants[favored].synonyms)
-    st.markdown(list_of_word_variants[favored].antonyms)
+if list_of_word_variants[favored].etymology != 'No info available':
+    if st.sidebar.button("Etymology"):
+        for t in range(len(formated_etymology)):
+            st.sidebar.markdown(formated_etymology[t])
+
+if st.sidebar.button('Thesaurus'):
+    st.sidebar.markdown("Synonyms:")
+    st.sidebar.markdown(list_of_word_variants[favored].synonyms)
+    st.sidebar.markdown("Antonyms:")
+    st.sidebar.markdown(list_of_word_variants[favored].antonyms)
 
 if num > 1:
     if list_of_word_variants[1].definition == 'No info available':
@@ -83,11 +85,10 @@ if num > 1:
         if st.button("All Definitions"):
             more_definitions()
 
-
 url = f'https://www.merriam-webster.com/dictionary/{WORD}'
-st.link_button("Merriam-Webster", url)
+st.sidebar.link_button("Merriam-Webster", url)
 
-if st.button("Instructions to add WOTD to your homescreen"):
+if st.sidebar.button("Instructions to add WOTD to your homescreen"):
     instructions_app()
 
 example_img = Image.open(f'{WORD}.gif')
