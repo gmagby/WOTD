@@ -90,7 +90,6 @@ if num > 1:
 
 st.button("Additional information has been added to a new menu in the top left corner.")
 
-
 url = f'https://www.merriam-webster.com/dictionary/{WORD}'
 st.sidebar.link_button("Merriam-Webster", url)
 
