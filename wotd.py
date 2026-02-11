@@ -1,7 +1,7 @@
 import re
 import requests
 
-WORD = 'Intrigue'
+WORD = 'Muse'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -141,3 +141,4 @@ def first_definition():
 first_definition()
 print(f'Synonyms List: {synonyms_list}')
 print(f'Antonyms List: {antonyms_list}')
+print(len(list_of_word_variants))
