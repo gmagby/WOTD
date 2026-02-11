@@ -40,10 +40,11 @@ def more_definitions():
                 f'{list_of_word_variants[t+1].definition}')
             st.markdown(
                 f'**{list_of_word_variants[t+1].type_of_speech}**')
+            st.markdown(f'Etymology: {list_of_word_variants[t + 1].etymology}')
             st.markdown(
                 f'Date first used: {list_of_word_variants[t+1].date}')
             st.markdown(f'Synonyms: {list_of_word_variants[t+1].synonyms}')
-            st.markdown(f'Antonyms: {list_of_word_variants[t+1].antonyms}')
+            st.markdown(f'Antonyms: {list_of_word_variants[t + 1].antonyms}')
             # if list_of_word_variants[favored].etymology != 'No info available':
             #     for t in range(len(formated_etymology)):
             #         st.markdown(formated_etymology[t+1])
