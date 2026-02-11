@@ -91,8 +91,8 @@ st.sidebar.link_button("Merriam-Webster", url)
 if st.sidebar.button("Instructions to add WOTD to your homescreen"):
     instructions_app()
 
-example_img = Image.open(f'{WORD}.gif')
-st.image(example_img)
-
-# example_img = Image.open(f'{WORD}.jpg')
+# example_img = Image.open(f'{WORD}.gif')
 # st.image(example_img)
+
+example_img = Image.open(f'{WORD}.jpg')
+st.image(example_img)
