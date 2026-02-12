@@ -33,7 +33,6 @@ def more_definitions():
         if list_of_word_variants[t].definition == 'No info available':
             pass
         if t == favored:
-            pass
 
         else:
             st.header(WORD, divider="rainbow")
