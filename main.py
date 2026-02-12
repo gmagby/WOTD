@@ -30,18 +30,18 @@ def first_definition():
 
 def more_definitions():
     for t in range (num):
-        if list_of_word_variants[t].definition == 'No info available':
-            pass
-
-        else:
-            st.header(WORD, divider="rainbow")
-            st.markdown(
-                f'{list_of_word_variants[t].definition}')
-            st.markdown(
-                f'**{list_of_word_variants[t].type_of_speech}**')
-            st.markdown(f'Etymology: {list_of_word_variants[t].etymology}')
-            st.markdown(
-                f'Date first used: {list_of_word_variants[t].date}')
+        # if list_of_word_variants[t].definition == 'No info available':
+        #     pass
+        #
+        # else:
+        st.header(WORD, divider="rainbow")
+        st.markdown(
+            f'{list_of_word_variants[t].definition}')
+        st.markdown(
+            f'**{list_of_word_variants[t].type_of_speech}**')
+        st.markdown(f'Etymology: {list_of_word_variants[t].etymology}')
+        st.markdown(
+            f'Date first used: {list_of_word_variants[t].date}')
             # st.markdown(f'Synonyms: {list_of_word_variants[t].synonyms}')
             # st.markdown(f'Antonyms: {list_of_word_variants[t].antonyms}')
 
