@@ -29,10 +29,8 @@ def first_definition():
 
 
 def more_definitions():
-    for t in range (num-1):
+    for t in range (num):
         if list_of_word_variants[t].definition == 'No info available':
-            pass
-        if t == favored:
             pass
 
         else:
