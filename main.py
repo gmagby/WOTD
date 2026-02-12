@@ -1,5 +1,5 @@
 import streamlit as st
-from wotd import WORD, split_text
+from wotd import WORD
 from wotd import list_of_word_variants
 from PIL import Image
 
@@ -26,8 +26,6 @@ def first_definition():
 
     st.markdown(
         f'**Date first used: {list_of_word_variants[favored].date}**')
-
-
 
 
 def more_definitions():
