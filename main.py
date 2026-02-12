@@ -3,7 +3,7 @@ from wotd import WORD
 from wotd import list_of_word_variants
 from PIL import Image
 
-favored = 0
+favored = 1
 num = len(list_of_word_variants)
 
 st.header("Word of the Day", divider="rainbow")
@@ -31,6 +31,8 @@ def first_definition():
 def more_definitions():
     for t in range (num-1):
         if list_of_word_variants[t].definition == 'No info available':
+            pass
+        if t == favored:
             pass
 
         else:
