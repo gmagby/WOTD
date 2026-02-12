@@ -38,14 +38,25 @@ def more_definitions():
         else:
             st.header(WORD, divider="rainbow")
             st.markdown(
-                f'{list_of_word_variants[t+1].definition}')
+                f'{list_of_word_variants[t].definition}')
             st.markdown(
-                f'**{list_of_word_variants[t+1].type_of_speech}**')
-            st.markdown(f'Etymology: {list_of_word_variants[t + 1].etymology}')
+                f'**{list_of_word_variants[t].type_of_speech}**')
+            st.markdown(f'Etymology: {list_of_word_variants[t].etymology}')
             st.markdown(
-                f'Date first used: {list_of_word_variants[t+1].date}')
-            st.markdown(f'Synonyms: {list_of_word_variants[t+1].synonyms}')
-            st.markdown(f'Antonyms: {list_of_word_variants[t + 1].antonyms}')
+                f'Date first used: {list_of_word_variants[t].date}')
+            st.markdown(f'Synonyms: {list_of_word_variants[t].synonyms}')
+            st.markdown(f'Antonyms: {list_of_word_variants[t].antonyms}')
+
+            # st.header(WORD, divider="rainbow")
+            # st.markdown(
+            #     f'{list_of_word_variants[t+1].definition}')
+            # st.markdown(
+            #     f'**{list_of_word_variants[t+1].type_of_speech}**')
+            # st.markdown(f'Etymology: {list_of_word_variants[t + 1].etymology}')
+            # st.markdown(
+            #     f'Date first used: {list_of_word_variants[t+1].date}')
+            # st.markdown(f'Synonyms: {list_of_word_variants[t+1].synonyms}')
+            # st.markdown(f'Antonyms: {list_of_word_variants[t + 1].antonyms}')
 
             # if list_of_word_variants[favored].etymology != 'No info available':
             #     for t in range(len(formated_etymology)):
