@@ -42,8 +42,8 @@ def more_definitions():
             st.markdown(f'Etymology: {list_of_word_variants[t].etymology}')
             st.markdown(
                 f'Date first used: {list_of_word_variants[t].date}')
-            st.markdown(f'Synonyms: {list_of_word_variants[t].synonyms}')
-            st.markdown(f'Antonyms: {list_of_word_variants[t].antonyms}')
+            # st.markdown(f'Synonyms: {list_of_word_variants[t].synonyms}')
+            # st.markdown(f'Antonyms: {list_of_word_variants[t].antonyms}')
 
             # st.header(WORD, divider="rainbow")
             # st.markdown(
