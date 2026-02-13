@@ -53,9 +53,13 @@ def grab_dt(data):
                             results.append(dt[1][0]['vis'][0]['t'])
     return results
 
+def split_text(text):
+    return text.split("', '")
+
 def cleaner(clean_text, sharp=None):
     print(clean_text)
     clean_text = str(clean_text)
+    split_text(clean_text)
     if sharp:
         clean_text = re.sub(r"bc}", '', clean_text)
         clean_text = re.sub(r"dx}", '', clean_text)
