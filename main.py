@@ -15,7 +15,7 @@ def split_text(text):
     return text.split(',  ')
 
 
-formated_definition = split_text(list_of_word_variants[favored].definition)
+formated_definition = (list_of_word_variants[favored].definition)
 formated_etymology = split_text(list_of_word_variants[favored].etymology)
 
 

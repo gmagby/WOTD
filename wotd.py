@@ -53,6 +53,7 @@ def grab_dt(data):
                             results.append(dt[1][0]['vis'][0]['t'])
     return results
 
+# Text to List Converter
 def split_text(text):
     return text.split("', '")
 
