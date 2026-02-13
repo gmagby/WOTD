@@ -98,7 +98,7 @@ if num > 1:
         if st.button("All Definitions"):
             more_definitions()
 
-st.button("Additional information has been added to a new menu in the top left corner.")
+st.button("Additional information can be found in the menu in the top left corner.")
 
 url = f'https://www.merriam-webster.com/dictionary/{WORD}'
 st.sidebar.link_button("Merriam-Webster", url)
