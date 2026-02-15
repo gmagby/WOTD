@@ -1,6 +1,7 @@
 import re
 import requests
 
+
 WORD = 'Fey'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
