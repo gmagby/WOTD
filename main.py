@@ -69,8 +69,8 @@ st.sidebar.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
 if list_of_word_variants[favored].etymology != 'No info available':
     if st.sidebar.button("Etymology"):
-        for t in range (num):
-            st.sidebar.markdown(list_of_word_variants[t].etymology)
+        for t in range(num-1):
+            st.sidebar.markdown(formated_etymology[t+1])
 
 if st.sidebar.button('Thesaurus'):
     st.sidebar.markdown("Synonyms:")
