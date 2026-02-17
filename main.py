@@ -49,9 +49,9 @@ def more_definitions():
             st.markdown(f'Synonyms: {list_of_word_variants[t+1].synonyms}')
             st.markdown(f'Antonyms: {list_of_word_variants[t + 1].antonyms}')
 
-            if list_of_word_variants[favored].etymology != 'No info available':
-                for t in range(len(formated_etymology)):
-                    st.markdown(formated_etymology[t+1])
+            # if list_of_word_variants[favored].etymology != 'No info available':
+            #     for t in range(len(formated_etymology)):
+            #         st.markdown(formated_etymology[t+1])
     # st.header(WORD, divider="rainbow")
     # st.markdown(
     #     f'{list_of_word_variants[t].definition}')
