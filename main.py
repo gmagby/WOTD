@@ -29,7 +29,7 @@ def first_definition():
 
 
 def more_definitions():
-    for t in range (num):
+    for t in range (num-1):
         if list_of_word_variants[t].definition == 'No info available':
             pass
 
