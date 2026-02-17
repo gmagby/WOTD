@@ -49,19 +49,6 @@ def more_definitions():
             st.markdown(f'Synonyms: {list_of_word_variants[t+1].synonyms}')
             st.markdown(f'Antonyms: {list_of_word_variants[t + 1].antonyms}')
 
-            # if list_of_word_variants[favored].etymology != 'No info available':
-            #     for t in range(len(formated_etymology)):
-            #         st.markdown(formated_etymology[t+1])
-    # st.header(WORD, divider="rainbow")
-    # st.markdown(
-    #     f'{list_of_word_variants[t].definition}')
-    # st.markdown(
-    #     f'**{list_of_word_variants[t].type_of_speech}**')
-    # st.markdown(f'Etymology: {list_of_word_variants[t].etymology}')
-    # st.markdown(
-    #     f'Date first used: {list_of_word_variants[t].date}')
-
-
 
 def instructions_app():
     st.sidebar.markdown(
@@ -82,8 +69,8 @@ st.sidebar.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
 if list_of_word_variants[favored].etymology != 'No info available':
     if st.sidebar.button("Etymology"):
-        for t in range(len(formated_etymology)):
-            st.sidebar.markdown(formated_etymology[t])
+        for t in range (num):
+            st.sidebar.markdown(list_of_word_variants[t].etymology)
 
 if st.sidebar.button('Thesaurus'):
     st.sidebar.markdown("Synonyms:")
