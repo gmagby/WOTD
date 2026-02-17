@@ -35,8 +35,8 @@ def more_definitions():
 
         else:
 
-            st.markdown(f'Synonyms: {list_of_word_variants[t+1].synonyms}')
-            st.markdown(f'Antonyms: {list_of_word_variants[t+1].antonyms}')
+            # st.markdown(f'Synonyms: {list_of_word_variants[t+1].synonyms}')
+            # st.markdown(f'Antonyms: {list_of_word_variants[t+1].antonyms}')
 
             st.header(WORD, divider="rainbow")
             st.markdown(
