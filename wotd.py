@@ -63,6 +63,8 @@ def cleaner(clean_text, sharp=None):
     split_text(clean_text)
     if sharp:
         clean_text = re.sub(r"bc}", '', clean_text)
+        clean_text = re.sub(r"ma}", '', clean_text)
+        {ma}
         clean_text = re.sub(r"dx}", '', clean_text)
         clean_text = re.sub(r'it}', '', clean_text)
         clean_text = re.sub(r"'text', ", '', clean_text)
