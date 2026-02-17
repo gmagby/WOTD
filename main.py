@@ -72,13 +72,15 @@ if list_of_word_variants[favored].etymology != 'No info available':
         for t in range(1):
             st.sidebar.markdown(formated_etymology)
 
-if list_of_word_variants[favored].synonyms != 'No info available':
+if list_of_word_variants[favored].synonyms == 'No info available':
+    pass
+
+else:
     if st.sidebar.button('Thesaurus'):
         st.sidebar.markdown("Synonyms:")
         st.sidebar.markdown(list_of_word_variants[favored].synonyms)
         st.sidebar.markdown("Antonyms:")
         st.sidebar.markdown(list_of_word_variants[favored].antonyms)
-else: pass
 
 if num > 1:
     if list_of_word_variants[1].definition == 'No info available':
