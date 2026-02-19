@@ -34,10 +34,6 @@ def more_definitions():
             pass
 
         else:
-
-            # st.markdown(f'Synonyms: {list_of_word_variants[t+1].synonyms}')
-            # st.markdown(f'Antonyms: {list_of_word_variants[t+1].antonyms}')
-
             st.header(WORD, divider="rainbow")
             st.markdown(
                 f'{list_of_word_variants[t+1].definition}')
@@ -61,6 +57,13 @@ def instructions_app():
         (https://docs.google.com/presentation/d/1B5HWIi_X_8wNhbKWEcTfKhnWs4DfLsemZEEiym612Y8/edit?usp=sharing)
         '''
     )
+def check_for_no_data(text):
+    if text == 'No info available':
+        return True
+
+    else:
+        return False
+
 
 first_definition()
 
@@ -68,9 +71,10 @@ st.sidebar.title(WORD)
 st.sidebar.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
 if list_of_word_variants[favored].etymology != 'No info available':
-    if st.sidebar.button("Etymology"):
-        for t in range(1):
-            st.sidebar.markdown(formated_etymology)
+    pass
+if st.sidebar.button("Etymology"):
+    for t in range(1):
+        st.sidebar.markdown(formated_etymology)
 
 if list_of_word_variants[favored].synonyms == 'No info available':
     pass
