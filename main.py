@@ -70,11 +70,11 @@ first_definition()
 st.sidebar.title(WORD)
 st.sidebar.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
-if list_of_word_variants[favored].etymology != 'No info available':
-    pass
-if st.sidebar.button("Etymology"):
-    for t in range(1):
-        st.sidebar.markdown(formated_etymology)
+# if list_of_word_variants[favored].etymology != 'No info available':
+#     pass
+# if st.sidebar.button("Etymology"):
+#     for t in range(1):
+#         st.sidebar.markdown(formated_etymology)
 
 if list_of_word_variants[favored].synonyms == 'No info available':
     pass
