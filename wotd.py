@@ -1,5 +1,6 @@
 import re
 import requests
+from streamlit.string_util import clean_text
 
 WORD = 'Alloy'
 REF_DICTIONARY = "collegiate"
@@ -113,7 +114,6 @@ def extract_synonyms(data, nyms):
     for entry in data:
         entry_nyms_list = [syn for syn_group in entry['meta'].get(nyms, []) for syn in syn_group] or [NONE_RESULT]
         nyms_lists.append(entry_nyms_list)  # Append the entry's list to the main list
-        nyms_lists = str(nyms_lists)
         print(nyms_lists)
         print(" ")
     return nyms_lists
@@ -132,8 +132,8 @@ type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
 
 try:
     if thes_data:
-        synonyms_list = extract_synonyms(thes_data, SYNONYMS)
-        antonyms_list = extract_synonyms(thes_data, ANTONYMS)
+        synonyms_list = cleaner(extract_synonyms(thes_data, SYNONYMS))
+        antonyms_list = cleaner(extract_synonyms(thes_data, ANTONYMS))
     else:
         synonyms_list = NONE_RESULT
         antonyms_list = NONE_RESULT
