@@ -125,7 +125,7 @@ def split_text(text):
 data = get_response_dictionary(REF_DICTIONARY, WORD, DICTIONARY_KEY)
 thes_data = get_response_dictionary(REF_THESAURUS, WORD, Thesaurus_key)
 
-definition_list = list_manager(data, DEFINITION_KEY,sharp=1)
+definition_list = list_manager(data, DEFINITION_KEY)
 date_list = list_manager(data, DATE_KEY,sharp=2)
 etymology_list = list_manager(data, ETYMOLOGY_KEY,sharp=3)
 type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
