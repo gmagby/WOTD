@@ -113,7 +113,7 @@ def extract_synonyms(data, nyms):
     for entry in data:
         entry_nyms_list = [syn for syn_group in entry['meta'].get(nyms, []) for syn in syn_group] or [NONE_RESULT]
         nyms_lists.append(entry_nyms_list)  # Append the entry's list to the main list
-        # nyms_lists = cleaner(nyms_lists)
+        nyms_lists = str(nyms_lists)
         print(nyms_lists)
         print(" ")
     return nyms_lists
