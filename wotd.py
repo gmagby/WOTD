@@ -92,7 +92,7 @@ def cleaner(clean_text, sharp=None):
     if sharp == 1:
         clean_text = re.findall(r'", ', clean_text)
         clean_text = [text.strip() for text in clean_text]
-    clean_text = re.sub(r"em- et_linken-:2en-:2", '', clean_text)
+    clean_text = re.sub(r"et_linken-:2en-:2", '', clean_text)
     clean_text = str(clean_text)
     print(clean_text)
     print(" ")
