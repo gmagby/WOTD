@@ -14,6 +14,9 @@ st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 def split_text(text):
     return text.split(", ")
 
+def make_formated_text(iteration):
+    formated_definition = split_text(list_of_word_variants[iteration].definition)
+    return formated_definition
 
 formated_definition = split_text(list_of_word_variants[favored].definition)
 formated_etymology = split_text(list_of_word_variants[favored].etymology)
@@ -36,7 +39,7 @@ def more_definitions():
         else:
             st.header(WORD, divider="rainbow")
             st.markdown(
-                f'{list_of_word_variants[t+1].definition}')
+                f'{make_formated_text(t+1)}')
             st.markdown(
                 f'**{list_of_word_variants[t+1].type_of_speech}**')
             st.markdown(f'Etymology: {list_of_word_variants[t + 1].etymology}')
