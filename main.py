@@ -23,9 +23,9 @@ formated_etymology = split_text(list_of_word_variants[favored].etymology)
 
 
 def first_definition():
-    for t in range (len(formated_definition)):
-        st.write(
-            f'{formated_definition[t]}')
+    # for t in range (len(formated_definition)):
+    #     st.write(
+    #         f'{formated_definition[t]}')
     st.markdown(f'a small demon : fiend', 'a mischievous person')
 
     st.markdown(
