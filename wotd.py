@@ -67,7 +67,7 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r"dx}", '', clean_text)
         clean_text = re.sub(r'it}', '', clean_text)
         clean_text = re.sub(r"'text', ", '', clean_text)
-        clean_text = re.sub(r"et_linken-:2en-:2", '', clean_text)
+        clean_text = re.sub(r'et_linken-:2en-:2', '', clean_text)
 
         # clean_text = re.sub(r"'", '', clean_text)
         # clean_text = re.sub(r"[^a-zA-Z0-9:]", " ", clean_text)
