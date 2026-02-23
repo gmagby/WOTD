@@ -87,6 +87,7 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r"dxt", '', clean_text)
         clean_text = re.sub(r"dsi1", '', clean_text)
         clean_text = re.sub(r'ds1', '', clean_text)
+        clean_text = re.sub(r'dss', '', clean_text)
     if sharp == 1:
         clean_text = re.findall(r'", ', clean_text)
         clean_text = [text.strip() for text in clean_text]
