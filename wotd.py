@@ -2,7 +2,7 @@ import re
 import requests
 from streamlit.string_util import clean_text
 
-WORD = 'Imp'
+WORD = 'Pantograph'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -54,9 +54,6 @@ def grab_dt(data):
                             results.append(dt[1][0]['vis'][0]['t'])
     return results
 
-# Text to List Converter
-def split_text(text):
-    return text.split("', '")
 
 def cleaner(clean_text, sharp=None):
     print(clean_text)
@@ -165,16 +162,23 @@ def create_word_variants(definitions, types_of_speech, dates, etymologies, synon
 
 list_of_word_variants = create_word_variants(definition_list, type_of_speech_list, date_list, etymology_list, synonyms_list, antonyms_list)
 
-# formated_definition = split_text(list_of_word_variants[0].definition)
-#
-# def first_definition():
-#     print("Formated Definition:")
-#     for t in range (len(formated_definition)):
-#         print(formated_definition[t])
-#     print(f'Date first used: {list_of_word_variants[0].date}')
-#     print(" ")
-#
-# first_definition()
+# Text to List Converter
+def split_text(text):
+    return text.split(', ')
+# Text to List Converter
+# def split_text(text, spliter):
+#     return text.split(';')
+
+formated_definition = split_text(list_of_word_variants[0].definition)
+print(len(formated_definition))
+def first_definition():
+    print("Formated Definition:")
+    for t in range (len(formated_definition)):
+        print(formated_definition[t])
+    print(f'Date first used: {list_of_word_variants[0].date}')
+    print(" ")
+
+first_definition()
 print(f'Synonyms List: {synonyms_list}')
 print(f'Antonyms List: {antonyms_list}')
 print(len(list_of_word_variants))
