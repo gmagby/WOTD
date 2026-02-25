@@ -64,7 +64,7 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r"dx}", '', clean_text)
         clean_text = re.sub(r'it}', '', clean_text)
         clean_text = re.sub(r"'text', ", '', clean_text)
-        clean_text = re.sub(r']', '', clean_text)
+        clean_text = re.sub(r']]', '', clean_text)
         clean_text = re.sub(r"em- et_linken-:2en-:2", '', clean_text)
 
         # clean_text = re.sub(r"'", '', clean_text)
