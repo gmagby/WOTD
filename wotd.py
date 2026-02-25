@@ -2,7 +2,7 @@ import re
 import requests
 from streamlit.string_util import clean_text
 
-WORD = 'Pantograph'
+WORD = 'Elegiac'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -34,26 +34,26 @@ def get_response_dictionary(ref, word, key):
 #
 #     except ValueError:
 #         messagebox.showerror("Error", "Something went wrong.")
-
-def extract_line(data):
-    for entry in data:
-        if 'vis' in entry['def'][0][0][1]:
-            for vis in entry['def'][0][0][1]['vis']:
-                if 't' in vis and 'paean' in vis['t']:
-                    return vis['t']
-    return None
-
-def grab_dt(data):
-    results = []
-    for entry in data:
-        for sense in entry['def']:
-            for sseq in sense['sseq']:
-                for item in sseq:
-                    if 'dt' in item[0]:
-                        for dt in item[1]['dt']:
-                            results.append(dt[1][0]['vis'][0]['t'])
-    return results
-
+#
+# def extract_line(data):
+#     for entry in data:
+#         if 'vis' in entry['def'][0][0][1]:
+#             for vis in entry['def'][0][0][1]['vis']:
+#                 if 't' in vis and 'paean' in vis['t']:
+#                     return vis['t']
+#     return None
+#
+# def grab_dt(data):
+#     results = []
+#     for entry in data:
+#         for sense in entry['def']:
+#             for sseq in sense['sseq']:
+#                 for item in sseq:
+#                     if 'dt' in item[0]:
+#                         for dt in item[1]['dt']:
+#                             results.append(dt[1][0]['vis'][0]['t'])
+#     return results
+#
 
 def cleaner(clean_text, sharp=None):
     print(clean_text)
@@ -132,8 +132,8 @@ type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
 
 try:
     if thes_data:
-        synonyms_list = cleaner(extract_synonyms(thes_data, SYNONYMS))
-        antonyms_list = cleaner(extract_synonyms(thes_data, ANTONYMS))
+        synonyms_list = extract_synonyms(thes_data, SYNONYMS)
+        antonyms_list = extract_synonyms(thes_data, ANTONYMS)
     else:
         synonyms_list = NONE_RESULT
         antonyms_list = NONE_RESULT
