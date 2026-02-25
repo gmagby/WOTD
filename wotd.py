@@ -171,6 +171,7 @@ def split_text(text):
 
 formated_definition = split_text(list_of_word_variants[0].definition)
 print(len(formated_definition))
+
 def first_definition():
     print("Formated Definition:")
     for t in range (len(formated_definition)):
