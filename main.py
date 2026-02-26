@@ -106,5 +106,5 @@ if st.sidebar.button("Instructions to add WOTD to your homescreen"):
 # example_img = Image.open(f'{WORD}.gif')
 # st.image(example_img)
 
-example_img = Image.open(f'{WORD}.jpg')
-st.image(example_img)
+# example_img = Image.open(f'{WORD}.jpg')
+# st.image(example_img)
