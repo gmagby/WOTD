@@ -78,7 +78,13 @@ if list_of_word_variants[favored].etymology != 'No info available':
     pass
 if st.button("Etymology"):
     for t in range(1):
-        st.sidebar.markdown(formated_etymology)
+        st.markdown(formated_etymology)
+
+# if list_of_word_variants[favored].etymology != 'No info available':
+#     pass
+# if st.sidebar.button("Etymology"):
+#     for t in range(1):
+#         st.sidebar.markdown(formated_etymology)
 
 if list_of_word_variants[favored].synonyms == 'No info available':
     pass
