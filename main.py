@@ -15,7 +15,7 @@ st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 # Text to List Converter
 def split_text(text):
     split_text = text.split(';')
-    split_text = split_text.split(',')
+    split_text = str(split_text.split(','))
     return split_text
 
 def make_formated_text(iteration):
