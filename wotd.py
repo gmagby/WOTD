@@ -88,9 +88,7 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r'ds1', '', clean_text)
         clean_text = re.sub(r'ds2', '', clean_text)
     if sharp == 1:
-        clean_text = re.findall(r'", ', clean_text)
-        clean_text = [text.strip() for text in clean_text]
-    clean_text = re.sub(r"; ", ', ', clean_text)
+        clean_text = re.sub(r"; ", ', ', clean_text)
     clean_text = re.sub(r"et_linken-:2en-:2", '', clean_text)
     clean_text = str(clean_text)
     print(clean_text)
@@ -127,7 +125,7 @@ def split_text(text):
 data = get_response_dictionary(REF_DICTIONARY, WORD, DICTIONARY_KEY)
 thes_data = get_response_dictionary(REF_THESAURUS, WORD, Thesaurus_key)
 
-definition_list = list_manager(data, DEFINITION_KEY)
+definition_list = list_manager(data, DEFINITION_KEY,sharp=1)
 date_list = list_manager(data, DATE_KEY,sharp=2)
 etymology_list = list_manager(data, ETYMOLOGY_KEY,sharp=3)
 type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
