@@ -7,7 +7,8 @@ favored = 0
 num = len(list_of_word_variants)
 
 st.header("Word of the Day", divider="rainbow")
-st.title(WORD)
+st.title("Aperçu")
+# st.title(WORD)
 st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
 # Text to List Converter
