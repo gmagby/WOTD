@@ -69,7 +69,6 @@ def check_for_no_data(text):
     else:
         return False
 
-
 first_definition()
 
 st.sidebar.title(WORD)
@@ -77,18 +76,24 @@ st.sidebar.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
 if list_of_word_variants[favored].etymology != 'No info available':
     pass
-if st.sidebar.button("Etymology"):
+if st.button("Etymology"):
     for t in range(1):
         st.sidebar.markdown(formated_etymology)
 
 if list_of_word_variants[favored].synonyms == 'No info available':
     pass
 else:
-    if st.sidebar.button('Thesaurus'):
-        st.sidebar.markdown("Synonyms:")
-        st.sidebar.markdown(list_of_word_variants[favored].synonyms)
-        st.sidebar.markdown("Antonyms:")
-        st.sidebar.markdown(list_of_word_variants[favored].antonyms)
+    if st.button('Thesaurus'):
+        st.markdown("Synonyms:")
+        st.markdown(list_of_word_variants[favored].synonyms)
+        st.markdown("Antonyms:")
+        st.markdown(list_of_word_variants[favored].antonyms)
+# else:
+#     if st.sidebar.button('Thesaurus'):
+#         st.sidebar.markdown("Synonyms:")
+#         st.sidebar.markdown(list_of_word_variants[favored].synonyms)
+#         st.sidebar.markdown("Antonyms:")
+#         st.sidebar.markdown(list_of_word_variants[favored].antonyms)
 
 if num > 1:
     if list_of_word_variants[1].definition == 'No info available':
@@ -97,7 +102,7 @@ if num > 1:
         if st.button("All Definitions"):
             more_definitions()
 
-st.button("Additional information can be found in the menu in the top left corner.")
+# st.button("Additional information can be found in the menu in the top left corner.")
 
 url = f'https://www.merriam-webster.com/dictionary/{WORD}'
 st.sidebar.link_button("Merriam-Webster", url)
