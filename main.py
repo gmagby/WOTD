@@ -4,7 +4,7 @@ from wotd import list_of_word_variants
 from PIL import Image
 
 favored = 0
-num = len(list_of_word_variants.definition)
+num = len(list_of_word_variants)
 
 st.header("Word of the Day", divider="rainbow")
 st.title(WORD)
