@@ -73,6 +73,7 @@ def cleaner(clean_text, sharp=None):
         # clean_text = re.sub(r"[^a-zA-Z0-9:]", " ", clean_text)
         clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
     clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
+    clean_text = re.sub(r"', '", '^', clean_text)
     clean_text = re.sub(r"'", '', clean_text)
     clean_text = re.sub(r"]", '', clean_text)
     if sharp == 2:
@@ -89,8 +90,8 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r"dsi1", '', clean_text)
         clean_text = re.sub(r'ds1', '', clean_text)
         clean_text = re.sub(r'ds2', '', clean_text)
-    if sharp == 1:
-        clean_text = re.sub(r"; ", ', ', clean_text)
+    # if sharp == 1:
+        # clean_text = re.sub(r"; ", ', ', clean_text)
     clean_text = re.sub(r"et_linken-:2en-:2", '', clean_text)
     clean_text = re.sub(r"et_link-ia:1-ia:1", '', clean_text)
 
@@ -121,10 +122,6 @@ def extract_synonyms(data, nyms):
         print(nyms_lists)
         print(" ")
     return nyms_lists
-
-# Text to List Converter
-def split_text(text):
-    return text.split('", "')
 
 data = get_response_dictionary(REF_DICTIONARY, WORD, DICTIONARY_KEY)
 thes_data = get_response_dictionary(REF_THESAURUS, WORD, Thesaurus_key)
@@ -168,7 +165,7 @@ list_of_word_variants = create_word_variants(definition_list, type_of_speech_lis
 
 # Text to List Converter
 def split_text(text):
-    return text.split(', ')
+    return text.split('^')
 # Text to List Converter
 # def split_text(text, spliter):
 #     return text.split(';')
