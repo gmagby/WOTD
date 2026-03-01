@@ -2,7 +2,7 @@ import re
 import requests
 from streamlit.string_util import clean_text
 
-WORD = 'Lethargy'
+WORD = 'Eponym'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -166,9 +166,6 @@ list_of_word_variants = create_word_variants(definition_list, type_of_speech_lis
 # Text to List Converter
 def split_text(text):
     return text.split('^')
-# Text to List Converter
-# def split_text(text, spliter):
-#     return text.split(';')
 
 formated_definition = split_text(list_of_word_variants[0].definition)
 print(len(formated_definition))
