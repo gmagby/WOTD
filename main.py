@@ -116,8 +116,8 @@ if st.sidebar.button("Instructions to add WOTD to your homescreen"):
 
 # example_img = Image.open(f'{WORD}.gif')
 # st.image(example_img)
+st.markdown(f'Below: "Queen Victoria" by Franz Xaver celebrates the eponym of the Victorian Era')
 
 example_img = Image.open(f'{WORD}.jpg')
 st.image(example_img)
 
-st.markdown(f'Above: "Queen Victoria" by Franz Xaver celebrates the eponym of the Victorian Era')
