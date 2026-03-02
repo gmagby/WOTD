@@ -100,12 +100,12 @@ if st.button("Etymology"):
 #         st.sidebar.markdown("Antonyms:")
 #         st.sidebar.markdown(list_of_word_variants[favored].antonyms)
 
-if num > 1:
-    if list_of_word_variants[1].definition == 'No info available':
-        pass
-    else:
-        if st.button("All Definitions"):
-            more_definitions()
+# if num > 1:
+#     if list_of_word_variants[1].definition == 'No info available':
+#         pass
+#     else:
+#         if st.button("All Definitions"):
+#             more_definitions()
 
 url = f'https://www.merriam-webster.com/dictionary/{WORD}'
 st.sidebar.link_button("Merriam-Webster", url)
