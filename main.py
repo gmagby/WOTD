@@ -107,17 +107,11 @@ if num > 1:
         if st.button("All Definitions"):
             more_definitions()
 
-# st.button("Additional information can be found in the menu in the top left corner.")
-
 url = f'https://www.merriam-webster.com/dictionary/{WORD}'
 st.sidebar.link_button("Merriam-Webster", url)
 
 if st.sidebar.button("Instructions to add WOTD to your homescreen"):
     instructions_app()
-
-# example_img = Image.open(f'{WORD}.gif')
-# st.image(example_img)
-st.markdown(f'Below: "Queen Victoria" by Franz Xaver celebrates the eponym of the Victorian Era')
 
 example_img = Image.open(f'{WORD}.jpg')
 st.image(example_img)
