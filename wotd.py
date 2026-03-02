@@ -67,8 +67,10 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r'it}', '', clean_text)
         clean_text = re.sub(r"'text', ", '', clean_text)
         clean_text = re.sub(r']]', '', clean_text)
-        clean_text = re.sub(r"em- et_linken-:2en-:2", '', clean_text)
-        clean_text = re.sub(r"et_link-ia:1-ia:1", '', clean_text)
+        clean_text = re.sub(r"et_link", '', clean_text)
+        clean_text = re.sub(r":2", '', clean_text)
+        clean_text = re.sub(r":1", '', clean_text)
+        clean_text = re.sub(r"-ia", '', clean_text)
         # clean_text = re.sub(r"'", '', clean_text)
         # clean_text = re.sub(r"[^a-zA-Z0-9:]", " ", clean_text)
         clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
@@ -92,9 +94,8 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r'ds2', '', clean_text)
     # if sharp == 1:
         # clean_text = re.sub(r"; ", ', ', clean_text)
-    clean_text = re.sub(r"et_linken-:2en-:2", '', clean_text)
-    clean_text = re.sub(r"et_link-ia:1-ia:1", '', clean_text)
-
+    clean_text = re.sub(r'anti-anti-', '', clean_text)
+    clean_text = re.sub(r'semiteSemite', '', clean_text)
     clean_text = str(clean_text)
     print(clean_text)
     print(" ")
