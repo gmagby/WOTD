@@ -1,6 +1,5 @@
 import re
 import requests
-from streamlit.string_util import clean_text
 
 WORD = 'antinomian'
 REF_DICTIONARY = "collegiate"
@@ -97,7 +96,7 @@ def cleaner(clean_text, sharp=None):
     clean_text = re.sub(r'anti-anti-', '', clean_text)
     clean_text = re.sub(r'nomotheticnomothetic', 'nomothetic', clean_text)
     clean_text = re.sub(r'n-an', '', clean_text)
-    lean_text = str(clean_text)
+    clean_text = str(clean_text)
     print(clean_text)
     print(" ")
     return clean_text
