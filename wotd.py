@@ -95,7 +95,7 @@ def cleaner(clean_text, sharp=None):
     # if sharp == 1:
         # clean_text = re.sub(r"; ", ', ', clean_text)
     clean_text = re.sub(r'anti-anti-', '', clean_text)
-    clean_text = re.sub(r'semiteSemite', '', clean_text)
+    clean_text = re.sub(r'nomotheticnomothetic', 'nomothetic', clean_text)
     clean_text = str(clean_text)
     print(clean_text)
     print(" ")
