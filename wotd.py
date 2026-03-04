@@ -70,13 +70,19 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r":2", '', clean_text)
         clean_text = re.sub(r":1", '', clean_text)
         clean_text = re.sub(r"-ia", '', clean_text)
+        clean_text = re.sub(r"et_snote',", '', clean_text)
+        clean_text = re.sub(r"'t',", '', clean_text)
+
         # clean_text = re.sub(r"'", '', clean_text)
         # clean_text = re.sub(r"[^a-zA-Z0-9:]", " ", clean_text)
-        clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
+    clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
     clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
-    clean_text = re.sub(r"', '", '^', clean_text)
+    clean_text = re.sub(r"et_snote", '', clean_text)
     clean_text = re.sub(r"'", '', clean_text)
+    clean_text = re.sub(r"", '', clean_text)
     clean_text = re.sub(r"]", '', clean_text)
+    clean_text = re.sub(r"andor", 'and/or', clean_text)
+    clean_text = re.sub(r" u ", " 'u' ", clean_text)
     if sharp == 2:
         # clean_text = re.sub(r"ds1", '', clean_text)
         # clean_text = re.sub(r",", ' or', clean_text)
@@ -91,11 +97,9 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r"dsi1", '', clean_text)
         clean_text = re.sub(r'ds1', '', clean_text)
         clean_text = re.sub(r'ds2', '', clean_text)
-    # if sharp == 1:
-        # clean_text = re.sub(r"; ", ', ', clean_text)
-    clean_text = re.sub(r'anti-anti-', '', clean_text)
-    clean_text = re.sub(r'nomotheticnomothetic', 'nomothetic', clean_text)
-    clean_text = re.sub(r'n-an', '', clean_text)
+    if sharp == 1:
+        clean_text = re.sub(r"', '", '^', clean_text)
+    clean_text = re.sub(r"\s+", " ", clean_text).strip()
     clean_text = str(clean_text)
     print(clean_text)
     print(" ")
