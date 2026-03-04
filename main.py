@@ -26,6 +26,7 @@ def first_definition():
     for t in range (len(formated_definition)):
         st.write(
             f'{formated_definition[t]}')
+        st.write('A minority group the resides primarily in Pakistan and Iran. If the the war in Iran continues you will likely hear about the Baloch as well as the Lurs when malevolent forces attempt to use them to undermine the Iranian government.')
 
     st.markdown(
         f'**Date first used: {list_of_word_variants[favored].date}**')
