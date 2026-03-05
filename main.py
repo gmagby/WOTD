@@ -30,6 +30,9 @@ def first_definition():
     st.markdown(
         f'**Date first used: {list_of_word_variants[favored].date}**')
 
+    st.markdown(f'Synonyms: {list_of_word_variants[0].synonyms}')
+    st.markdown(f'Antonyms: {list_of_word_variants[0].antonyms}')
+
 
 def more_definitions():
     for t in range (num-1):
