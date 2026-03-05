@@ -123,6 +123,6 @@ def pull_specific_photo(folder_path, photo_name):
 
 today_photo = pull_specific_photo("https://github.com/gmagby/WOTD/blob/c7c0754c68d2b433e9bd0db02e082c7e0aec4d92/Photos", f"{WORD}.jpg")
 
-# example_img = Image.open(today_photo)
-st.image(today_photo)
+example_img = Image.open(f"{WORD}.jpg")
+st.image(example_img)
 
