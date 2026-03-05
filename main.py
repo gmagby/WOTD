@@ -123,6 +123,18 @@ st.sidebar.link_button("Merriam-Webster", url)
 #
 # today_photo = pull_specific_photo("https://github.com/gmagby/WOTD/blob/c7c0754c68d2b433e9bd0db02e082c7e0aec4d92/Photos", f"{WORD}.jpg")
 
-example_img = Image.open(f"{WORD}.jpg")
-st.image(example_img)
+# example_img = Image.open(f"{WORD}.jpg")
+# st.image(example_img)
 
+import os
+
+def pull_specific_photo(folder_path, photo_name):
+        # Default case (equivalent to else)
+    photo_path = os.path.join(folder_path, photo_name)
+    if os.path.exists(photo_path):
+        return Image.open(photo_path)
+    else:
+        raise FileNotFoundError(f"The photo '{photo_name}' does not exist in the specified folder.")
+
+today_photo = pull_specific_photo(r"Photos", f"{WORD}.jpg")
+st.image(today_photo)
