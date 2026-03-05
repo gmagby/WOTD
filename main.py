@@ -26,7 +26,6 @@ def first_definition():
     for t in range (len(formated_definition)):
         st.write(
             f'{formated_definition[t]}')
-        st.write('A minority group the resides primarily in Pakistan and Iran. If the the war in Iran continues, you will likely hear about the Baloch in the future if malevolent forces attempt to use them to undermine the Iranian government.')
 
     st.markdown(
         f'**Date first used: {list_of_word_variants[favored].date}**')
@@ -99,29 +98,18 @@ if st.button("Etymology"):
 #         st.sidebar.markdown("Antonyms:")
 #         st.sidebar.markdown(list_of_word_variants[favored].antonyms)
 
-# if num > 1:
-#     if list_of_word_variants[1].definition == 'No info available':
-#         pass
-#     else:
-#         if st.button("All Definitions"):
-#             more_definitions()
+if num > 1:
+    if list_of_word_variants[1].definition == 'No info available':
+        pass
+    else:
+        if st.button("All Definitions"):
+            more_definitions()
 
 url = f'https://www.merriam-webster.com/dictionary/{WORD}'
 st.sidebar.link_button("Merriam-Webster", url)
 
-# if st.sidebar.button("Instructions to add WOTD to your homescreen"):
-#     instructions_app()
-#
-# import os
-#
-# def pull_specific_photo(folder_path, photo_name):
-#     photo_path = os.path.join(folder_path, photo_name)
-#     if os.path.exists(photo_path):
-#         return Image.open(photo_path)
-#     else:
-#         raise FileNotFoundError(f"The photo '{photo_name}' does not exist in the specified folder.")
-#
-# today_photo = pull_specific_photo("https://github.com/gmagby/WOTD/blob/c7c0754c68d2b433e9bd0db02e082c7e0aec4d92/Photos", f"{WORD}.jpg")
+if st.sidebar.button("Instructions to add WOTD to your homescreen"):
+    instructions_app()
 
 # example_img = Image.open(f"{WORD}.jpg")
 # st.image(example_img)
