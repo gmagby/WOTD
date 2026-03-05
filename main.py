@@ -35,19 +35,17 @@ def first_definition():
 def more_definitions():
     for t in range (num-1):
         if list_of_word_variants[t].definition == 'No info available':
-            pass
-
-        else:
-            st.header(WORD, divider="rainbow")
-            st.markdown(
-                f'{make_formated_text(t+1)}')
-            st.markdown(
-                f'**{list_of_word_variants[t+1].type_of_speech}**')
-            st.markdown(f'Etymology: {list_of_word_variants[t + 1].etymology}')
-            st.markdown(
-                f'Date first used: {list_of_word_variants[t+1].date}')
-            st.markdown(f'Synonyms: {list_of_word_variants[t+1].synonyms}')
-            st.markdown(f'Antonyms: {list_of_word_variants[t + 1].antonyms}')
+            continue
+        st.header(WORD, divider="rainbow")
+        st.markdown(
+            f'{make_formated_text(t+1)}')
+        st.markdown(
+            f'**{list_of_word_variants[t+1].type_of_speech}**')
+        st.markdown(f'Etymology: {list_of_word_variants[t + 1].etymology}')
+        st.markdown(
+            f'Date first used: {list_of_word_variants[t+1].date}')
+        st.markdown(f'Synonyms: {list_of_word_variants[t+1].synonyms}')
+        st.markdown(f'Antonyms: {list_of_word_variants[t + 1].antonyms}')
 
 
 def instructions_app():
@@ -114,6 +112,17 @@ st.sidebar.link_button("Merriam-Webster", url)
 if st.sidebar.button("Instructions to add WOTD to your homescreen"):
     instructions_app()
 
-example_img = Image.open(f'{WORD}.jpg')
-st.image(example_img)
+import os
+
+def pull_specific_photo(folder_path, photo_name):
+    photo_path = os.path.join(folder_path, photo_name)
+    if os.path.exists(photo_path):
+        return Image.open(photo_path)
+    else:
+        raise FileNotFoundError(f"The photo '{photo_name}' does not exist in the specified folder.")
+
+today_photo = pull_specific_photo("https://github.com/gmagby/WOTD/blob/c7c0754c68d2b433e9bd0db02e082c7e0aec4d92/Photos", f"{WORD}.jpg")
+
+# example_img = Image.open(today_photo)
+st.image(today_photo)
 

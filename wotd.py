@@ -97,6 +97,10 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r"dsi1", '', clean_text)
         clean_text = re.sub(r'ds1', '', clean_text)
         clean_text = re.sub(r'ds2', '', clean_text)
+        clean_text = re.sub(r'.jpg', '', clean_text)
+        clean_text = re.sub(r'.jpeg', '', clean_text)
+        clean_text = re.sub(r'.png', '', clean_text)
+        clean_text = re.sub(r'.gif', '', clean_text)
     if sharp == 1:
         clean_text = re.sub(r"', '", '^', clean_text)
     clean_text = re.sub(r"\s+", " ", clean_text).strip()
@@ -186,3 +190,12 @@ first_definition()
 print(f'Synonyms List: {synonyms_list}')
 print(f'Antonyms List: {antonyms_list}')
 print(len(list_of_word_variants))
+
+import os
+
+def list_photo_names(folder_path):
+    return [file for file in os.listdir(folder_path) if file.endswith(('.jpg', '.jpeg', '.png', '.gif'))]
+
+# Example usage
+photo_folder = r"C:\Users\gabem\OneDrive\Desktop\WOTD images"
+photo_names = cleaner(list_photo_names(photo_folder), 2)
