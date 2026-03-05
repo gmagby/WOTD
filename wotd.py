@@ -78,7 +78,6 @@ def cleaner(clean_text, sharp=None):
     clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
     clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
     clean_text = re.sub(r"et_snote", '', clean_text)
-    # clean_text = re.sub(r"'", '', clean_text)
     clean_text = re.sub(r"]", '', clean_text)
     clean_text = re.sub(r"andor", 'and/or', clean_text)
     clean_text = re.sub(r" u ", " 'u' ", clean_text)
@@ -102,6 +101,7 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r'.gif', '', clean_text)
     if sharp == 1:
         clean_text = re.sub(r"', '", '^', clean_text)
+        clean_text = re.sub(r"'", '', clean_text)
     clean_text = re.sub(r"\s+", " ", clean_text).strip()
     clean_text = str(clean_text)
     print(clean_text)
