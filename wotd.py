@@ -125,7 +125,7 @@ def extract_synonyms(data, nyms):
     nyms_lists = []  # List to hold lists of synonyms/antonyms for each entry
 
     for entry in data:
-        entry_nyms_list = [syn for syn_group in entry['meta'].get(nyms, []) for syn in syn_group] or [NONE_RESULT]
+        entry_nyms_list = [syn for syn_group in entry['meta'].get(nyms, []) for syn in syn_group] or []
         nyms_lists.append(entry_nyms_list)  # Append the entry's list to the main list
         print(nyms_lists)
         print(" ")
@@ -144,12 +144,12 @@ try:
         synonyms_list = extract_synonyms(thes_data, SYNONYMS)
         antonyms_list = extract_synonyms(thes_data, ANTONYMS)
     else:
-        synonyms_list = NONE_RESULT
-        antonyms_list = NONE_RESULT
+        synonyms_list = []
+        antonyms_list = []
 
 except Exception as e:
-    synonyms_list = NONE_RESULT
-    antonyms_list = NONE_RESULT
+    synonyms_list = []
+    antonyms_list = []
     print(f"An error occurred: {e}")
     print(" ")
 
