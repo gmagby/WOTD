@@ -144,12 +144,12 @@ try:
         synonyms_list = extract_synonyms(thes_data, SYNONYMS)
         antonyms_list = extract_synonyms(thes_data, ANTONYMS)
     else:
-        synonyms_list = []
-        antonyms_list = []
+        synonyms_list = NONE_RESULT
+        antonyms_list = NONE_RESULT
 
 except Exception as e:
-    synonyms_list = []
-    antonyms_list = []
+    synonyms_list = NONE_RESULT
+    antonyms_list = NONE_RESULT
     print(f"An error occurred: {e}")
     print(" ")
 
