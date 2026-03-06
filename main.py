@@ -47,7 +47,8 @@ def more_definitions():
         st.markdown(
             f'Date first used: {list_of_word_variants[t+1].date}')
         st.markdown(f'Synonyms: {list_of_word_variants[t+1].synonyms}')
-        st.markdown(f'Antonyms: {list_of_word_variants[t + 1].antonyms}')
+        st.markdown(f'Antonyms: None found')
+        # st.markdown(f'Antonyms: {list_of_word_variants[t + 1].antonyms}')
 
 
 def instructions_app():
