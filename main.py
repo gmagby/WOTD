@@ -1,7 +1,8 @@
 import streamlit as st
+from wotd import previous_WOTD
 from wotd import WORD
 from wotd import list_of_word_variants
-from wotd import previous_WOTD
+
 from PIL import Image
 
 favored = 0
