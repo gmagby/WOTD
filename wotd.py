@@ -198,7 +198,7 @@ import os
 def list_photo_names(folder_path):
     return [file for file in os.listdir(folder_path) if file.endswith(('.jpg','.webp','.avif', '.jpeg', '.png', '.gif'))]
 
-def list_cleaner(clean_text):
+def list_of_prev_wotd_cleaner(clean_text):
     print(clean_text)
     clean_text = str(clean_text)
     clean_text = re.sub(r'.jpg', '', clean_text)
@@ -218,5 +218,5 @@ def list_cleaner(clean_text):
 
 # Example usage
 photo_folder = r"Photos"
-previous_WOTD = list_cleaner(list_photo_names(photo_folder))
+previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names(photo_folder))
 
