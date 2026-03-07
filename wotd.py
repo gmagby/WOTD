@@ -210,6 +210,7 @@ def list_cleaner(clean_text):
     clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
     clean_text = re.sub(r"]", '', clean_text)
     clean_text = re.sub(r"'", '', clean_text)
+    clean_text = re.sub(r"2", '', clean_text)
     print(clean_text)
     clean_list = clean_text.split(", ")
     print(clean_list)
