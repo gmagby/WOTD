@@ -109,7 +109,8 @@ def guide_func():
 
     if st.sidebar.button('Previous words of the day.'):
         for t in range (len(previous_WOTD)):
-            st.sidebar.button(previous_WOTD[t])
+            if st.sidebar.button(previous_WOTD[t]):
+                pass
 
     import os
 
