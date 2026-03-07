@@ -211,13 +211,11 @@ def list_of_prev_wotd_cleaner(clean_text):
     clean_text = re.sub(r"]", '', clean_text)
     clean_text = re.sub(r"'", '', clean_text)
     clean_text = re.sub(r"2", '', clean_text)
+
     print(clean_text)
-    clean_list = clean_text.split(", ")
-    clean_list = clean_list.sort()
-    print(clean_list)
-    return clean_list
+    return clean_text
 
 # Example usage
 photo_folder = r"Photos"
-previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names(photo_folder))
+previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names(photo_folder).sort())
 
