@@ -207,6 +207,8 @@ def list_cleaner(clean_text):
     clean_text = re.sub(r'.gif', '', clean_text)
     clean_text = re.sub(r'.webp', '', clean_text)
     clean_text = re.sub(r'.avif', '', clean_text)
+    clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
+    clean_text = re.sub(r"]", '', clean_text)
     print(clean_text)
     clean_list = clean_text.split(", ")
     print(clean_list)
