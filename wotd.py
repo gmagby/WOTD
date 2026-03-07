@@ -192,3 +192,24 @@ print(" ")
 print(f'Synonyms List: {synonyms_list}')
 print(f'Antonyms List: {antonyms_list}')
 
+import os
+
+def list_photo_names(folder_path):
+    return [file for file in os.listdir(folder_path) if file.endswith(('.jpg', '.jpeg', '.png', '.gif'))]
+
+def list_cleaner(clean_text):
+    print(clean_text)
+    clean_text = str(clean_text)
+    clean_text = re.sub(r'.jpg', '', clean_text)
+    clean_text = re.sub(r'.jpeg', '', clean_text)
+    clean_text = re.sub(r'.png', '', clean_text)
+    clean_text = re.sub(r'.gif', '', clean_text)
+    print(clean_text)
+    clean_list = clean_text.split(", ")
+    print(clean_list)
+    return clean_list
+
+# Example usage
+photo_folder = r"Photos"
+previous_WOTD = list_cleaner(list_photo_names(photo_folder))
+

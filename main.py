@@ -1,6 +1,7 @@
 import streamlit as st
 from wotd import WORD
 from wotd import list_of_word_variants
+from wotd import previous_WOTD
 from PIL import Image
 
 favored = 0
@@ -69,64 +70,58 @@ def check_for_no_data(text):
     else:
         return False
 
-first_definition()
+def guide_func():
+    first_definition()
 
-st.sidebar.title(WORD)
-st.sidebar.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
+    st.sidebar.title(WORD)
+    st.sidebar.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
-if list_of_word_variants[favored].etymology != 'No info available':
-    pass
-if st.button("Etymology"):
-    for t in range(1):
-        st.markdown(formated_etymology)
+    if check_for_no_data(list_of_word_variants[favored].etymology):
+        if st.sidebar.button("Etymology"):
+            for t in range(num):
+                st.sidebar.markdown(formated_etymology)
 
-# if list_of_word_variants[favored].etymology != 'No info available':
-#     pass
-# if st.sidebar.button("Etymology"):
-#     for t in range(1):
-#         st.sidebar.markdown(formated_etymology)
-
-# if list_of_word_variants[favored].synonyms != 'No info available':
-#     if st.button('Thesaurus'):
-#         st.markdown("Synonyms:")
-#         st.markdown(list_of_word_variants[favored].synonyms)
-#         st.markdown("Antonyms:")
-#         st.markdown(list_of_word_variants[favored].antonyms)
-# else:
-#     pass
-
-# else:
-#     if st.sidebar.button('Thesaurus'):
-#         st.sidebar.markdown("Synonyms:")
-#         st.sidebar.markdown(list_of_word_variants[favored].synonyms)
-#         st.sidebar.markdown("Antonyms:")
-#         st.sidebar.markdown(list_of_word_variants[favored].antonyms)
-
-if num > 1:
-    if list_of_word_variants[1].definition == 'No info available':
+    else:
         pass
+
+    if check_for_no_data(list_of_word_variants[favored].synonyms):
+        if st.sidebar.button('Thesaurus'):
+            st.sidebar.markdown("Synonyms:")
+            st.sidebar.markdown(list_of_word_variants[favored].synonyms)
+            st.sidebar.markdown("Antonyms:")
+            st.sidebar.markdown(list_of_word_variants[favored].antonyms)
     else:
-        if st.button("All Definitions"):
-            more_definitions()
+        pass
 
-url = f'https://www.merriam-webster.com/dictionary/{WORD}'
-st.sidebar.link_button("Merriam-Webster", url)
+    if num > 1:
+        if check_for_no_data(list_of_word_variants[1].definition):
+            if st.button("All Definitions"):
+                more_definitions()
+        else:
+            pass
 
-if st.sidebar.button("Instructions to add WOTD to your homescreen"):
-    instructions_app()
+    url = f'https://www.merriam-webster.com/dictionary/{WORD}'
+    st.sidebar.link_button("Merriam-Webster", url)
 
-# example_img = Image.open(f"{WORD}.jpg")
-# st.image(example_img)
+    if st.sidebar.button("Instructions to add WOTD to your homescreen"):
+        instructions_app()
 
-import os
+    if st.sidebar.button('Previous words of the day.'):
+        for t in range (len(previous_WOTD)):
+            st.sidebar.markdown(previous_WOTD[t])
 
-def pull_specific_photo(folder_path, photo_name):
-        # Default case (equivalent to else)
-    photo_path = os.path.join(folder_path, photo_name)
-    if os.path.exists(photo_path):
-        return Image.open(photo_path)
-    else:
-        raise FileNotFoundError(f"The photo '{photo_name}' does not exist in the specified folder.")
+    import os
 
-today_photo = pull_specific_photo(r"Photos", f"{WORD}.jpg")
-st.image(today_photo)
+    def pull_specific_photo(folder_path, photo_name):
+            # Default case (equivalent to else)
+        photo_path = os.path.join(folder_path, photo_name)
+        if os.path.exists(photo_path):
+            return Image.open(photo_path)
+        else:
+            raise FileNotFoundError(f"The photo '{photo_name}' does not exist in the specified folder.")
+
+    today_photo = pull_specific_photo(r"Photos", f"{WORD}.jpg")
+    st.image(today_photo)
+
+
+guide_func()
