@@ -1,0 +1,22 @@
+Future WOTD
+"agnostics",
+"amnesties",
+"acnes",
+"Alcestis",
+"agenesis",
+"amnestied",
+"agnostic",
+"honesties",
+"achinesses",
+"testis",
+"agonistic",
+"anamnestic",
+"agnosticism",
+"anapestics",
+"achenes",
+"anapestic",
+"achiness",
+"arresting",
+"ageneses",
+"attesting"
+]

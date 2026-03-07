@@ -191,11 +191,12 @@ print(f'Number of variants: ' + str(len(list_of_word_variants)))
 print(" ")
 print(f'Synonyms List: {synonyms_list}')
 print(f'Antonyms List: {antonyms_list}')
+print('')
 
 import os
 
 def list_photo_names(folder_path):
-    return [file for file in os.listdir(folder_path) if file.endswith(('.jpg', '.jpeg', '.png', '.gif'))]
+    return [file for file in os.listdir(folder_path) if file.endswith(('.jpg','.webp','.avif', '.jpeg', '.png', '.gif'))]
 
 def list_cleaner(clean_text):
     print(clean_text)
@@ -204,10 +205,10 @@ def list_cleaner(clean_text):
     clean_text = re.sub(r'.jpeg', '', clean_text)
     clean_text = re.sub(r'.png', '', clean_text)
     clean_text = re.sub(r'.gif', '', clean_text)
+    clean_text = re.sub(r'.webp', '', clean_text)
+    clean_text = re.sub(r'.avif', '', clean_text)
     print(clean_text)
-    clean_list = clean_text.split(", ")
-    print(clean_list)
-    return clean_list
+    return clean_text
 
 # Example usage
 photo_folder = r"Photos"
