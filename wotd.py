@@ -208,7 +208,9 @@ def list_cleaner(clean_text):
     clean_text = re.sub(r'.webp', '', clean_text)
     clean_text = re.sub(r'.avif', '', clean_text)
     print(clean_text)
-    return clean_text
+    clean_list = clean_text.split(", ")
+    print(clean_list)
+    return clean_list
 
 # Example usage
 photo_folder = r"Photos"
