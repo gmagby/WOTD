@@ -1,7 +1,7 @@
 import re
 import requests
 
-WORD = 'disabuse'
+WORD = 'ameliorate'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -128,7 +128,6 @@ def extract_synonyms(data, nyms):
         entry_nyms_list = [syn for syn_group in entry['meta'].get(nyms, []) for syn in syn_group] or []
         nyms_lists.append(entry_nyms_list)  # Append the entry's list to the main list
         print(nyms_lists)
-        print(" ")
     return nyms_lists
 
 data = get_response_dictionary(REF_DICTIONARY, WORD, DICTIONARY_KEY)
@@ -176,7 +175,7 @@ def split_text(text):
     return text.split('^')
 
 formated_definition = split_text(list_of_word_variants[0].definition)
-print(len(formated_definition))
+
 
 def first_definition():
     print("Formated Definition:")
@@ -184,8 +183,12 @@ def first_definition():
         print(formated_definition[t])
     print(f'Date first used: {list_of_word_variants[0].date}')
     print(" ")
+    print(f'Amount of items in Format: ' + str(len(formated_definition)))
+
 
 first_definition()
+print(f'Number of variants: ' + str(len(list_of_word_variants)))
+print(" ")
 print(f'Synonyms List: {synonyms_list}')
 print(f'Antonyms List: {antonyms_list}')
-print(len(list_of_word_variants))
+
