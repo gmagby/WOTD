@@ -1,7 +1,7 @@
 import re
 import requests
 
-WORD = 'ameliorate'
+WORD = 'concatenate'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -122,13 +122,10 @@ def et_list_manager(data, syntax):
     ]
 
 def extract_synonyms(data, nyms):
-    nyms_lists = []  # List to hold lists of synonyms/antonyms for each entry
-
-    for entry in data:
-        entry_nyms_list = [syn for syn_group in entry['meta'].get(nyms, []) for syn in syn_group] or []
-        nyms_lists.append(entry_nyms_list)  # Append the entry's list to the main list
-        print(nyms_lists)
-    return nyms_lists
+    return [
+        [syn for syn_group in entry['meta'].get(nyms, []) for syn in syn_group] or []
+        for entry in data
+    ]
 
 data = get_response_dictionary(REF_DICTIONARY, WORD, DICTIONARY_KEY)
 thes_data = get_response_dictionary(REF_THESAURUS, WORD, Thesaurus_key)
@@ -138,19 +135,8 @@ date_list = list_manager(data, DATE_KEY,sharp=2)
 etymology_list = list_manager(data, ETYMOLOGY_KEY,sharp=3)
 type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
 
-try:
-    if thes_data:
-        synonyms_list = extract_synonyms(thes_data, SYNONYMS)
-        antonyms_list = extract_synonyms(thes_data, ANTONYMS)
-    else:
-        synonyms_list = NONE_RESULT
-        antonyms_list = NONE_RESULT
-
-except Exception as e:
-    synonyms_list = NONE_RESULT
-    antonyms_list = NONE_RESULT
-    print(f"An error occurred: {e}")
-    print(" ")
+synonyms_list = extract_synonyms(thes_data, SYNONYMS) if thes_data else [NONE_RESULT]
+antonyms_list = extract_synonyms(thes_data, ANTONYMS) if thes_data else [NONE_RESULT]
 
 class WordVariant:
     def __init__(self, definition, type_of_speech, date, etymology, synonyms=None, antonyms=None):
