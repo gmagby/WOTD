@@ -53,17 +53,10 @@ def more_definitions():
         # st.markdown(f'Antonyms: {list_of_word_variants[t + 1].antonyms}')
 
 
-def instructions_app():
-    st.sidebar.markdown(
-        '''Instructions on how to make WOTD into a widget on your homescreen.''')
-    st.sidebar.markdown('''
-        Safari Instructions:
-        (https://docs.google.com/presentation/d/1ICISEQxe1UuQ7Z3xBA9gU8fPLrTMFCbIZSy9M_au0HY/edit?usp=sharing)''')
-    st.sidebar.markdown('''
-        Chrome instructions:
-        (https://docs.google.com/presentation/d/1B5HWIi_X_8wNhbKWEcTfKhnWs4DfLsemZEEiym612Y8/edit?usp=sharing)
-        '''
-    )
+def display_instructions():
+    st.sidebar.markdown('Instructions on how to make WOTD into a widget on your homescreen.')
+    st.sidebar.markdown('Safari Instructions: [Here](https://docs.google.com/presentation/d/1ICISEQxe1UuQ7Z3xBA9gU8fPLrTMFCbIZSy9M_au0HY/edit?usp=sharing)')
+    st.sidebar.markdown('Chrome instructions: [Here](https://docs.google.com/presentation/d/1B5HWIi_X_8wNhbKWEcTfKhnWs4DfLsemZEEiym612Y8/edit?usp=sharing)')
 def check_for_no_data(text):
     if text == 'No info available':
         return True
@@ -105,7 +98,7 @@ def guide_func():
     st.sidebar.link_button("Merriam-Webster", url)
 
     if st.sidebar.button("Instructions to add WOTD to your homescreen"):
-        instructions_app()
+        display_instructions()
 
     if st.sidebar.button('Previous words of the day.'):
         for t in range (len(previous_WOTD)):
