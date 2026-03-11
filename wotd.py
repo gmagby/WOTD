@@ -1,7 +1,7 @@
 import re
 import requests
 
-WORD = 'vapid'
+WORD = 'nominally'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -90,6 +90,7 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r"ds1b", '', clean_text)
         clean_text = re.sub(r'dst2', '', clean_text)
         clean_text = re.sub(r'ds3', '', clean_text)
+        clean_text = re.sub(r'ds5', '', clean_text)
         clean_text = re.sub(r"dx_ety", '', clean_text)
         clean_text = re.sub(r"dxt", '', clean_text)
         clean_text = re.sub(r"dsi1", '', clean_text)
