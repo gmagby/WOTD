@@ -117,5 +117,17 @@ def guide_func():
     today_photo = pull_specific_photo(r"Photos", f"{WORD}.jpg")
     st.image(today_photo)
 
+    # def pull_specific_video(folder_path, video_name):
+    #     # Default case (equivalent to else)
+    #     photo_path = os.path.join(folder_path, video_name)
+    #     if os.path.exists(photo_path):
+    #         return Image.open(photo_path)
+    #     else:
+    #         raise FileNotFoundError(f"The photo '{video_name}' does not exist in the specified folder.")
+    #
+    #
+    # today_video = play_video(r"Photos", f"{WORD}.mp4")
+    # st.video(today_video)
+
 
 guide_func()
