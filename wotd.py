@@ -1,7 +1,7 @@
 import re
 import requests
 
-WORD = 'epicene'
+WORD = 'Chagrin'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -59,10 +59,12 @@ def cleaner(clean_text, sharp=None):
     clean_text = str(clean_text)
     if sharp == 3:
 
-        clean_text = re.sub(r"{mat", '', clean_text)
+        clean_text = re.sub(r"dx_ety}", '', clean_text)
+        clean_text = re.sub(r"mat}", '', clean_text)
         clean_text = re.sub(r"bc}", '', clean_text)
         clean_text = re.sub(r"ma}", '', clean_text)
         clean_text = re.sub(r"dx}", '', clean_text)
+        clean_text = re.sub(r"dxt", '', clean_text)
         clean_text = re.sub(r'it}', '', clean_text)
         clean_text = re.sub(r"'text', ", '', clean_text)
         clean_text = re.sub(r']]', '', clean_text)
