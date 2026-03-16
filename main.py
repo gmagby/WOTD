@@ -116,7 +116,7 @@ def guide_func():
             raise FileNotFoundError(f"The photo '{photo_name}' does not exist in the specified folder.")
 
     today_photo = pull_specific_photo(r"Photos", f"{WORD}.jpg")
-    st.image(today_photo)
+    #st.image(today_photo)
 
     # def pull_specific_video(folder_path, video_name):
     #     # Default case (equivalent to else)
