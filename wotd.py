@@ -1,5 +1,6 @@
 import re
 import requests
+import os
 
 WORD = 'mire'
 REF_DICTIONARY = "collegiate"
@@ -183,7 +184,6 @@ print(f'Synonyms List: {synonyms_list}')
 print(f'Antonyms List: {antonyms_list}')
 print('')
 
-import os
 
 def list_photo_names(folder_path):
     return [file for file in os.listdir(folder_path) if file.endswith(('.jpg','.webp','.avif', '.jpeg', '.png', '.gif'))]
