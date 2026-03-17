@@ -17,11 +17,11 @@ def top_of_page():
 def format_text(text):
     return text.split('^')
 
-formated_definition = format_text(list_of_word_variants[favored].definition)
+
 formated_etymology = format_text(list_of_word_variants[favored].etymology)
 
-
 def first_definition():
+    formated_definition = format_text(list_of_word_variants[favored].definition)
     for t in range (len(formated_definition)):
         st.write(
             f'{formated_definition[t]}')
@@ -42,7 +42,7 @@ def more_definitions():
             f'{format_text(list_of_word_variants[t+1].definition)}')
         st.markdown(
             f'**{list_of_word_variants[t+1].type_of_speech}**')
-        st.markdown(f'Etymology: {list_of_word_variants[t + 1].etymology}')
+        st.markdown(f'Etymology: {format_text(list_of_word_variants[t + 1].etymology)}')
         st.markdown(
             f'Date first used: {list_of_word_variants[t+1].date}')
         st.markdown(f'Synonyms: {list_of_word_variants[t+1].synonyms}')
