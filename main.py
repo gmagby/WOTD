@@ -2,8 +2,8 @@ import streamlit as st
 from wotd import previous_WOTD
 from wotd import WORD
 from wotd import list_of_word_variants
-
 from PIL import Image
+import os
 
 favored = 0
 num = len(list_of_word_variants)
@@ -104,8 +104,6 @@ def guide_func():
     if st.sidebar.button('Previous words of the day.'):
         for t in range (len(previous_WOTD)):
             st.sidebar.markdown(previous_WOTD[t])
-
-    import os
 
     def pull_specific_photo(folder_path, photo_name):
             # Default case (equivalent to else)
