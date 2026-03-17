@@ -100,6 +100,7 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r"dsi1", '', clean_text)
         clean_text = re.sub(r'ds1', '', clean_text)
         clean_text = re.sub(r'ds2', '', clean_text)
+        clean_text = re.sub(r'1a', '', clean_text)
         clean_text = re.sub(r'.jpg', '', clean_text)
         clean_text = re.sub(r'.jpeg', '', clean_text)
         clean_text = re.sub(r'.png', '', clean_text)
@@ -204,7 +205,9 @@ def list_of_prev_wotd_cleaner(clean_text):
     clean_list = clean_text.split(", ")
     clean_list.sort(key=str.lower)
     print(clean_list)
+    print(len(clean_list))
     return clean_list
+
 
 # Example usage
 photo_folder = r"Photos"

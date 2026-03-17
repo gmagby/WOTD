@@ -13,15 +13,11 @@ st.title(WORD)
 st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
 # Text to List Converter
-def split_text(text):
+def format_text(text):
     return text.split('^')
 
-def make_formated_text(iteration):
-    formated_definition = split_text(list_of_word_variants[iteration].definition)
-    return formated_definition
-
-formated_definition = split_text(list_of_word_variants[favored].definition)
-formated_etymology = split_text(list_of_word_variants[favored].etymology)
+formated_definition = format_text(list_of_word_variants[favored].definition)
+formated_etymology = format_text(list_of_word_variants[favored].etymology)
 
 
 def first_definition():
@@ -39,18 +35,19 @@ def first_definition():
 def more_definitions():
     for t in range (num-1):
         if list_of_word_variants[t].definition == 'No info available':
-            continue
+            pass
         st.header(WORD, divider="rainbow")
         st.markdown(
-            f'{make_formated_text(t+1)}')
+            f'{format_text(list_of_word_variants[t+1].definition)}')
         st.markdown(
             f'**{list_of_word_variants[t+1].type_of_speech}**')
         st.markdown(f'Etymology: {list_of_word_variants[t + 1].etymology}')
         st.markdown(
             f'Date first used: {list_of_word_variants[t+1].date}')
         st.markdown(f'Synonyms: {list_of_word_variants[t+1].synonyms}')
-        st.markdown(f'Antonyms: None found')
-        # st.markdown(f'Antonyms: {list_of_word_variants[t + 1].antonyms}')
+        st.markdown(f'Antonyms: {list_of_word_variants[t + 1].antonyms}')
+        # st.markdown(f'Antonyms: None found')
+
 
 
 def display_instructions():
@@ -59,11 +56,11 @@ def display_instructions():
     st.sidebar.markdown('Chrome instructions: [Here](https://docs.google.com/presentation/d/1B5HWIi_X_8wNhbKWEcTfKhnWs4DfLsemZEEiym612Y8/edit?usp=sharing)')
 
 def check_for_no_data(text):
-    if text == 'No info available':
-        return False
+    if text != 'No info available':
+        return True
 
     else:
-        return True
+        return False
 
 def guide_func():
     first_definition()
