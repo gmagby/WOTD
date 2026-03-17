@@ -8,9 +8,10 @@ import os
 favored = 0
 num = len(list_of_word_variants)
 
-st.header("Word of the Day", divider="rainbow")
-st.title(WORD)
-st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
+def top_of_page():
+    st.header("Word of the Day", divider="rainbow")
+    st.title(WORD)
+    st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
 # Text to List Converter
 def format_text(text):
@@ -63,6 +64,7 @@ def check_for_no_data(text):
         return False
 
 def guide_func():
+    top_of_page()
     first_definition()
 
     st.sidebar.title(WORD)
