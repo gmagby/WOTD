@@ -128,7 +128,7 @@ def extract_synonyms(data, nyms):
             syn_group = entry['meta'].get(nyms, [])
             synonyms.append([syn for syn in syn_group])
         except (KeyError, TypeError):
-            synonyms.append([])  # Append an empty list if there's an error
+            synonyms.append(NONE_RESULT)  # Append an empty list if there's an error
     return synonyms
 
 
