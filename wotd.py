@@ -2,7 +2,7 @@ import re
 import requests
 import os
 
-WORD = 'vulcanization'
+WORD = 'mite'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
