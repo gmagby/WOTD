@@ -2,7 +2,7 @@ import re
 import requests
 import os
 
-WORD = 'mire'
+WORD = 'vulcanization'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -121,17 +121,16 @@ def list_manager(data, syntax, sharp=None):
         for item in data
     ]
 
-def et_list_manager(data, syntax):
-    return [
-        cleaner(item.get(syntax, NONE_RESULT),3) if item.get(syntax) else NONE_RESULT
-        for item in data
-    ]
-
 def extract_synonyms(data, nyms):
-    return [
-        [syn for syn_group in entry['meta'].get(nyms, []) for syn in syn_group] or []
-        for entry in data
-    ]
+    synonyms = []
+    for entry in data:
+        try:
+            syn_group = entry['meta'].get(nyms, [])
+            synonyms.append([syn for syn in syn_group])
+        except (KeyError, TypeError):
+            synonyms.append([])  # Append an empty list if there's an error
+    return synonyms
+
 
 data = get_response_dictionary(REF_DICTIONARY, WORD, DICTIONARY_KEY)
 thes_data = get_response_dictionary(REF_THESAURUS, WORD, Thesaurus_key)
@@ -163,10 +162,10 @@ def create_word_variants(definitions, types_of_speech, dates, etymologies, synon
 list_of_word_variants = create_word_variants(definition_list, type_of_speech_list, date_list, etymology_list, synonyms_list, antonyms_list)
 
 # Text to List Converter
-def split_text(text):
+def format_text(text):
     return text.split('^')
 
-formated_definition = split_text(list_of_word_variants[0].definition)
+formated_definition = format_text(list_of_word_variants[0].definition)
 
 
 def first_definition():
@@ -205,6 +204,7 @@ def list_of_prev_wotd_cleaner(clean_text):
     clean_list = clean_text.split(", ")
     clean_list.sort(key=str.lower)
     print(clean_list)
+    print('')
     print(len(clean_list))
     return clean_list
 
