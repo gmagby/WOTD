@@ -130,7 +130,5 @@ def guide_func():
     # today_video = play_video(r"Photos", f"{WORD}.mp4")
     # st.video(today_video)
 
-
-guide_func()
 if __name__ == "__main__":
     guide_func()
