@@ -201,6 +201,7 @@ def list_of_prev_wotd_cleaner(clean_text):
     clean_text = re.sub(r"]", '', clean_text)
     clean_text = re.sub(r"'", '', clean_text)
     clean_text = re.sub(r"2", '', clean_text)
+    clean_text = clean_text.lower()
     clean_list = clean_text.split(", ")
     clean_list.sort(key=str.lower)
     print(clean_list)
