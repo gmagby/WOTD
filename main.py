@@ -46,11 +46,10 @@ def more_definitions():
         st.markdown(
             f'Date first used: {list_of_word_variants[t+1].date}')
         if check_for_no_data(list_of_word_variants[t+1].synonyms):
-            if st.button('Thesaurus'):
-                st.markdown("Synonyms:")
-                st.markdown(list_of_word_variants[t+1].synonyms)
-                st.markdown("Antonyms:")
-                st.markdown(list_of_word_variants[t+1].antonyms)
+            st.markdown("Synonyms:")
+            st.markdown(list_of_word_variants[t+1].synonyms)
+            st.markdown("Antonyms:")
+            st.markdown(list_of_word_variants[t+1].antonyms)
         # st.markdown(f'Antonyms: None found')
 
 
