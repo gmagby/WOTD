@@ -121,9 +121,6 @@ def guide_func():
         for t in range (len(previous_WOTD)):
             st.sidebar.markdown(previous_WOTD[t])
 
-    today_photo = pull_specific_photo(r"Photos", f"{WORD}.jpg")
-    st.image(today_photo)
-
     # def pull_specific_video(folder_path, video_name):
     #     # Default case (equivalent to else)
     #     photo_path = os.path.join(folder_path, video_name)
