@@ -66,6 +66,8 @@ def check_for_no_data(text):
     else:
         return False
 
+
+
 def pull_specific_photo(folder_path, photo_name):
         # Default case (equivalent to else)
     photo_path = os.path.join(folder_path, photo_name)
@@ -73,6 +75,10 @@ def pull_specific_photo(folder_path, photo_name):
         return Image.open(photo_path)
     else:
         raise FileNotFoundError(f"The photo '{photo_name}' does not exist in the specified folder.")
+
+def display_photo():
+    today_photo = pull_specific_photo(r"Photos", f"{WORD}.jpg")
+    st.image(today_photo)
 
 def guide_func():
     top_of_page()
@@ -132,3 +138,4 @@ def guide_func():
 
 if __name__ == "__main__":
     guide_func()
+    display_photo()
