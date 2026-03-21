@@ -4,7 +4,7 @@ import re
 import requests
 import os
 
-WORD = 'brinkmanship'
+WORD = 'atavism'
 chosen_word = 'aver'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
@@ -17,6 +17,8 @@ ETYMOLOGY_KEY = 'et'
 SYNONYMS = 'syns'
 ANTONYMS = 'ants'
 NONE_RESULT = 'No info available'
+PHOTO_FOLDER = r"Photos"
+TXT_FOLDER = 'txt_files'
 
 def get_response_dictionary(ref, word, key):
     url = f"https://www.dictionaryapi.com/api/v3/references/{ref}/json/{word}?key={key}"
