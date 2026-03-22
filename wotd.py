@@ -4,7 +4,7 @@ import re
 import requests
 import os
 
-WORD = 'atavism'
+WORD = 'bedlam'
 chosen_word = 'aver'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
