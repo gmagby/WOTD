@@ -40,6 +40,7 @@ def main():
         for t in range(len(formated_definition)):
             st.write(
                 f'{formated_definition[t]}')
+        st.markdown(list_of_word_variants[favored].date)
         # st.markdown(f'Synonyms: {list_of_word_variants[0].synonyms}')
         # st.markdown(f'Antonyms: {list_of_word_variants[0].antonyms}')
 
