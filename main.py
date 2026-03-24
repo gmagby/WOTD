@@ -122,9 +122,9 @@ def sidebar():
     if st.sidebar.button("Instructions to add WOTD to your homescreen"):
         display_instructions()
 
-    # if st.sidebar.button('Previous words of the day.'):
-    #     for t in range(len(previous_WOTD)):
-    #         st.sidebar.markdown(previous_WOTD[t])
+    if st.sidebar.button('Previous words of the day.'):
+        for t in range(len(previous_WOTD)):
+            st.sidebar.markdown(previous_WOTD[t])
 
 def guide_func():
     top_of_page()
@@ -138,7 +138,7 @@ def guide_func():
                 more_definitions()
         else:
             pass
-guide_func()
+
 
 
 if __name__ == "__main__":
