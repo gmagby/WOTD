@@ -41,6 +41,8 @@ def first_definition():
         st.write(
             f'{formated_definition[t]}')
     st.markdown("")
+
+def switch_buttons():
     st.markdown(f' Date first used: {list_of_word_variants[favored].date}.')
     if check_for_no_data(list_of_word_variants[favored].etymology):
         if st.button("Etymology"):
@@ -98,22 +100,22 @@ def sidebar():
     st.sidebar.title(WORD)
     st.sidebar.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
-    # if check_for_no_data(list_of_word_variants[favored].etymology):
-    #     if st.sidebar.button("Etymology"):
-    #         for t in range(num):
-    #             st.sidebar.markdown(list_of_word_variants[t].etymology)
-    # else:
-    #     pass
+    if check_for_no_data(list_of_word_variants[favored].etymology):
+        if st.sidebar.button("Etymology"):
+            for t in range(num):
+                st.sidebar.markdown(list_of_word_variants[t].etymology)
+    else:
+        pass
 
 
-    # if check_for_no_data(list_of_word_variants[favored].synonyms):
-    #     if st.sidebar.button('Thesaurus'):
-    #         st.sidebar.markdown("Synonyms:")
-    #         st.sidebar.markdown(list_of_word_variants[favored].synonyms)
-    #         st.sidebar.markdown("Antonyms:")
-    #         st.sidebar.markdown(list_of_word_variants[favored].antonyms)
-    #     else:
-    #         pass
+    if check_for_no_data(list_of_word_variants[favored].synonyms):
+        if st.sidebar.button('Thesaurus'):
+            st.sidebar.markdown("Synonyms:")
+            st.sidebar.markdown(list_of_word_variants[favored].synonyms)
+            st.sidebar.markdown("Antonyms:")
+            st.sidebar.markdown(list_of_word_variants[favored].antonyms)
+        else:
+            pass
     url = f'https://www.merriam-webster.com/dictionary/{WORD}'
     st.sidebar.link_button("Merriam-Webster", url)
 
@@ -127,6 +129,7 @@ def sidebar():
 def guide_func():
     top_of_page()
     first_definition()
+    # switch_buttons()
     sidebar()
     display_photo()
     if num > 1:
