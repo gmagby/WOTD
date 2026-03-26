@@ -4,7 +4,7 @@ import re
 import requests
 import os
 
-WORD = 'irascible'
+WORD = 'galleon'
 chosen_word = 'aver'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
