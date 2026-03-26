@@ -32,7 +32,7 @@ def check_for_no_data(text):
         return False
 
 def display_photo():
-    today_photo = pull_specific_photo(r"Photos", f"{WORD}.webp")
+    today_photo = pull_specific_photo(r"Photos", f"{WORD}.jpg")
     st.image(today_photo)
 
 def first_definition():
