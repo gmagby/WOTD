@@ -1,7 +1,7 @@
 import streamlit as st
 from wotd import previous_WOTD
 from wotd import WORD
-from wotd import cleaner
+
 from wotd import list_of_word_variants
 from PIL import Image
 import os
@@ -16,6 +16,13 @@ def top_of_page():
     st.title(WORD)
     st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
+# def cleaner(clean_text, sharp=None):
+#     print(clean_text)
+#     clean_text = str(clean_text)
+#     clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
+#     return clean_text
+#
+#
 
 # Text to List Converter
 def format_text(text):
