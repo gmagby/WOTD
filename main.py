@@ -1,6 +1,7 @@
 import streamlit as st
 from wotd import previous_WOTD
 from wotd import WORD
+from wotd import cleaner
 from wotd import list_of_word_variants
 from PIL import Image
 import os
@@ -18,6 +19,7 @@ def top_of_page():
 
 # Text to List Converter
 def format_text(text):
+    text = cleaner(text)
     text = text.split('^')
     return text
 
