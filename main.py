@@ -131,13 +131,14 @@ def guide_func():
     first_definition()
     # switch_buttons()
     sidebar()
-    display_photo()
+
     if num > 1:
         if check_for_no_data(list_of_word_variants[1].definition):
             if st.button("All Definitions"):
                 more_definitions()
         else:
             pass
+    display_photo()
 
 
 
