@@ -158,7 +158,7 @@ def create_variants(word_selected):
     variants = create_word_variants(definition_list, date_list, etymology_list, type_of_speech_list, synonyms_list, antonyms_list)
     return variants
 
-list_of_word_variants = create_variants(WORD)
+list_of_word_variants = cleaner(create_variants(WORD))
 # Text to List Converter
 def format_text(text):
     return text.split('^')

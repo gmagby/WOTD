@@ -19,7 +19,6 @@ def top_of_page():
 
 # Text to List Converter
 def format_text(text):
-    text = cleaner(text)
     text = text.split('^')
     return text
 
