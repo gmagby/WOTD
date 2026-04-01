@@ -4,11 +4,9 @@ from wotd import WORD
 from wotd import list_of_word_variants
 from PIL import Image
 import os
-import re
 
 favored = 0
 num = len(list_of_word_variants)
-
 
 def top_of_page():
     st.header("Word of the Day", divider="rainbow")
@@ -142,8 +140,6 @@ def guide_func():
     sidebar()
     verify_more_definitions()
     display_photo()
-
-
 
 if __name__ == "__main__":
     guide_func()
