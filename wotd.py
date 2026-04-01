@@ -241,3 +241,7 @@ previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names(photo_folder))
 for t in previous_WOTD:
     create_file(t)
 
+
+if __name__ == "__main__":
+    create_file(WORD)
+
