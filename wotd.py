@@ -4,7 +4,7 @@ import re
 import requests
 import os
 
-WORD = 'milksop'
+WORD = 'perspicacious'
 chosen_word = 'aver'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
@@ -34,19 +34,21 @@ def get_thes_data(word_selected):
     thes_data = get_response_dictionary(REF_THESAURUS, word_selected, Thesaurus_key)
     return thes_data
 
-def save_to_file(chosen_word, data):
+def create_file(chosen_word):
+    folder = 'txt_files'
     file_name = f'{chosen_word}.txt'
-    folder_path = 'txt_files'
-    for t in previous_WOTD:
-        file_name = f'{t}.txt'
-        try:
-            folder_path = os.path.join(folder_path, file_name)
-            if os.path.exists(file_name):
-                with open(file_name, "w") as f:
-                    f.write(json.dumps(data))
+    try:
+        folder_path = os.path.join(folder, file_name)
+        if os.path.exists(file_name):
+            save_to_file(folder_path, get_data(chosen_word))
+    except ValueError:
+        print("Error", "Something went wrong.")
 
-        except ValueError:
-            print("Error", "Something went wrong.")
+
+def save_to_file(file_name, data):
+    with open(file_name, "w") as f:
+        f.write(json.dumps(data))
+
 
 def read_data(chosen_word):
     file_name = f'{chosen_word}.txt'
@@ -236,5 +238,6 @@ def list_of_prev_wotd_cleaner(clean_text):
 # Example usage
 photo_folder = r"Photos"
 previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names(photo_folder))
-
+for t in previous_WOTD:
+    create_file(t)
 
