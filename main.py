@@ -1,7 +1,6 @@
 import streamlit as st
 from wotd import previous_WOTD
 from wotd import WORD
-
 from wotd import list_of_word_variants
 from PIL import Image
 import os
@@ -15,14 +14,6 @@ def top_of_page():
     st.header("Word of the Day", divider="rainbow")
     st.title(WORD)
     st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
-
-# def cleaner(clean_text, sharp=None):
-#     print(clean_text)
-#     clean_text = str(clean_text)
-#     clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
-#     return clean_text
-#
-#
 
 # Text to List Converter
 def format_text(text):
@@ -67,6 +58,17 @@ def switch_buttons():
             st.markdown(list_of_word_variants[favored].antonyms)
         else:
             pass
+
+def verify_more_definitions():
+    num = len(list_of_word_variants)
+    if num > 1:
+        if check_for_no_data(list_of_word_variants[1].definition):
+            if st.button("All Definitions"):
+                more_definitions()
+        else:
+            pass
+    else:
+        pass
 
 def more_definitions():
     for t in range(num - 1):
@@ -137,15 +139,8 @@ def sidebar():
 def guide_func():
     top_of_page()
     first_definition()
-    # switch_buttons()
     sidebar()
-
-    if num > 1:
-        if check_for_no_data(list_of_word_variants[1].definition):
-            if st.button("All Definitions"):
-                more_definitions()
-        else:
-            pass
+    verify_more_definitions()
     display_photo()
 
 
