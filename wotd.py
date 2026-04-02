@@ -3,7 +3,7 @@ import re
 import requests
 import os
 
-WORD = 'perspicacious'
+WORD = 'genteel'
 chosen_word = 'aver'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
