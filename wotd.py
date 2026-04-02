@@ -1,5 +1,4 @@
 import json
-import pickle
 import re
 import requests
 import os
@@ -19,6 +18,7 @@ ANTONYMS = 'ants'
 NONE_RESULT = 'No info available'
 PHOTO_FOLDER = r"Photos"
 TXT_FOLDER = 'txt_files'
+THESAURUS_FOLDER = r"Thesaurus"
 
 def get_response_dictionary(ref, word, key):
     url = f"https://www.dictionaryapi.com/api/v3/references/{ref}/json/{word}?key={key}"
@@ -34,11 +34,10 @@ def get_thes_data(word_selected):
     thes_data = get_response_dictionary(REF_THESAURUS, word_selected, Thesaurus_key)
     return thes_data
 
-def create_file(chosen_word):
-    folder = 'txt_files'
+def create_file(chosen_word, folder_name):
     file_name = f'{chosen_word}.txt'
     try:
-        folder_path = os.path.join(folder, file_name)
+        folder_path = os.path.join(folder_name, file_name)
         if os.path.exists(file_name):
             save_to_file(folder_path, get_data(chosen_word))
     except ValueError:
@@ -50,11 +49,10 @@ def save_to_file(file_name, data):
         f.write(json.dumps(data))
 
 
-def read_data(chosen_word):
+def read_data(chosen_word, folder_name):
     file_name = f'{chosen_word}.txt'
-    folder_path = 'txt_files'
     try:
-        folder_path = os.path.join(folder_path, file_name)
+        folder_path = os.path.join(folder_name, file_name)
         if os.path.exists(folder_path):
             with open(folder_path, "r") as f:
                 data = json.loads(f.read())
@@ -239,9 +237,9 @@ def list_of_prev_wotd_cleaner(clean_text):
 photo_folder = r"Photos"
 previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names(photo_folder))
 for t in previous_WOTD:
-    create_file(t)
+    create_file(t, TXT_FOLDER)
 
 
 if __name__ == "__main__":
-    create_file(WORD)
+    create_file(WORD, TXT_FOLDER)
 
