@@ -240,6 +240,3 @@ for t in previous_WOTD:
     create_file(t, TXT_FOLDER)
 
 
-if __name__ == "__main__":
-    create_file(WORD, TXT_FOLDER)
-
