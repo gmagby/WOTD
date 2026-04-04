@@ -34,12 +34,26 @@ def get_thes_data(word_selected):
     thes_data = get_response_dictionary(REF_THESAURUS, word_selected, Thesaurus_key)
     return thes_data
 
-def create_file(chosen_word, folder_name):
+
+def create_file(chosen_word, folder):
     file_name = f'{chosen_word}.txt'
     try:
-        folder_path = os.path.join(folder_name, file_name)
-        if os.path.exists(file_name):
+        folder_path = os.path.join(folder, file_name)
+        if os.path.exists(folder_path):
+            pass
+        else:
             save_to_file(folder_path, get_data(chosen_word))
+    except ValueError:
+        print("Error", "Something went wrong.")
+
+def create_thes_file(chosen_word, folder):
+    file_name = f'{chosen_word}.txt'
+    try:
+        folder_path = os.path.join(folder, file_name)
+        if os.path.exists(folder_path):
+            pass
+        else:
+            save_to_file(folder_path, get_thes_data(chosen_word))
     except ValueError:
         print("Error", "Something went wrong.")
 
@@ -47,7 +61,6 @@ def create_file(chosen_word, folder_name):
 def save_to_file(file_name, data):
     with open(file_name, "w") as f:
         f.write(json.dumps(data))
-
 
 def read_data(chosen_word, folder_name):
     file_name = f'{chosen_word}.txt'

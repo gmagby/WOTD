@@ -1,0 +1,1 @@
+["atrium", "atriums", "stadium", "tedium", "attribute", "aquarium", "attributed", "attributes", "auditorium", "cafetorium", "centrism", "delirium", "emporium", "exordium", "imperium", "moratorium", "sanatorium", "sanitarium", "sanitorium", "solarium"]
