@@ -122,10 +122,14 @@ def sidebar():
             st.sidebar.markdown(list_of_word_variants[favored].synonyms)
             st.sidebar.markdown("Antonyms:")
             st.sidebar.markdown(list_of_word_variants[favored].antonyms)
-        else:
-            pass
-    url = f'https://www.merriam-webster.com/dictionary/{WORD}'
-    st.sidebar.link_button("Merriam-Webster", url)
+    else:
+        pass
+
+    def go_to_merriam(chosen_word):
+        url = f'https://www.merriam-webster.com/dictionary/{chosen_word}'
+        return url
+
+    st.sidebar.link_button("Merriam-Webster", go_to_merriam(WORD))
 
     if st.sidebar.button("Instructions to add WOTD to your homescreen"):
         display_instructions()
@@ -133,6 +137,7 @@ def sidebar():
     if st.sidebar.button('Previous words of the day.'):
         for t in range(len(previous_WOTD)):
             st.sidebar.markdown(previous_WOTD[t])
+
 
 def guide_func():
     top_of_page()
