@@ -3,7 +3,7 @@ import re
 import requests
 import os
 
-WORD = 'paramnesia'
+WORD = 'perspicacious'
 chosen_word = 'aver'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
@@ -17,8 +17,8 @@ SYNONYMS = 'syns'
 ANTONYMS = 'ants'
 NONE_RESULT = 'No info available'
 PHOTO_FOLDER = r"Photos"
-TXT_FOLDER = 'txt_files'
-THESAURUS_FOLDER = r"Thesaurus"
+TXT_FOLDER = r'txt_files'
+THESAURUS_FOLDER = r'Thesaurus'
 
 def get_response_dictionary(ref, word, key):
     url = f"https://www.dictionaryapi.com/api/v3/references/{ref}/json/{word}?key={key}"
@@ -33,46 +33,6 @@ def get_data(word_selected):
 def get_thes_data(word_selected):
     thes_data = get_response_dictionary(REF_THESAURUS, word_selected, Thesaurus_key)
     return thes_data
-
-
-def create_file(chosen_word, folder):
-    file_name = f'{chosen_word}.txt'
-    try:
-        folder_path = os.path.join(folder, file_name)
-        if os.path.exists(folder_path):
-            pass
-        else:
-            save_to_file(folder_path, get_data(chosen_word))
-    except ValueError:
-        print("Error", "Something went wrong.")
-
-def create_thes_file(chosen_word, folder):
-    file_name = f'{chosen_word}.txt'
-    try:
-        folder_path = os.path.join(folder, file_name)
-        if os.path.exists(folder_path):
-            pass
-        else:
-            save_to_file(folder_path, get_thes_data(chosen_word))
-    except ValueError:
-        print("Error", "Something went wrong.")
-
-
-def save_to_file(file_name, data):
-    with open(file_name, "w") as f:
-        f.write(json.dumps(data))
-
-def read_data(chosen_word, folder_name):
-    file_name = f'{chosen_word}.txt'
-    try:
-        folder_path = os.path.join(folder_name, file_name)
-        if os.path.exists(folder_path):
-            with open(folder_path, "r") as f:
-                data = json.loads(f.read())
-                return data
-
-    except ValueError:
-       print("Error", "Something went wrong.")
 
 def cleaner(clean_text, sharp=None):
     print(clean_text)
@@ -168,6 +128,45 @@ def extract_synonyms(data, nyms):
             synonyms.append(NONE_RESULT)  # Append an empty list if there's an error
     return synonyms
 
+
+def create_file(chosen_word, folder):
+    file_name = f'{chosen_word}.txt'
+    try:
+        folder_path = os.path.join(folder, file_name)
+        if os.path.exists(folder_path):
+            pass
+        else:
+            save_to_file(folder_path, get_data(chosen_word))
+    except ValueError:
+        print("Error", "Something went wrong.")
+
+def create_thes_file(chosen_word, folder):
+    file_name = f'{chosen_word}.txt'
+    try:
+        folder_path = os.path.join(folder, file_name)
+        if os.path.exists(folder_path):
+            pass
+        else:
+            save_to_file(folder_path, get_thes_data(chosen_word))
+    except ValueError:
+        print("Error", "Something went wrong.")
+
+def save_to_file(file_name, data):
+    with open(file_name, "w") as f:
+        f.write(json.dumps(data))
+
+def read_data(chosen_word, folder):
+    file_name = f'{chosen_word}.txt'
+    try:
+        folder_path = os.path.join(folder, file_name)
+        if os.path.exists(folder_path):
+            with open(folder_path, "r") as f:
+                data = json.loads(f.read())
+                return data
+
+    except ValueError:
+       print("Error", "Something went wrong.")
+
 class WordVariant:
     def __init__(self, definition=None, type_of_speech=None, date=None, etymology=None, synonyms=None, antonyms=None):
         self.definition = definition
@@ -185,8 +184,8 @@ def create_word_variants(definitions, dates, etymologies, types_of_speech, synon
     ]
 
 def create_variants(word_selected):
-    data = get_data(word_selected)
-    thes_data = get_thes_data(word_selected)
+    data = read_data(word_selected, TXT_FOLDER)
+    thes_data = read_data(word_selected, THESAURUS_FOLDER)
     definition_list = list_manager(data, DEFINITION_KEY, sharp=1)
     date_list = list_manager(data, DATE_KEY, sharp=2)
     etymology_list = list_manager(data, ETYMOLOGY_KEY, sharp=3)
@@ -197,28 +196,6 @@ def create_variants(word_selected):
         NONE_RESULT]
     variants = create_word_variants(definition_list, date_list, etymology_list, type_of_speech_list, synonyms_list, antonyms_list)
     return variants
-
-list_of_word_variants = create_variants(WORD)
-# Text to List Converter
-def format_text(text):
-    return text.split('^')
-
-formated_definition = format_text(list_of_word_variants[0].definition)
-
-def first_definition():
-    print("Formated Text:")
-    for t in range(len(formated_definition)):
-        print(formated_definition[t])
-    print(f'Date first used: {list_of_word_variants[0].date}')
-    print(" ")
-    print(f'Amount of items in Format: ' + str(len(formated_definition)))
-    print(f'Number of variants: ' + str(len(list_of_word_variants)))
-    print(" ")
-    print(f'Synonyms List: {list_of_word_variants[0].synonyms}')
-    print(f'Antonyms List: {list_of_word_variants[0].antonyms}')
-    print('')
-
-first_definition()
 
 def list_photo_names(folder_path):
     return [file for file in os.listdir(folder_path) if
@@ -245,11 +222,31 @@ def list_of_prev_wotd_cleaner(clean_text):
     print(len(clean_list))
     return clean_list
 
-
-# Example usage
 photo_folder = r"Photos"
 previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names(photo_folder))
 for t in previous_WOTD:
     create_file(t, TXT_FOLDER)
+    create_thes_file(t, THESAURUS_FOLDER)
+
+# Text to List Converter
+def format_text(text):
+    return text.split('^')
+
+def first_definition():
+    list_of_word_variants = create_variants(WORD)
+    formated_definition = format_text(list_of_word_variants[0].definition)
+    print("Formated Text:")
+    for t in range(len(formated_definition)):
+        print(formated_definition[t])
+    print(f'Date first used: {list_of_word_variants[0].date}')
+    print(" ")
+    print(f'Amount of items in Format: ' + str(len(formated_definition)))
+    print(f'Number of variants: ' + str(len(list_of_word_variants)))
+    print(" ")
+    print(f'Synonyms List: {list_of_word_variants[0].synonyms}')
+    print(f'Antonyms List: {list_of_word_variants[0].antonyms}')
+    print('')
+
+first_definition()
 
 
