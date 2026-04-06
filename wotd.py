@@ -3,7 +3,7 @@ import re
 import requests
 import os
 
-WORD = 'paramnesia'
+WORD = 'easter'
 chosen_word = 'aver'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
@@ -184,8 +184,13 @@ def create_word_variants(definitions, dates, etymologies, types_of_speech, synon
     ]
 
 def create_variants(word_selected):
-    data = read_data(word_selected, TXT_FOLDER)
-    thes_data = read_data(word_selected, THESAURUS_FOLDER)
+    try:
+        thes_data = read_data(word_selected, THESAURUS_FOLDER)
+        data = read_data(word_selected, TXT_FOLDER)
+
+    except TypeError:
+        data = get_data(word_selected)
+        thes_data = get_thes_data(word_selected)
     definition_list = list_manager(data, DEFINITION_KEY, sharp=1)
     date_list = list_manager(data, DATE_KEY, sharp=2)
     etymology_list = list_manager(data, ETYMOLOGY_KEY, sharp=3)
@@ -246,7 +251,3 @@ def first_definition():
     print(f'Synonyms List: {list_of_word_variants[0].synonyms}')
     print(f'Antonyms List: {list_of_word_variants[0].antonyms}')
     print('')
-
-first_definition()
-
-
