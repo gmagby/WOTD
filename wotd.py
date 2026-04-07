@@ -1,7 +1,8 @@
 import json
-import re
 import requests
 import os
+from cleaner_file import cleaner
+from cleaner_file import list_of_prev_wotd_cleaner
 
 WORD = 'winnow'
 REF_DICTIONARY = "collegiate"
@@ -15,9 +16,12 @@ ETYMOLOGY_KEY = 'et'
 SYNONYMS = 'syns'
 ANTONYMS = 'ants'
 NONE_RESULT = 'No info available'
+TXT_FOLDER = r'txt_files'
+THESAURUS_FOLDER = r'Thesaurus'
+WOTD_ARCHIVE = r'Former Words.txt'
+ARCHIVE_PATH = r"other_files/Former Words"
 PHOTO_FOLDER = r"Photos"
-TXT_FOLDER = 'txt_files'
-THESAURUS_FOLDER = r"Thesaurus"
+OTHER_FILES = r"other_files"
 
 def get_response_dictionary(ref, word, key):
     url = f"https://www.dictionaryapi.com/api/v3/references/{ref}/json/{word}?key={key}"
@@ -73,75 +77,6 @@ def read_data(chosen_word, folder_name):
     except ValueError:
        print("Error", "Something went wrong.")
 
-def cleaner(clean_text, sharp=None):
-    print(clean_text)
-    clean_text = str(clean_text)
-    def etymology_cleaner(clean_text):
-        clean_text = re.sub(r"dx_ety}", '', clean_text)
-        clean_text = re.sub(r"mat}", '', clean_text)
-        clean_text = re.sub(r"bc}", '', clean_text)
-        clean_text = re.sub(r"ma}", '', clean_text)
-        clean_text = re.sub(r"dx}", '', clean_text)
-        clean_text = re.sub(r"dxt", '', clean_text)
-        clean_text = re.sub(r'it}', '', clean_text)
-        clean_text = re.sub(r"'text', ", '', clean_text)
-        clean_text = re.sub(r']]', '', clean_text)
-        clean_text = re.sub(r"et_link", '', clean_text)
-        clean_text = re.sub(r":2", '', clean_text)
-        clean_text = re.sub(r":1", '', clean_text)
-        clean_text = re.sub(r"-ia", '', clean_text)
-        clean_text = re.sub(r"et_snote',", '', clean_text)
-        clean_text = re.sub(r"et_snote", '', clean_text)
-        clean_text = re.sub(r"'t',", '', clean_text)
-        clean_text = re.sub(r"', '", ', ^', clean_text)
-        clean_text = re.sub(r"andor", 'and/or', clean_text)
-        clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
-        clean_text = re.sub(r"]", '', clean_text)
-        return clean_text
-    def definition_cleaner(clean_text):
-        clean_text = re.sub(r"', '", ', ^', clean_text)
-        return clean_text
-    def date_cleaner(clean_text):
-        # clean_text = re.sub(r"ds1", '', clean_text)
-        # clean_text = re.sub(r",", ' or', clean_text)
-        clean_text = re.sub(r'dst2', '', clean_text)
-        clean_text = re.sub(r"ds1a", '', clean_text)
-        clean_text = re.sub(r"dst", '', clean_text)
-        clean_text = re.sub(r"ds1b", '', clean_text)
-        clean_text = re.sub(r'dst2', '', clean_text)
-        clean_text = re.sub(r'ds3', '', clean_text)
-        clean_text = re.sub(r'ds5', '', clean_text)
-        clean_text = re.sub(r"dx_ety", '', clean_text)
-        clean_text = re.sub(r"dxt", '', clean_text)
-        clean_text = re.sub(r"dsi1", '', clean_text)
-        clean_text = re.sub(r'ds1', '', clean_text)
-        clean_text = re.sub(r'ds2', '', clean_text)
-        clean_text = re.sub(r'1a', '', clean_text)
-        clean_text = re.sub(r'.jpg', '', clean_text)
-        clean_text = re.sub(r'.jpeg', '', clean_text)
-        clean_text = re.sub(r'.png', '', clean_text)
-        clean_text = re.sub(r'.gif', '', clean_text)
-        return clean_text
-    def base_cleaner(clean_text):
-        clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
-        clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
-        clean_text = re.sub(r"]", '', clean_text)
-        clean_text = re.sub(r" u ", " 'u' ", clean_text)
-        clean_text = re.sub(r"'", '', clean_text)
-        return clean_text
-    if sharp == 1:  # Definition cleaner
-        clean_text = base_cleaner(definition_cleaner(clean_text))
-    if sharp == 2:  # Date cleaner
-        clean_text = date_cleaner(base_cleaner(clean_text))
-    if sharp == 3:  # Etymology cleaner
-        clean_text = base_cleaner(etymology_cleaner(clean_text))
-    if sharp == 4:
-        base_cleaner(clean_text)
-    clean_text = re.sub(r"\s+", " ", clean_text).strip()
-    clean_text = str(clean_text)
-    print(clean_text)
-    print(" ")
-    return clean_text
 
 def check_for_no_data(text):
     if text != 'No info available':
@@ -222,28 +157,6 @@ first_definition()
 def list_photo_names(folder_path):
     return [file for file in os.listdir(folder_path) if
             file.endswith(('.jpg', '.webp', '.avif', '.jpeg', '.png', '.gif'))]
-
-def list_of_prev_wotd_cleaner(clean_text):
-    print(clean_text)
-    clean_text = str(clean_text)
-    clean_text = re.sub(r'.jpg', '', clean_text)
-    clean_text = re.sub(r'.jpeg', '', clean_text)
-    clean_text = re.sub(r'.png', '', clean_text)
-    clean_text = re.sub(r'.gif', '', clean_text)
-    clean_text = re.sub(r'.webp', '', clean_text)
-    clean_text = re.sub(r'.avif', '', clean_text)
-    clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
-    clean_text = re.sub(r"]", '', clean_text)
-    clean_text = re.sub(r"'", '', clean_text)
-    clean_text = re.sub(r"2", '', clean_text)
-    clean_text = clean_text.lower()
-    clean_list = clean_text.split(", ")
-    clean_list.sort(key=str.lower)
-    print(clean_list)
-    print('')
-    print(len(clean_list))
-    return clean_list
-
 
 # Example usage
 photo_folder = r"Photos"
