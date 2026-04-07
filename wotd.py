@@ -37,54 +37,11 @@ def get_thes_data(word_selected):
     thes_data = get_response_dictionary(REF_THESAURUS, word_selected, Thesaurus_key)
     return thes_data
 
-
-def create_file(chosen_word, folder):
-    file_name = f'{chosen_word}.txt'
-    try:
-        folder_path = os.path.join(folder, file_name)
-        if os.path.exists(folder_path):
-            pass
-        else:
-            save_to_file(folder_path, get_data(chosen_word))
-    except ValueError:
-        print("Error", "Something went wrong.")
-
-def create_thes_file(chosen_word, folder):
-    file_name = f'{chosen_word}.txt'
-    try:
-        folder_path = os.path.join(folder, file_name)
-        if os.path.exists(folder_path):
-            pass
-        else:
-            save_to_file(folder_path, get_thes_data(chosen_word))
-    except ValueError:
-        print("Error", "Something went wrong.")
-
-
-def save_to_file(file_name, data):
-    with open(file_name, "w") as f:
-        f.write(json.dumps(data))
-
-def read_data(chosen_word, folder_name):
-    file_name = f'{chosen_word}.txt'
-    try:
-        folder_path = os.path.join(folder_name, file_name)
-        if os.path.exists(folder_path):
-            with open(folder_path, "r") as f:
-                data = json.loads(f.read())
-                return data
-
-    except ValueError:
-       print("Error", "Something went wrong.")
-
-
 def check_for_no_data(text):
     if text != 'No info available':
         return True
-
     else:
         return False
-
 
 def list_manager(data, syntax, sharp=None):
     return [
@@ -101,6 +58,62 @@ def extract_synonyms(data, nyms):
         except (KeyError, TypeError):
             synonyms.append(NONE_RESULT)  # Append an empty list if there's an error
     return synonyms
+
+def create_file(folder, chosen_word):
+    file_name = add_txt_to_file_name(chosen_word)
+    try:
+        folder_path = os.path.join(folder, file_name)
+        if os.path.exists(folder_path):
+            pass
+        else:
+            save_new_data(folder_path, get_data(chosen_word))
+    except ValueError:
+        print("Error", "Something went wrong.")
+
+def create_thes_file(folder, chosen_word):
+    file_name = add_txt_to_file_name(chosen_word)
+    try:
+        folder_path = os.path.join(folder, file_name)
+        if os.path.exists(folder_path):
+            pass
+        else:
+            save_new_data(folder_path, get_thes_data(chosen_word))
+    except ValueError:
+        print("Error", "Something went wrong.")
+
+def save_new_data(file_name, data):
+    with open(file_name, "w") as f:
+        f.write(json.dumps(data))
+
+def read_data(path):
+    try:
+        if os.path.exists(path):
+            with open(path, "r") as f:
+                data = json.loads(f.read())
+                return data
+
+    except ValueError:
+        print("Error", "Something went wrong.")
+
+def create_folder_path(folder_name, file_name):
+    file_name = add_txt_to_file_name(file_name)
+    folder_path = os.path.join(folder_name, file_name)
+    return folder_path
+
+def find_data_with_path(folder_name, file_name):
+    new_path = create_folder_path(folder_name, file_name)
+    data = read_data(new_path)
+    return data
+
+def add_txt_to_file_name(text):
+    file_name = f'{text}.txt'
+    file_name = cleaner(file_name, 5)
+    file_name = cleaner(file_name, 5)
+    return file_name
+
+def list_photo_names(folder_path):
+    return [file for file in os.listdir(folder_path) if
+            file.endswith(('.jpg', '.webp', '.avif', '.jpeg', '.png', '.gif'))]
 
 class WordVariant:
     def __init__(self, definition=None, type_of_speech=None, date=None, etymology=None, synonyms=None, antonyms=None):
@@ -119,8 +132,8 @@ def create_word_variants(definitions, dates, etymologies, types_of_speech, synon
     ]
 
 def create_variants(word_selected):
-    data = get_data(word_selected)
-    thes_data = get_thes_data(word_selected)
+    data = find_data_with_path(TXT_FOLDER, word_selected)
+    thes_data = find_data_with_path(TXT_FOLDER, word_selected)
     definition_list = list_manager(data, DEFINITION_KEY, sharp=1)
     date_list = list_manager(data, DATE_KEY, sharp=2)
     etymology_list = list_manager(data, ETYMOLOGY_KEY, sharp=3)
@@ -132,14 +145,24 @@ def create_variants(word_selected):
     variants = create_word_variants(definition_list, date_list, etymology_list, type_of_speech_list, synonyms_list, antonyms_list)
     return variants
 
-list_of_word_variants = create_variants(WORD)
+def add_new_word(chosen_word):
+    previous_WOTD = read_data(ARCHIVE_PATH)
+    if chosen_word is not previous_WOTD:
+        previous_WOTD.append(WORD)
+        save_new_data(ARCHIVE_PATH, previous_WOTD)
+    return previous_WOTD
+
+def create_archive(chosen_word):
+    create_file(TXT_FOLDER, chosen_word)
+    create_thes_file(THESAURUS_FOLDER, chosen_word)
+
 # Text to List Converter
 def format_text(text):
     return text.split('^')
 
-formated_definition = format_text(list_of_word_variants[0].definition)
-
 def first_definition():
+    list_of_word_variants = create_variants(WORD)
+    formated_definition = format_text(list_of_word_variants[0].definition)
     print("Formated Text:")
     for t in range(len(formated_definition)):
         print(formated_definition[t])
@@ -152,14 +175,11 @@ def first_definition():
     print(f'Antonyms List: {list_of_word_variants[0].antonyms}')
     print('')
 
-first_definition()
+def main():
+    add_new_word(WORD)
+    create_archive(WORD)
+    first_definition()
 
-def list_photo_names(folder_path):
-    return [file for file in os.listdir(folder_path) if
-            file.endswith(('.jpg', '.webp', '.avif', '.jpeg', '.png', '.gif'))]
-
-# Example usage
-photo_folder = r"Photos"
-previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names(photo_folder))
-for t in previous_WOTD:
-    create_file(t, TXT_FOLDER)
+main()
+previous_WOTD = read_data(ARCHIVE_PATH)
+print(previous_WOTD)
