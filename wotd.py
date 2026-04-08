@@ -57,9 +57,15 @@ def extract_synonyms(data, nyms):
             synonyms.append(NONE_RESULT)
     return synonyms
 
+# def create_file(folder, chosen_word, is_thesaurus=False):
+#     file_name = add_txt_to_file_name(chosen_word)
+#     folder_path = os.path.join(folder, file_name)
+#     if not os.path.exists(folder_path):
+#         data = get_thes_data(chosen_word) if is_thesaurus else get_data(chosen_word)
+#         save_new_data(folder_path, data)
+
 def create_file(folder, chosen_word, is_thesaurus=False):
-    file_name = add_txt_to_file_name(chosen_word)
-    folder_path = os.path.join(folder, file_name)
+    folder_path = create_folder_path(folder, chosen_word)
     if not os.path.exists(folder_path):
         data = get_thes_data(chosen_word) if is_thesaurus else get_data(chosen_word)
         save_new_data(folder_path, data)
@@ -157,8 +163,7 @@ def first_definition():
 def main():
     add_new_word(WORD)
     create_archive(WORD)
-    first_definition()
+    # first_definition()
 
 main()
 previous_WOTD = read_data(ARCHIVE_PATH)
-print(previous_WOTD)
