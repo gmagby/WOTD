@@ -163,7 +163,7 @@ def first_definition():
 def main():
     add_new_word(WORD)
     create_archive(WORD)
-    # first_definition()
+    first_definition()
 
 main()
 previous_WOTD = read_data(ARCHIVE_PATH)
