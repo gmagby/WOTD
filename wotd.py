@@ -160,5 +160,5 @@ def main():
     first_definition()
 
 main()
-previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names)
+previous_WOTD = read_data(ARCHIVE_PATH)
 print(previous_WOTD)
