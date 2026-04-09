@@ -166,4 +166,4 @@ def main():
     first_definition()
 
 main()
-previous_WOTD = read_data(ARCHIVE_PATH)
+previous_WOTD = read_data(ARCHIVE_PATH).sort()
