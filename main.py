@@ -121,7 +121,8 @@ def sidebar(chosen_word, variant):
         display_instructions()
 
     if st.sidebar.button('Previous words of the day.'):
-        for t in previous_WOTD.sort():
+        previous_WOTD.sort()
+        for t in previous_WOTD:
             create_merriam_button(t, t)
 
 if __name__ == "__main__":
