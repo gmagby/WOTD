@@ -1,6 +1,8 @@
 import re
 
+
 def cleaner(clean_text, sharp=None):
+    from wotd import WORD
     print(f'Old:          {clean_text}')
     clean_text = str(clean_text)
     def etymology_cleaner(clean_text):
@@ -24,6 +26,7 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r"andor", 'and/or', clean_text)
         clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
         clean_text = re.sub(r"]", '', clean_text)
+        clean_text = re.sub(Fr"{WORD}{WORD}", f'{WORD}', clean_text)
         return clean_text
     def definition_cleaner(clean_text):
         clean_text = re.sub(r"', '", ', ^', clean_text)
