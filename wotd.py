@@ -167,4 +167,3 @@ def main():
 
 main()
 previous_WOTD = read_data(ARCHIVE_PATH)
-previous_WOTD = previous_WOTD.sort()
