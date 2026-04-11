@@ -114,8 +114,8 @@ def create_word_variants(definitions, dates, etymologies, types_of_speech, synon
     ]
 
 def create_variants(word_selected):
-    data = find_data_with_path(TXT_FOLDER, word_selected)
-    thes_data = find_data_with_path(THESAURUS_FOLDER, word_selected)
+    data = get_data(WORD)
+    thes_data = get_data(WORD)
     definition_list = list_manager(data, DEFINITION_KEY, sharp=1)
     date_list = list_manager(data, DATE_KEY, sharp=2)
     etymology_list = list_manager(data, ETYMOLOGY_KEY, sharp=3)
