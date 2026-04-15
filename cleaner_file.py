@@ -6,6 +6,7 @@ def cleaner(clean_text, sharp=None):
     print(f'Old:          {clean_text}')
     clean_text = str(clean_text)
     def etymology_cleaner(clean_text):
+        clean_text = re.sub(r"mat|", '', clean_text)
         clean_text = re.sub(r"dx_ety}", '', clean_text)
         clean_text = re.sub(r"mat}", '', clean_text)
         clean_text = re.sub(r"bc}", '', clean_text)
