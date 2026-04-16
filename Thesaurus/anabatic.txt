@@ -1,0 +1,1 @@
+["analytic", "acrobatic", "anarchic", "anatomic", "aquatic", "aromatic", "dramatic", "fanatic", "unabated", "acrobatics", "analytical", "undramatic", "analphabetic", "analgesic", "automatic", "axiomatic", "enigmatic", "miasmatic", "pneumatic", "pragmatic"]

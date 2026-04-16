@@ -2,7 +2,7 @@ import os
 from PIL import Image
 
 # Path to your folder containing images
-folder_path = r"C:\Users\gabem\OneDrive\Desktop\WOTD images"
+folder_path = r"C:\Users\gabem\OneDrive\Desktop\format photos"
 
 # Loop through all files in the folder
 for filename in os.listdir(folder_path):
