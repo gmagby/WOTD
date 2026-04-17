@@ -3,7 +3,7 @@ import re
 
 def cleaner(clean_text, sharp=None):
     from wotd import WORD
-    print(f'Old:          {clean_text}')
+    # print(f'Old:          {clean_text}')
     clean_text = str(clean_text)
     def etymology_cleaner(clean_text):
         clean_text = re.sub(r"mat|", '', clean_text)
@@ -77,12 +77,12 @@ def cleaner(clean_text, sharp=None):
         file_cleaner(clean_text)
     clean_text = re.sub(r"\s+", " ", clean_text).strip()
     clean_text = str(clean_text)
-    print(f'Clean:        {clean_text}')
-    print(" ")
+    # print(f'Clean:        {clean_text}')
+    # print(" ")
     return clean_text
 
 def list_of_prev_wotd_cleaner(clean_text):
-    print(clean_text)
+    # print(clean_text)
     clean_text = str(clean_text)
     clean_text = re.sub(r'.jpg', '', clean_text)
     clean_text = re.sub(r'.jpeg', '', clean_text)
@@ -98,7 +98,7 @@ def list_of_prev_wotd_cleaner(clean_text):
     clean_list = clean_text.split(", ")
     clean_list.sort(key=str.lower)
     clean_list.sort()
-    print(clean_list)
+    # print(clean_list)
     print(len(clean_list))
-    print('')
+    # print('')
     return clean_list
