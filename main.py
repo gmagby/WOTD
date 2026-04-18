@@ -125,5 +125,6 @@ def sidebar(chosen_word, variant):
         for t in previous_WOTD:
             create_merriam_button(t, t)
 
+
 if __name__ == "__main__":
     main(WORD)
