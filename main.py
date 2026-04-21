@@ -4,6 +4,7 @@ from wotd import WORD
 from PIL import Image
 from wotd import create_variants
 import os
+from st_copy_to_clipboard import st_copy_to_clipboard
 
 def create_new_variants(chosen_word):
     list_of_word_variants = create_variants(chosen_word)
@@ -20,6 +21,7 @@ def main(chosen_word):
     sidebar(chosen_word, new_word_variants_list)
     st.image(display_photo(chosen_word))
 
+
 def verify_more_definitions(chosen_word, variant):
     num = len(variant)
     if num > 1:
@@ -30,6 +32,12 @@ def verify_more_definitions(chosen_word, variant):
             pass
     else:
         pass
+
+def share_button():
+    if st.button("Share the Word of the Day"):
+        st_copy_to_clipboard("https://learnnewword.streamlit.app/")
+
+
 
 def top_of_page(chosen_word, variant):
     st.header("Word of the Day", divider="rainbow")
