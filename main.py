@@ -20,6 +20,7 @@ def main(chosen_word):
     verify_more_definitions(chosen_word, new_word_variants_list)
     sidebar(chosen_word, new_word_variants_list)
     st.image(display_photo(chosen_word))
+    share_button()
 
 
 def verify_more_definitions(chosen_word, variant):
