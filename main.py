@@ -42,7 +42,7 @@ def verify_more_definitions(chosen_word, variant):
 def top_of_page(chosen_word, variant):
     st.header("Word of the Day", divider="rainbow")
     st.title(chosen_word)
-    st.markdown('pir-ik')
+    st.markdown('**pir-ik**')
     st.markdown(f'**{variant[favored].type_of_speech}**')
 
 # Text to List Converter
