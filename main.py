@@ -75,7 +75,7 @@ def first_definition(chosen_word, variant):
             f'{formated_definition[t]}')
 
 def more_definitions(chosen_word, variant):
-    for t in range(0, len(variant)):  # Start from 1 to avoid accessing index 0
+    for t in range(1, len(variant)):  # Start from 1 to avoid accessing index 0
         if check_for_no_data(variant[t].definition):
             st.header(chosen_word, divider="rainbow")
             st.markdown(f'{format_text(variant[t].definition)}')

@@ -4,7 +4,7 @@ import os
 from cleaner_file import cleaner
 from cleaner_file import list_of_prev_wotd_cleaner
 
-WORD = 'hullabaloo'
+WORD = 'bay'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -159,6 +159,9 @@ def first_definition():
     print(f'Synonyms List: {list_of_word_variants[0].synonyms}')
     print(f'Antonyms List: {list_of_word_variants[0].antonyms}')
     print('')
+    for t in range(1, len(list_of_word_variants)):  # Start from 1 to avoid accessing index 0
+        print(list_of_word_variants[t].definition)
+
 
 def main():
     add_new_word(WORD)
