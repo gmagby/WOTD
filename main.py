@@ -130,7 +130,7 @@ def sidebar(chosen_word, variant):
 
     if st.sidebar.button("Share the Word of the Day"):
         st.sidebar.markdown(
-            '[Copy link](https://learnnewword.streamlit.app/)')
+            '[Hold to copy link](https://learnnewword.streamlit.app/)')
 
     if st.sidebar.button('Previous words of the day.'):
         previous_WOTD.sort()
