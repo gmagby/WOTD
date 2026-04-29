@@ -128,6 +128,10 @@ def sidebar(chosen_word, variant):
     if st.sidebar.button("Instructions to add WOTD to your homescreen"):
         display_instructions()
 
+    if st.sidebar.button("Share the Word of the Day"):
+        st.sidebar.markdown(
+            '[Copy link](https://learnnewword.streamlit.app/)')
+
     if st.sidebar.button('Previous words of the day.'):
         previous_WOTD.sort()
         for t in previous_WOTD:
