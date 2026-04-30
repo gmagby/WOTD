@@ -66,8 +66,8 @@ def extract_pronunciation(data, syntax, info):
     for entry in data:
         try:
             syn_group = cleaner(entry[syntax].get(info, []))
-            pronunciation.append(syn_group)
             pronunciation = re.sub(r"'*'", '-', pronunciation)
+            pronunciation.append(syn_group)
         except (KeyError, TypeError):
             pronunciation.append(NONE_RESULT)
     return pronunciation
