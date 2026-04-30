@@ -133,10 +133,10 @@ def create_variants(word_selected):
     date_list = list_manager(data, DATE_KEY, sharp=2)
     etymology_list = list_manager(data, ETYMOLOGY_KEY, sharp=3)
     type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
-    synonyms_list = [extract_synonyms(thes_data, SYNONYMS) if thes_data else [
-        NONE_RESULT]]
-    antonyms_list = [extract_synonyms(thes_data, ANTONYMS) if thes_data else [
-        NONE_RESULT]]
+    synonyms_list = extract_synonyms(thes_data, SYNONYMS) if thes_data else [
+        NONE_RESULT]
+    antonyms_list = extract_synonyms(thes_data, ANTONYMS) if thes_data else [
+        NONE_RESULT]
     pronunciation_list = extract_pronunciation(data, STATS, PRONUNCIATION)
     variants = create_word_variants(definition_list, date_list, etymology_list, type_of_speech_list, synonyms_list, antonyms_list, pronunciation_list)
     return variants
