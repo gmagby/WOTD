@@ -62,15 +62,13 @@ def extract_synonyms(data, nyms):
     return synonyms
 
 def extract_pronunciation(data, syntax, info):
-    pronunciation = []
     for entry in data:
         try:
-            syn_group = cleaner(entry[syntax].get(info, []))
-            pronunciation = re.sub(r"'*'", '-', pronunciation)
-            pronunciation.append(syn_group)
+            pronounce = entry[syntax].get(info)
+            pronounce = re.sub(r''*'', '-', pronounce)
         except (KeyError, TypeError):
-            pronunciation.append(NONE_RESULT)
-    return pronunciation
+            pass
+    return pronounce
 
 # def create_file(folder, chosen_word, is_thesaurus=False):
 #     file_name = add_txt_to_file_name(chosen_word)
