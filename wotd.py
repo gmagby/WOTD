@@ -4,7 +4,7 @@ import os
 from cleaner_file import cleaner
 from cleaner_file import list_of_prev_wotd_cleaner
 
-WORD = 'arrant'
+WORD = 'pusillanimous'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -15,6 +15,8 @@ DATE_KEY = 'date'
 ETYMOLOGY_KEY = 'et'
 SYNONYMS = 'syns'
 ANTONYMS = 'ants'
+STATS = 'hwi'
+PRONUNCIATION = 'hw'
 NONE_RESULT = 'No info available'
 TXT_FOLDER = r'txt_files'
 THESAURUS_FOLDER = r'Thesaurus'
@@ -57,6 +59,16 @@ def extract_synonyms(data, nyms):
             synonyms.append(NONE_RESULT)
     return synonyms
 
+def extract_pronunciation(data, syntax, info):
+    pronunciation = []
+    for entry in data:
+        try:
+            syn_group = entry[syntax].get(info, [])
+            pronunciation.append(syn_group)
+        except (KeyError, TypeError):
+            pronunciation.append(NONE_RESULT)
+    return pronunciation
+
 # def create_file(folder, chosen_word, is_thesaurus=False):
 #     file_name = add_txt_to_file_name(chosen_word)
 #     folder_path = os.path.join(folder, file_name)
@@ -98,17 +110,18 @@ def list_photo_names(folder_path):
             file.endswith(('.jpg', '.webp', '.avif', '.jpeg', '.png', '.gif'))]
 
 class WordVariant:
-    def __init__(self, definition=None, type_of_speech=None, date=None, etymology=None, synonyms=None, antonyms=None):
+    def __init__(self, definition=None, type_of_speech=None, date=None, etymology=None, synonyms=None, antonyms=None, pronunciation=None):
         self.definition = definition
         self.type_of_speech = type_of_speech
         self.date = date
         self.etymology = etymology
         self.synonyms = synonyms
         self.antonyms = antonyms
+        self.pronunciation = pronunciation
 
-def create_word_variants(definitions, dates, etymologies, types_of_speech, synonyms, antonyms):
+def create_word_variants(definitions, dates, etymologies, types_of_speech, synonyms, antonyms, pronunciation):
     return [
-        WordVariant(definition, type_of_speech, date, etymology, synonyms, antonyms)
+        WordVariant(definition, type_of_speech, date, etymology, synonyms, antonyms, pronunciation)
         for definition, type_of_speech, date, etymology, synonyms, antonyms in
         zip(definitions, types_of_speech, dates, etymologies, synonyms, antonyms)
     ]
@@ -124,7 +137,8 @@ def create_variants(word_selected):
         NONE_RESULT]
     antonyms_list = extract_synonyms(thes_data, ANTONYMS) if thes_data else [
         NONE_RESULT]
-    variants = create_word_variants(definition_list, date_list, etymology_list, type_of_speech_list, synonyms_list, antonyms_list)
+    pronunciation_list = extract_pronunciation(data, STATS, PRONUNCIATION)
+    variants = create_word_variants(definition_list, date_list, etymology_list, type_of_speech_list, synonyms_list, antonyms_list, pronunciation_list)
     return variants
 
 
