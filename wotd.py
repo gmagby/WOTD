@@ -1,4 +1,6 @@
 import json
+import re
+
 import requests
 import os
 from cleaner_file import cleaner
@@ -65,6 +67,7 @@ def extract_pronunciation(data, syntax, info):
         try:
             syn_group = cleaner(entry[syntax].get(info, []))
             pronunciation.append(syn_group)
+            pronunciation = re.sub(r"'*'", '-', pronunciation)
         except (KeyError, TypeError):
             pronunciation.append(NONE_RESULT)
     return pronunciation
