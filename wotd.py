@@ -63,7 +63,7 @@ def extract_pronunciation(data, syntax, info):
     pronunciation = []
     for entry in data:
         try:
-            syn_group = entry[syntax].get(info, [])
+            syn_group = cleaner(entry[syntax].get(info, []))
             pronunciation.append(syn_group)
         except (KeyError, TypeError):
             pronunciation.append(NONE_RESULT)
@@ -131,7 +131,7 @@ def create_variants(word_selected):
     thes_data = read_data(create_folder_path(THESAURUS_FOLDER, word_selected))
     definition_list = list_manager(data, DEFINITION_KEY, sharp=1)
     date_list = list_manager(data, DATE_KEY, sharp=2)
-    etymology_list = list_manager(data, ETYMOLOGY_KEY, sharp=3)
+    etymology_list = [list_manager(data, ETYMOLOGY_KEY, sharp=3)]
     type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
     synonyms_list = extract_synonyms(thes_data, SYNONYMS) if thes_data else [
         NONE_RESULT]
@@ -165,6 +165,7 @@ def first_definition():
     print("Formated Text:")
     for t in range(len(formated_definition)):
         print(formated_definition[t])
+    print(f'{list_of_word_variants[0].pronunciation}')
     print(f'Date first used: {list_of_word_variants[0].date}')
     print(" ")
     print(f'Amount of items in Format: ' + str(len(formated_definition)))
@@ -172,6 +173,7 @@ def first_definition():
     print(" ")
     print(f'Synonyms List: {list_of_word_variants[0].synonyms}')
     print(f'Antonyms List: {list_of_word_variants[0].antonyms}')
+
     print('')
     for t in range(1, len(list_of_word_variants)):  # Start from 1 to avoid accessing index 0
         print(list_of_word_variants[t].definition)
