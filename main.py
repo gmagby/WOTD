@@ -11,7 +11,7 @@ def create_new_variants(chosen_word):
     print(list_of_word_variants)
     return list_of_word_variants
 
-favored = 1
+favored = 0
 
 def main(chosen_word):
     new_word_variants_list = create_new_variants(chosen_word)
