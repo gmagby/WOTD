@@ -6,7 +6,7 @@ import os
 from cleaner_file import cleaner
 from cleaner_file import list_of_prev_wotd_cleaner
 
-WORD = 'liturgy'
+WORD = 'intersperse'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -65,13 +65,12 @@ def extract_pronunciation(data, syntax, info):
     for entry in data:
         try:
             pronounce = entry[syntax].get(info)
-            pronounce = re.sub(r''*'', '-', pronounce)
+            return pronounce
         except (KeyError, TypeError):
             pass
-    return pronounce
 
 # def create_file(folder, chosen_word, is_thesaurus=False):
-#     file_name = add_txt_to_file_name(chosen_word)
+#     file_name = add_dottxt_to_file_name(chosen_word)
 #     folder_path = os.path.join(folder, file_name)
 #     if not os.path.exists(folder_path):
 #         data = get_thes_data(chosen_word) if is_thesaurus else get_data(chosen_word)
@@ -98,12 +97,12 @@ def read_data(path):
         print("Error", "Something went wrong.")
 
 def create_folder_path(folder_name, file_name):
-    return os.path.join(folder_name, add_txt_to_file_name(file_name))
+    return os.path.join(folder_name, add_dottxt_to_file_name(file_name))
 
 def find_data_with_path(folder_name, file_name):
     return read_data(create_folder_path(folder_name, file_name))
 
-def add_txt_to_file_name(text):
+def add_dottxt_to_file_name(text):
     return f'{cleaner(text, 5)}.txt'
 
 def list_photo_names(folder_path):
