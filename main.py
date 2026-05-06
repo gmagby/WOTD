@@ -107,7 +107,7 @@ def sidebar(chosen_word, variant):
     else:
         pass
 
-    if check_for_no_data(variant[favored].synonyms):
+    if check_for_no_data(variant[favored].synonyms[0]):
         if st.sidebar.button('Thesaurus'):
             st.sidebar.markdown("Synonyms:")
             st.sidebar.markdown(variant[favored].synonyms)
