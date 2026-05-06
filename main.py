@@ -70,7 +70,7 @@ def first_definition(chosen_word, variant):
     formated_definition = format_text(variant[favored].definition)
     for t in range(len(formated_definition)):
         st.write(
-            f'{formated_definition[t]}', size = 20)
+            f'{formated_definition[t]}')
 
 def more_definitions(chosen_word, variant):
     for t in range(1, len(variant)):  # Start from 1 to avoid accessing index 0
