@@ -41,7 +41,7 @@ def top_of_page(chosen_word, variant):
     st.header("Word of the Day", divider="rainbow")
     st.title(chosen_word)
     st.text(fr"{variant[favored].pronunciation}")
-    st.markdown(f'**{variant[favored].type_of_speech}**')
+    st.markdown(f'**{variant[favored].type_of_speech}**', size = 20)
 
 # Text to List Converter
 def format_text(text):
