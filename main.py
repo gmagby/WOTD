@@ -112,7 +112,7 @@ def sidebar(chosen_word, variant):
             st.sidebar.markdown("Synonyms:")
             st.sidebar.markdown(variant[favored].antonyms[:][0])
             st.sidebar.markdown("Antonyms:")
-            st.sidebar.markdown(variant[favored].antonyms[:][0][:])
+            st.sidebar.markdown(variant[favored].antonyms[0][:])
     else:
         pass
 
