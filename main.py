@@ -37,8 +37,6 @@ def verify_more_definitions(chosen_word, variant):
 #     if st.button("Share the Word of the Day"):
 #         st_copy_to_clipboard("https://learnnewword.streamlit.app/")
 
-
-
 def top_of_page(chosen_word, variant):
     st.header("Word of the Day", divider="rainbow")
     st.title(chosen_word)
@@ -53,7 +51,6 @@ def format_text(text):
 def check_for_no_data(text):
     if text != 'No info available':
         return True
-
     else:
         return False
 
@@ -110,7 +107,7 @@ def sidebar(chosen_word, variant):
     if check_for_no_data(variant[favored].synonyms[0]):
         if st.sidebar.button('Thesaurus'):
             st.sidebar.markdown("Synonyms:")
-            st.sidebar.markdown(",     ".join(variant[favored].synonyms[0]))
+            st.sidebar.markdown(", ".join(variant[favored].synonyms[0]))
             st.sidebar.markdown("Antonyms:")
             st.sidebar.markdown(", ".join(variant[favored].antonyms[0]))
     else:
