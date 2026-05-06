@@ -110,9 +110,9 @@ def sidebar(chosen_word, variant):
     if check_for_no_data(variant[favored].synonyms[0]):
         if st.sidebar.button('Thesaurus'):
             st.sidebar.markdown("Synonyms:")
-            st.sidebar.markdown(f", ".join(variant[favored].synonyms))
+            st.sidebar.markdown(variant[favored].antonyms[:])
             st.sidebar.markdown("Antonyms:")
-            st.sidebar.markdown(variant[favored].antonyms[1:-1])
+            st.sidebar.markdown(variant[favored].antonyms[:])
     else:
         pass
 
