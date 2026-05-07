@@ -115,7 +115,7 @@ def sidebar(chosen_word, variant):
             st.sidebar.markdown("Antonyms:")
             st.sidebar.markdown(", ".join(variant[favored].antonyms[0]))
         else:
-            pass
+            st.sidebar.markdown("Antonyms: None")
 
     def create_merriam_url(chosen_word):
         url = f'https://www.merriam-webster.com/dictionary/{chosen_word}'
