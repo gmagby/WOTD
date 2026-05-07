@@ -111,7 +111,7 @@ def sidebar(chosen_word, variant):
             st.sidebar.markdown(", ".join(variant[favored].synonyms[0]))
         else:
             pass
-        if check_for_no_data(variant[favored].antonyms):
+        if check_for_no_data(variant[favored].antonyms[0]):
             st.sidebar.markdown("Antonyms:")
             st.sidebar.markdown(", ".join(variant[favored].antonyms[0]))
         else:
