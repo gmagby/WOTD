@@ -51,7 +51,7 @@ def format_text(text):
 def check_for_no_data(text):
     if text != 'No info available':
         return True
-    if text is not None:
+    elif text is not None:
         return True
     else:
         return False
