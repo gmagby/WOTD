@@ -97,7 +97,6 @@ def list_of_prev_wotd_cleaner(clean_text):
     clean_text = clean_text.lower()
     clean_list = clean_text.split(", ")
     clean_list.sort(key=str.lower)
-    clean_list.sort()
     # print(clean_list)
     print(len(clean_list))
     # print('')
