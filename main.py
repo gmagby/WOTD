@@ -82,11 +82,18 @@ def more_definitions(chosen_word, variant):
             st.markdown(f'**{variant[t].type_of_speech}**')
             st.markdown(f'Etymology: {format_text(variant[t].etymology)}')
             st.markdown(f'Date first used: {variant[t].date}')
-            if check_for_no_data(variant[t].synonyms):
-                st.markdown("Synonyms:")
-                st.markdown(variant[t].synonyms)
-                st.markdown("Antonyms:")
-                st.markdown(variant[t].antonyms)
+            markup_nyms(variant, t)
+
+def check_for_nyms(nym, text):
+    if check_for_no_data(nym):
+        st.sidebar.markdown(f"{text}")
+        st.sidebar.markdown(", ".join(nym))
+    else:
+        pass
+def markup_nyms(variant, iter):
+    check_for_nyms(variant[iter].synonyms[0], "Synonyms:")
+    check_for_nyms(variant[iter].antonyms[0], "Antonyms:")
+
 
 def display_instructions():
     st.sidebar.markdown('Instructions on how to make WOTD into a widget on your homescreen.')
@@ -106,16 +113,7 @@ def sidebar(chosen_word, variant):
     else:
         pass
 
-    def nyms(nym, text):
-        if check_for_no_data(nym):
-            st.sidebar.markdown(f"{text}")
-            st.sidebar.markdown(", ".join(nym))
-        else:
-            pass
-
-    if st.sidebar.button('Thesaurus'):
-        nyms(variant[favored].synonyms[0], "Synonyms:")
-        nyms(variant[favored].antonyms[0], "Antonyms:")
+    markup_nyms(variant, favored)
 
     def create_merriam_url(chosen_word):
         url = f'https://www.merriam-webster.com/dictionary/{chosen_word}'
