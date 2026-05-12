@@ -106,15 +106,16 @@ def sidebar(chosen_word, variant):
     else:
         pass
 
-    if st.sidebar.button('Thesaurus'):
-        if check_for_no_data(variant[favored].synonyms[0]):
-            st.sidebar.markdown("Synonyms:")
-            st.sidebar.markdown(", ".join(variant[favored].synonyms[0]))
-        elif check_for_no_data(variant[favored].antonyms[0]):
-            st.sidebar.markdown("Antonyms:")
-            st.sidebar.markdown(", ".join(variant[favored].antonyms[0]))
+    def nyms(nym, text):
+        if check_for_no_data(nym):
+            st.sidebar.markdown(f"{text}")
+            st.sidebar.markdown(", ".join(nym))
         else:
             pass
+
+    if st.sidebar.button('Thesaurus'):
+        nyms(variant[favored].synonyms[0], "Synonyms:")
+        nyms(variant[favored].antonyms[0], "Antonyms:")
 
     def create_merriam_url(chosen_word):
         url = f'https://www.merriam-webster.com/dictionary/{chosen_word}'
