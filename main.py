@@ -113,7 +113,8 @@ def sidebar(chosen_word, variant):
     else:
         pass
 
-    markup_nyms(variant, favored)
+    if st.sidebar.button('Thesaurus'):
+        markup_nyms(variant, favored)
 
     def create_merriam_url(chosen_word):
         url = f'https://www.merriam-webster.com/dictionary/{chosen_word}'
