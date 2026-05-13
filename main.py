@@ -6,12 +6,12 @@ from wotd import create_variants
 import os
 # from st_copy_to_clipboard import st_copy_to_clipboard
 
+favored = 0
+
 def create_new_variants(chosen_word):
     list_of_word_variants = create_variants(chosen_word)
     print(list_of_word_variants)
     return list_of_word_variants
-
-favored = 0
 
 def main(chosen_word):
     new_word_variants_list = create_new_variants(chosen_word)
@@ -51,8 +51,6 @@ def format_text(text):
 def check_for_no_data(text):
     if text != 'No info available':
         return True
-    elif not text:
-        return True
     else:
         return False
 
@@ -90,10 +88,10 @@ def check_for_nyms(nym, text):
         st.sidebar.markdown(", ".join(nym))
     else:
         pass
+
 def markup_nyms(variant, iter):
     check_for_nyms(variant[iter].synonyms[0], "Synonyms:")
     check_for_nyms(variant[iter].antonyms[0], "Antonyms:")
-
 
 def display_instructions():
     st.sidebar.markdown('Instructions on how to make WOTD into a widget on your homescreen.')
@@ -137,8 +135,6 @@ def sidebar(chosen_word, variant):
         previous_WOTD.sort()
         for t in previous_WOTD:
             create_merriam_button(t, t)
-
-
 
 if __name__ == "__main__":
     main(WORD)
