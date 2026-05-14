@@ -6,7 +6,7 @@ def format_photo():
     folder_path = r"Photos"
     # Loop through all files in the folder
     for filename in os.listdir(folder_path):
-        if filename.endswith((".png", ".jpeg", ".bmp", ".gif", ".tiff", ".avif", ".gif", ".webp")):
+        if filename.endswith((".png", ".jpeg", ".bmp", ".tiff", ".avif", ".webp")):
             # Define the full file paths
             img_path = os.path.join(folder_path, filename)
 
