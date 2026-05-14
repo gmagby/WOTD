@@ -176,6 +176,7 @@ def first_definition():
     print('')
     for t in range(1, len(list_of_word_variants)):  # Start from 1 to avoid accessing index 0
         print(list_of_word_variants[t].definition)
+    print(list_of_word_variants[0].antonyms)
 
 
 def main():

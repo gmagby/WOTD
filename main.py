@@ -50,13 +50,16 @@ def format_text(text):
     text = text.split('^')
     return text
 
+# def check_for_data(text):
+#     if text:
+#         return True
+#     if text == []:
+#         return False
+#     else:
+#         return False
+
 def check_for_data(text):
-    if text:
-        return True
-    if text == []:
-        return False
-    else:
-        return False
+    return bool(text) and text != []
 
 def pull_specific_photo(folder_path, photo_name):
     # Default case (equivalent to else)
@@ -98,7 +101,7 @@ def check_for_nyms(nym, text):
 
 def markup_nyms(variant, iter):
     check_for_nyms(variant[iter].synonyms[0], "Synonyms:")
-    # check_for_nyms(variant[iter].antonyms[0], "Antonyms:")
+    check_for_nyms(variant[iter].antonyms[0], "Antonyms:")
 
 def display_instructions():
     st.sidebar.markdown('Instructions on how to make WOTD into a widget on your homescreen.')
