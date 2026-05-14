@@ -1,4 +1,6 @@
 import streamlit as st
+
+from format import format_photo
 from wotd import previous_WOTD
 from wotd import WORD
 from PIL import Image
@@ -56,6 +58,7 @@ def check_for_no_data(text):
 
 def pull_specific_photo(folder_path, photo_name):
     # Default case (equivalent to else)
+    format_photo()
     photo_path = os.path.join(folder_path, photo_name)
     if os.path.exists(photo_path):
         return Image.open(photo_path)

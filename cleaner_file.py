@@ -64,8 +64,9 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r"]", '', clean_text)
         clean_text = re.sub(r" u ", " 'u' ", clean_text)
         clean_text = re.sub(r"'", '', clean_text)
-        clean_text = re.sub(r"'*'", '', clean_text)
+        clean_text = clean_text.replace("*", "")
         clean_text = re.sub(Fr"{WORD}{WORD}", f'{WORD}', clean_text)
+        clean_text = re.sub(r"\s+", " ", clean_text).strip()
         return clean_text
     if sharp == 1:  # Definition cleaner
         clean_text = base_cleaner(definition_cleaner(clean_text))
