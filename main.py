@@ -97,8 +97,8 @@ def check_for_nyms(nym, text):
 
 
 def markup_nyms(variant, iter):
-    check_for_nyms(variant[iter].synonyms[0], "Synonyms:")
-    check_for_nyms(variant[iter].antonyms[0], "Antonyms:")
+    check_for_nyms(variant[iter].synonyms, "Synonyms:")
+    check_for_nyms(variant[iter].antonyms, "Antonyms:")
 
 def display_instructions():
     st.sidebar.markdown('Instructions on how to make WOTD into a widget on your homescreen.')
