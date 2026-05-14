@@ -89,12 +89,11 @@ def more_definitions(chosen_word, variant):
 
 def check_for_nyms(nym, text):
     try:
-        check_for_data(nym)
-        st.sidebar.markdown(f"{text}")
-        st.sidebar.markdown(", ".join(nym))
+        if check_for_data(nym):
+            st.sidebar.markdown(f"{text}")
+            st.sidebar.markdown(", ".join(nym))
     except IndexError:
             print("Out of Index")
-
 
 
 def markup_nyms(variant, iter):
