@@ -186,3 +186,4 @@ def main():
 main()
 previous_WOTD = read_data(ARCHIVE_PATH)
 link = get_data(WORD)
+link2 = get_thes_data(WORD)

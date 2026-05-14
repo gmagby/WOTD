@@ -51,10 +51,10 @@ def format_text(text):
     return text
 
 def check_for_no_data(text):
-    if text != 'No info available':
-        return True
-    else:
+    if text:
         return False
+    else:
+        return True
 
 def pull_specific_photo(folder_path, photo_name):
     # Default case (equivalent to else)
