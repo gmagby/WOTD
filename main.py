@@ -27,7 +27,7 @@ def main(chosen_word):
 def verify_more_definitions(chosen_word, variant):
     num = len(variant)
     if num > 1:
-        if check_for_no_data(variant[1].definition):
+        if check_for_data(variant[1].definition):
             if st.button("All Definitions"):
                 more_definitions(chosen_word, variant)
         else:
@@ -50,9 +50,11 @@ def format_text(text):
     text = text.split('^')
     return text
 
-def check_for_no_data(text):
+def check_for_data(text):
     if text:
         return True
+    if not text:
+        return False
     else:
         return False
 
@@ -77,7 +79,7 @@ def first_definition(chosen_word, variant):
 
 def more_definitions(chosen_word, variant):
     for t in range(1, len(variant)):  # Start from 1 to avoid accessing index 0
-        if check_for_no_data(variant[t].definition):
+        if check_for_data(variant[t].definition):
             st.header(chosen_word, divider="rainbow")
             st.markdown(f'{format_text(variant[t].definition)}')
             st.markdown(f'**{variant[t].type_of_speech}**')
@@ -87,7 +89,7 @@ def more_definitions(chosen_word, variant):
 
 def check_for_nyms(nym, text):
     try:
-        check_for_no_data(nym)
+        check_for_data(nym)
         st.sidebar.markdown(f"{text}")
         st.sidebar.markdown(", ".join(nym))
     except IndexError:
@@ -110,7 +112,7 @@ def sidebar(chosen_word, variant):
     st.sidebar.title(chosen_word)
     st.sidebar.markdown(f'**{variant[favored].type_of_speech}**')
 
-    if check_for_no_data(variant[favored].etymology):
+    if check_for_data(variant[favored].etymology):
         if st.sidebar.button("Etymology"):
             for t in range(len(variant)):
                 st.sidebar.markdown(variant[favored].etymology)
