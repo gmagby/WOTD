@@ -88,21 +88,22 @@ def more_definitions(chosen_word, variant):
             st.markdown(f'**{variant[t].type_of_speech}**')
             st.markdown(f'Etymology: {format_text(variant[t].etymology)}')
             st.markdown(f'Date first used: {variant[t].date}')
-            markup_nyms(variant, t)
+            print_nyms(variant, t)
 
 def check_for_nyms(nym, text):
     try:
         if check_for_data(nym):
-            st.sidebar.markdown(f"{text}")
-            st.sidebar.markdown(", ".join(nym))
+            markdown_nyms(nym, text)
     except IndexError:
             print("Out of Index")
-            pass
 
+def markdown_nyms(nym, text):
+    st.sidebar.markdown(f"{text}")
+    st.sidebar.markdown(", ".join(nym))
 
-def markup_nyms(variant, iter):
-    check_for_nyms(variant[iter].synonyms[0], "Synonyms:")
-    # check_for_nyms(variant[iter].antonyms[0], "Antonyms:")
+def print_nyms(variant, iteration):
+    check_for_nyms(variant[iteration].synonyms[0], "Synonyms:")
+    check_for_nyms(variant.antonyms, "Antonyms:")
 
 def display_instructions():
     st.sidebar.markdown('Instructions on how to make WOTD into a widget on your homescreen.')
@@ -123,7 +124,7 @@ def sidebar(chosen_word, variant):
         pass
 
     if st.sidebar.button('Thesaurus'):
-        markup_nyms(variant, favored)
+        print_nyms(variant, favored)
 
     def create_merriam_url(chosen_word):
         url = f'https://www.merriam-webster.com/dictionary/{chosen_word}'
