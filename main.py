@@ -86,11 +86,14 @@ def more_definitions(chosen_word, variant):
             markup_nyms(variant, t)
 
 def check_for_nyms(nym, text):
-    if check_for_no_data(nym):
+    try:
+        check_for_no_data(nym)
         st.sidebar.markdown(f"{text}")
         st.sidebar.markdown(", ".join(nym))
-    else:
-        pass
+    except IndexError:
+            print("Out of Index")
+
+
 
 def markup_nyms(variant, iter):
     check_for_nyms(variant[iter].synonyms[0], "Synonyms:")
