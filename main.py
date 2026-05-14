@@ -53,7 +53,7 @@ def format_text(text):
 def check_for_data(text):
     if text:
         return True
-    if not text:
+    if text == []:
         return False
     else:
         return False
