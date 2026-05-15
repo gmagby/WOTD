@@ -166,6 +166,7 @@ def first_definition():
         print(formated_definition[t])
     print(f'{list_of_word_variants[0].pronunciation}')
     print(f'Date first used: {list_of_word_variants[0].date}')
+    print(f'{list_of_word_variants[0].etymology}')
     print(" ")
     print(f'Amount of items in Format: ' + str(len(formated_definition)))
     print(f'Number of variants: ' + str(len(list_of_word_variants)))
