@@ -1,5 +1,4 @@
 import streamlit as st
-
 from format import format_photo
 from wotd import previous_WOTD
 from wotd import WORD

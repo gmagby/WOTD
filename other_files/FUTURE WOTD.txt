@@ -19,4 +19,5 @@ Future WOTD = [
 "arresting",
 "ageneses",
 "attesting"
+Affable
 ]
