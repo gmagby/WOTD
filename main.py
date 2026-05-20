@@ -143,7 +143,6 @@ def sidebar(chosen_word, variant):
             '[Hold to copy WOTD link](https://learnnewword.streamlit.app/)')
 
     if st.sidebar.button('Previous words of the day.'):
-        previous_WOTD.sort()
         for t in previous_WOTD:
             create_merriam_button(t, t)
 
