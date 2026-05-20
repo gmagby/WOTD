@@ -1,6 +1,4 @@
 import re
-
-
 def cleaner(clean_text, sharp=None):
     from wotd import WORD
     # print(f'Old:          {clean_text}')
