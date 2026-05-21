@@ -143,7 +143,7 @@ def create_variants(word_selected):
     return variants
 
 def add_new_word(chosen_word):
-    previous_WOTD = sorted_file_list
+    previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names(PHOTO_FOLDER))
     if chosen_word in previous_WOTD:
         print("Word already added")
         pass
