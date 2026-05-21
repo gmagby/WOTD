@@ -5,7 +5,7 @@ import requests
 import os
 from cleaner_file import cleaner
 from cleaner_file import list_of_prev_wotd_cleaner
-from List_ordered import sorted_file_list
+# from List_ordered import sorted_file_list
 
 WORD = 'moil'
 REF_DICTIONARY = "collegiate"
