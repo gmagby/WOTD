@@ -87,16 +87,12 @@ def more_definitions(chosen_word, variant):
             st.markdown(f'**{variant[t].type_of_speech}**')
             st.markdown(f'Etymology: {format_text(variant[t].etymology)}')
             st.markdown(f'Date first used: {variant[t].date}')
-            print_nyms(variant, t)
+            # print_nyms(variant, t)
 
-def check_for_nyms(nym, text, sidebar = None):
+def check_for_nyms(nym, text):
     try:
         if check_for_data(nym):
-            if sidebar:
-                sidebar_markdown_nyms(nym, text)
-            else:
-                markdown_nyms(nym, text)
-
+            markdown_nyms(nym, text)
     except IndexError:
             print("Out of Index")
 
@@ -104,7 +100,7 @@ def markdown_nyms(nym, text):
     st.sidebar.markdown(f"{text}")
     st.sidebar.markdown(", ".join(nym))
 
-def sidebar_markdown_nyms(nym, text):
+def markdown_nyms(nym, text):
     st.sidebar.markdown(f"{text}")
     st.sidebar.markdown(", ".join(nym))
 
