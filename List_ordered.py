@@ -10,5 +10,7 @@ def list_and_sort_files(folder_path):
 
 # Example usage
 folder_path = r'C:\Users\gabem\OneDrive\Desktop\WOTD images'
-sorted_file_list = list_of_prev_wotd_cleaner(list_and_sort_files(folder_path)).reverse()
+sorted_file_list = list_of_prev_wotd_cleaner(list_and_sort_files(folder_path))
+print(sorted_file_list)
+sorted_file_list = sorted_file_list[::-1]
 print(sorted_file_list)
