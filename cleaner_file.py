@@ -91,6 +91,7 @@ def list_of_prev_wotd_cleaner(clean_text):
     clean_text = re.sub(r'.gif', '', clean_text)
     clean_text = re.sub(r'.webp', '', clean_text)
     clean_text = re.sub(r'.avif', '', clean_text)
+    clean_text = re.sub(r'.mp4', '', clean_text)
     clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
     clean_text = re.sub(r"]", '', clean_text)
     clean_text = re.sub(r"'", '', clean_text)
