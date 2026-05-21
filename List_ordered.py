@@ -1,5 +1,6 @@
 import os
 from datetime import datetime
+from cleaner_file import list_of_prev_wotd_cleaner
 
 def list_and_sort_files(folder_path):
     files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
@@ -9,5 +10,5 @@ def list_and_sort_files(folder_path):
 
 # Example usage
 folder_path = r'C:\Users\gabem\OneDrive\Desktop\WOTD images'
-sorted_file_list = list_and_sort_files(folder_path)
+sorted_file_list = list_of_prev_wotd_cleaner(list_and_sort_files(folder_path))
 print(sorted_file_list)

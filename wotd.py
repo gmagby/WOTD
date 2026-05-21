@@ -5,9 +5,9 @@ import requests
 import os
 from cleaner_file import cleaner
 from cleaner_file import list_of_prev_wotd_cleaner
-# from List_ordered import sorted_file_list
+from List_ordered import sorted_file_list
 
-WORD = 'moil'
+WORD = 'myriad'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -143,7 +143,7 @@ def create_variants(word_selected):
     return variants
 
 def add_new_word(chosen_word):
-    previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names(PHOTO_FOLDER))
+    previous_WOTD = sorted_file_list
     if chosen_word in previous_WOTD:
         print("Word already added")
         pass
