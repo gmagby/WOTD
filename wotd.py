@@ -196,6 +196,6 @@ def main():
     first_definition()
 
 main()
-previous_WOTD = ARCHIVE_PATH
+previous_WOTD = get_data(ARCHIVE_PATH)
 link = get_data(WORD)
 link2 = get_thes_data(WORD)
