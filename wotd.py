@@ -7,7 +7,7 @@ from cleaner_file import cleaner
 from cleaner_file import list_of_prev_wotd_cleaner
 
 
-WORD = 'moil'
+WORD = 'myriad'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -109,6 +109,13 @@ def add_dottxt_to_file_name(text):
 def list_photo_names(folder_path):
     return [file for file in os.listdir(folder_path) if
             file.endswith(('.jpg', '.webp', '.avif', '.jpeg', '.png', '.gif'))]
+def list_and_sort_files():
+    folder_path = r'Photos'
+    files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
+    files_with_dates = [(f, os.path.getctime(os.path.join(folder_path, f))) for f in files]
+    sorted_files = sorted(files_with_dates, key=lambda x: x[1])
+    print(len(sorted_files))
+    return [f[0] for f in sorted_files]
 
 class WordVariant:
     def __init__(self, definition=None, type_of_speech=None, date=None, etymology=None, synonyms=None, antonyms=None, pronunciation=None):
@@ -143,13 +150,15 @@ def create_variants(word_selected):
     return variants
 
 def add_new_word(chosen_word):
-    previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names(PHOTO_FOLDER))
+    previous_WOTD = read_data(ARCHIVE_PATH)
+    print(previous_WOTD)
     if chosen_word in previous_WOTD:
         print("Word already added")
         pass
     else:
         previous_WOTD.append(chosen_word)  # Use chosen_word instead of WORD
         save_new_data(ARCHIVE_PATH, previous_WOTD)
+    return previous_WOTD
 
 def create_archive(chosen_word):
     create_file(TXT_FOLDER, chosen_word)
@@ -187,6 +196,6 @@ def main():
     first_definition()
 
 main()
-previous_WOTD = read_data(ARCHIVE_PATH)
+previous_WOTD = ARCHIVE_PATH
 link = get_data(WORD)
 link2 = get_thes_data(WORD)
