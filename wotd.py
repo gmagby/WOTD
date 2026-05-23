@@ -154,9 +154,12 @@ def add_new_word(chosen_word):
     print(previous_WOTD)
     if chosen_word in previous_WOTD:
         print("Word already added")
-        pass
+        # Ensure it's at the end if we are appending (Oldest First file)
+        previous_WOTD.remove(chosen_word)
+        previous_WOTD.append(chosen_word)
+        save_new_data(ARCHIVE_PATH, previous_WOTD)
     else:
-        previous_WOTD.append(chosen_word)  # Use chosen_word instead of WORD
+        previous_WOTD.append(chosen_word)  # Append to the end for chronological log
         save_new_data(ARCHIVE_PATH, previous_WOTD)
     return previous_WOTD
 
@@ -190,15 +193,14 @@ def first_definition():
     print(list_of_word_variants[0].antonyms)
 
 
-def main():
-    add_new_word(WORD)
-    create_archive(WORD)
-    first_definition()
+def main(word=None):
+    if word is None:
+        word = WORD
+    add_new_word(word)
+    create_archive(word)
+    # first_definition(word)  # Pass word if you want it to print that specific word's data
     from update_html import update_index_html
-    update_index_html(WORD)
+    update_index_html(word)
 
-main()
-previous_WOTD = read_data(ARCHIVE_PATH)
-print(previous_WOTD)
-link = get_data(WORD)
-link2 = get_thes_data(WORD)
+if __name__ == "__main__":
+    main()

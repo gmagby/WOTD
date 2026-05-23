@@ -147,7 +147,7 @@ def sidebar(chosen_word, variant):
         st.sidebar.code("https://learnnewword.streamlit.app/")
 
     if st.sidebar.button('Previous words of the day.'):
-        for t in (previous_WOTD):
+        for t in reversed(previous_WOTD):
             create_merriam_button(t, t)
 
 

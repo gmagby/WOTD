@@ -1,5 +1,4 @@
 Future WOTD = [
-"agnostics",
 "amnesties",
 "acnes",
 "Alcestis",
@@ -18,6 +17,6 @@ Future WOTD = [
 "achiness",
 "arresting",
 "ageneses",
-"attesting"
-Affable
+"attesting",
+"Affable"
 ]
