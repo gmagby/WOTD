@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word of the Day</title>
+    <!-- 
+        CSS Variables for easy customization. 
+        Change these values to update the look and feel of the whole app.
+    -->
+    <style>
+        :root {
+            --primary-color: #4a90e2; /* Main accent color */
+            --secondary-color: #f5f7fa; /* Background color */
+            --text-color: #333333; /* Main text color */
+            --light-text: #666666; /* Secondary text color */
+            --card-bg: #ffffff; /* Card background */
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for elements */
+            --border-radius: 12px; /* Rounded corners */
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Basic Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Container for the app, handles responsiveness */
+        .container {
+            width: 100%;
+            max-width: 600px; /* Limits width on desktop, full width on mobile */
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Main WOTD Card */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            shadow: var(--shadow);
+            box-shadow: var(--shadow);
+        }
+
+        /* App Header */
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .rainbow-divider {
+            height: 4px;
+            background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+            border-radius: 2px;
+            margin-top: 10px;
+        }
+
+        /* Word Section */
+        .word-header {
+            margin-bottom: 20px;
+        }
+
+        .word-title {
+            font-size: 3rem;
+            color: var(--primary-color);
+            text-transform: capitalize;
+        }
+
+        .pronunciation {
+            font-size: 1.2rem;
+            color: var(--light-text);
+            font-style: italic;
+        }
+
+        .type-of-speech {
+            font-weight: bold;
+            color: var(--primary-color);
+            text-transform: lowercase;
+            margin-top: 5px;
+        }
+
+        /* Content Sections */
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .definition {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .etymology, .date {
+            font-size: 0.95rem;
+            color: var(--light-text);
+        }
+
+        /* Image Display */
+        .word-image {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            margin-top: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Sidebar/Extras Section (Responsive) */
+        .extras {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        @media (max-width: 480px) {
+            .extras {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .extra-box {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        /* Footer Links & Buttons */
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- APP HEADER SECTION -->
+        <header>
+            <h1>Word of the Day</h1>
+            <!-- Rainbow Divider similar to the Streamlit app -->
+            <div class="rainbow-divider"></div>
+        </header>
+
+        <!-- MAIN CONTENT CARD -->
+        <main class="card">
+            <div class="word-header">
+                <!-- THE WORD -->
+                <h2 id="word" class="word-title">Aureole</h2>
+                <!-- PRONUNCIATION -->
+                <p id="pronunciation" class="pronunciation">/ˈôrēˌōl/</p>
+                <!-- TYPE OF SPEECH (Noun, Verb, etc.) -->
+                <p id="type-of-speech" class="type-of-speech">noun</p>
+            </div>
+
+            <!-- DEFINITION SECTION -->
+            <div class="section-title">Definition</div>
+            <div id="definition" class="definition">
+                A circle of light or brightness surrounding something, especially as depicted in art around the head or body of a holy person.
+            </div>
+
+            <!-- ETYMOLOGY SECTION -->
+            <div class="section-title">Etymology</div>
+            <p id="etymology" class="etymology">
+                Middle English: from Latin aureola (corona) ‘golden (crown)’.
+            </p>
+
+            <!-- DATE FIRST USED -->
+            <div class="section-title">First Used</div>
+            <p id="date" class="date">13th Century</p>
+
+            <!-- WORD IMAGE -->
+            <!-- Note: Placeholder image. In a real app, this would link to your Photos folder -->
+            <img src="https://via.placeholder.com/600x400?text=Aureole+Image" alt="Word Image" class="word-image" id="word-image">
+        </main>
+
+        <!-- EXTRA INFORMATION (SYNONYMS/ANTONYMS) -->
+        <div class="extras">
+            <div class="extra-box">
+                <div class="section-title">Synonyms</div>
+                <p id="synonyms">halo, nimbus, corona</p>
+            </div>
+            <div class="extra-box">
+                <div class="section-title">Antonyms</div>
+                <p id="antonyms">darkness, void</p>
+            </div>
+        </div>
+
+        <!-- NAVIGATION / ACTION BUTTONS -->
+        <div class="nav-buttons">
+            <!-- Link to External Dictionary -->
+            <a href="https://www.merriam-webster.com/dictionary/aureole" target="_blank" class="btn">Merriam-Webster</a>
+            <!-- Archive Button Placeholder -->
+            <button class="btn btn-secondary" onclick="alert('Open Archive')">Previous Words</button>
+            <!-- Share Button Placeholder -->
+            <button class="btn btn-secondary" onclick="alert('Link Copied!')">Share</button>
+        </div>
+
+        <!-- MOBILE APP INSTRUCTIONS BUTTON -->
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="#" style="color: var(--light-text); font-size: 0.8rem;">How to add to Home Screen</a>
+        </div>
+    </div>
+
+</body>
+</html>
