@@ -194,6 +194,8 @@ def main():
     add_new_word(WORD)
     create_archive(WORD)
     first_definition()
+    from update_html import update_index_html
+    update_index_html(WORD)
 
 main()
 previous_WOTD = read_data(ARCHIVE_PATH)

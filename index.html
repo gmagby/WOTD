@@ -10,7 +10,7 @@
     -->
     <style>
         :root {
-            --primary-color: #4a90e2; /* Main accent color */
+            --primary-color: #945454; /* Main accent color */
             --secondary-color: #f5f7fa; /* Background color */
             --text-color: #333333; /* Main text color */
             --light-text: #666666; /* Secondary text color */
@@ -169,6 +169,101 @@
             background-color: #6c757d;
         }
     </style>
+    <script>
+        const ARCHIVE_PATH = 'other_files/Former Words.txt';
+        const TXT_FOLDER = 'txt_files/';
+        const THESAURUS_FOLDER = 'Thesaurus/';
+
+        async function loadWord(word) {
+            // Remove file extensions if present (e.g., from 'polemic.mp4')
+            word = word.split('.')[0];
+            try {
+                // Fetch dictionary data
+                const dictResponse = await fetch(`${TXT_FOLDER}${word}.txt`);
+                const dictData = await dictResponse.json();
+                
+                // Fetch thesaurus data
+                let thesData = null;
+                try {
+                    const thesResponse = await fetch(`${THESAURUS_FOLDER}${word}.txt`);
+                    if (thesResponse.ok) thesData = await thesResponse.json();
+                } catch (e) { console.log("No thesaurus data for " + word); }
+
+                // Basic cleaning logic (simplified version of Python cleaner)
+                const clean = (text) => {
+                    if (!text || text === "No info available") return "";
+                    return String(text).replace(/[#[/@<>{}=~|?*\]]/g, '').replace(/\s+/g, ' ').trim();
+                };
+
+                const entry = dictData[0];
+                document.getElementById('word').textContent = word;
+                document.getElementById('pronunciation').textContent = entry.hwi?.prs?.[0]?.mw || entry.hwi?.hw || "";
+                document.getElementById('type-of-speech').textContent = entry.fl || "";
+                document.getElementById('definition').textContent = clean(entry.shortdef?.[0] || "No definition available");
+                document.getElementById('etymology').textContent = clean(entry.et?.[0]?.[1] || "No etymology available");
+                document.getElementById('date').textContent = clean(entry.date || "Unknown");
+                
+                // Update Image
+                document.getElementById('word-image').src = `Photos/${word}.jpg`;
+                document.getElementById('word-image').onerror = () => {
+                    document.getElementById('word-image').src = 'https://via.placeholder.com/600x400?text=' + word;
+                };
+
+                // Update Synonyms/Antonyms
+                let synonyms = "None available";
+                let antonyms = "None available";
+                if (thesData && thesData[0] && thesData[0].meta) {
+                    synonyms = thesData[0].meta.syns?.flat().join(', ') || synonyms;
+                    antonyms = thesData[0].meta.ants?.flat().join(', ') || antonyms;
+                }
+                document.getElementById('synonyms').textContent = synonyms;
+                document.getElementById('antonyms').textContent = antonyms;
+
+                // Update Merriam-Webster link
+                document.getElementById('mw-link').href = `https://www.merriam-webster.com/dictionary/${word}`;
+
+                // Scroll to top
+                window.scrollTo(0, 0);
+
+            } catch (error) {
+                console.error("Error loading word:", error);
+                alert("Could not load data for " + word);
+            }
+        }
+
+        async function loadPreviousWords() {
+            try {
+                const response = await fetch(ARCHIVE_PATH);
+                const words = await response.json();
+                const container = document.getElementById('previous-words-list');
+                container.innerHTML = '';
+                words.reverse().forEach(word => {
+                    const btn = document.createElement('button');
+                    btn.className = 'btn btn-secondary';
+                    btn.style.margin = '5px';
+                    btn.textContent = word;
+                    btn.onclick = () => loadWord(word);
+                    container.appendChild(btn);
+                });
+            } catch (error) {
+                console.error("Error loading archive:", error);
+            }
+        }
+
+        function toggleArchive() {
+            const list = document.getElementById('previous-words-list');
+            list.style.display = list.style.display === 'none' ? 'flex' : 'none';
+            if (list.style.display === 'flex') {
+                loadPreviousWords();
+            }
+        }
+
+        // Initialize with the current word (to be injected or hardcoded as default)
+        window.onload = () => {
+            const currentWord = document.getElementById('word').textContent;
+            loadWord(currentWord);
+        };
+    </script>
 </head>
 <body>
 
@@ -184,7 +279,7 @@
         <main class="card">
             <div class="word-header">
                 <!-- THE WORD -->
-                <h2 id="word" class="word-title">Aureole</h2>
+                <h2 id="word" class="word-title">aureole</h2>
                 <!-- PRONUNCIATION -->
                 <p id="pronunciation" class="pronunciation">/ˈôrēˌōl/</p>
                 <!-- TYPE OF SPEECH (Noun, Verb, etc.) -->
@@ -227,11 +322,15 @@
         <!-- NAVIGATION / ACTION BUTTONS -->
         <div class="nav-buttons">
             <!-- Link to External Dictionary -->
-            <a href="https://www.merriam-webster.com/dictionary/aureole" target="_blank" class="btn">Merriam-Webster</a>
-            <!-- Archive Button Placeholder -->
-            <button class="btn btn-secondary" onclick="alert('Open Archive')">Previous Words</button>
+            <a href="https://www.merriam-webster.com/dictionary/aureole" target="_blank" class="btn" id="mw-link">Merriam-Webster</a>
+            <!-- Archive Button -->
+            <button class="btn btn-secondary" onclick="toggleArchive()">Previous Words</button>
             <!-- Share Button Placeholder -->
             <button class="btn btn-secondary" onclick="alert('Link Copied!')">Share</button>
+        </div>
+
+        <div id="previous-words-list" class="nav-buttons" style="display: none; flex-wrap: wrap; background: var(--card-bg); padding: 15px; border-radius: var(--border-radius); box-shadow: var(--shadow);">
+            <!-- Words will be injected here -->
         </div>
 
         <!-- MOBILE APP INSTRUCTIONS BUTTON -->
