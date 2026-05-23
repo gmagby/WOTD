@@ -332,6 +332,28 @@
             }
         }
 
+        async function shareApp() {
+            const shareData = {
+                title: 'Word of the Day',
+                text: `Check out today's Word of the Day: ${document.getElementById('word').textContent}!`,
+                url: window.location.href
+            };
+
+            try {
+                if (navigator.share) {
+                    await navigator.share(shareData);
+                } else {
+                    await navigator.clipboard.writeText(window.location.href);
+                    alert('Link copied to clipboard!');
+                }
+            } catch (err) {
+                console.error('Error sharing:', err);
+                // Fallback for cases where navigator.share is cancelled or fails
+                await navigator.clipboard.writeText(window.location.href);
+                alert('Link copied to clipboard!');
+            }
+        }
+
         async function loadPreviousWords() {
             try {
                 const response = await fetch(ARCHIVE_PATH);
@@ -434,8 +456,8 @@
             <a href="https://www.merriam-webster.com/dictionary/aureole" target="_blank" class="btn" id="mw-link">Merriam-Webster</a>
             <!-- Archive Button -->
             <button class="btn btn-secondary" onclick="toggleArchive()">Previous Words</button>
-            <!-- Share Button Placeholder -->
-            <button class="btn btn-secondary" onclick="alert('Link Copied!')">Share</button>
+            <!-- Share Button -->
+            <button class="btn btn-secondary" onclick="shareApp()">Share</button>
         </div>
 
         <div id="previous-words-list" class="nav-buttons" style="display: none; flex-wrap: wrap; background: var(--card-bg); padding: 15px; border-radius: var(--border-radius); box-shadow: var(--shadow);">

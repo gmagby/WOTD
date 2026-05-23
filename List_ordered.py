@@ -11,4 +11,3 @@ def list_and_sort_files():
 
 sorted_file_list = list_of_prev_wotd_cleaner(list_and_sort_files())
 reverse_sorted_file_list = sorted_file_list[::-1]
-
