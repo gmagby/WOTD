@@ -4,17 +4,14 @@ def cleaner(clean_text, sharp=None):
     # print(f'Old:          {clean_text}')
     clean_text = str(clean_text)
     def etymology_cleaner(clean_text):
-        clean_text = re.sub(r"mat|", '', clean_text)
-        clean_text = re.sub(r"dx_ety}", '', clean_text)
-        clean_text = re.sub(r"mat}", '', clean_text)
-        clean_text = re.sub(r"bc}", '', clean_text)
-        clean_text = re.sub(r"ma}", '', clean_text)
-        clean_text = re.sub(r"dx}", '', clean_text)
-        clean_text = re.sub(r"dxt", '', clean_text)
-        clean_text = re.sub(r'it}', '', clean_text)
+        # Remove Merriam-Webster API tokens/tags
+        # Pattern matches {tag|data} or {tag} or {/tag}
+        clean_text = re.sub(r'\{[a-z_]+(\|[^}]*)?\}', '', clean_text)
+        clean_text = re.sub(r'\{/[a-z_]+\}', '', clean_text)
+        
+        # Specific patterns and cleanup
         clean_text = re.sub(r"'text', ", '', clean_text)
         clean_text = re.sub(r']]', '', clean_text)
-        clean_text = re.sub(r"et_link", '', clean_text)
         clean_text = re.sub(r":2", '', clean_text)
         clean_text = re.sub(r":1", '', clean_text)
         clean_text = re.sub(r"-ia", '', clean_text)
@@ -23,48 +20,40 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r"'t',", '', clean_text)
         clean_text = re.sub(r"', '", ', ^', clean_text)
         clean_text = re.sub(r"andor", 'and/or', clean_text)
-        clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
-        clean_text = re.sub(r"]", '', clean_text)
+        
+        # Remove specific artifacts
+        clean_text = re.sub(r"ǵehinf2infr-", r'', clean_text)
+        
+        # Double WORD occurrences
         clean_text = re.sub(Fr"{WORD}{WORD}", f'{WORD}', clean_text)
         clean_text = re.sub(r"-ed-ed", f'-ed', clean_text)
         clean_text = re.sub(r"addleaddle", r'addle', clean_text)
-        clean_text = re.sub(r"ǵehinf2infr-", r'', clean_text)
+        
         return clean_text
     def definition_cleaner(clean_text):
         clean_text = re.sub(r"', '", ', ^', clean_text)
         return clean_text
     def date_cleaner(clean_text):
-        clean_text = re.sub(r'dst1a1', '', clean_text)
-        clean_text = re.sub(r'dst2', '', clean_text)
-        clean_text = re.sub(r"ds1a", '', clean_text)
-        clean_text = re.sub(r"dst", '', clean_text)
-        clean_text = re.sub(r"ds1b", '', clean_text)
-        clean_text = re.sub(r'dst2', '', clean_text)
-        clean_text = re.sub(r'ds3', '', clean_text)
-        clean_text = re.sub(r'ds5', '', clean_text)
-        clean_text = re.sub(r"dx_ety", '', clean_text)
-        clean_text = re.sub(r"dxt", '', clean_text)
-        clean_text = re.sub(r"dsi1", '', clean_text)
-        clean_text = re.sub(r'ds1', '', clean_text)
-        clean_text = re.sub(r'ds2', '', clean_text)
-        clean_text = re.sub(r'1a', '', clean_text)
-        clean_text = re.sub(r'.jpg', '', clean_text)
-        clean_text = re.sub(r'.jpeg', '', clean_text)
-        clean_text = re.sub(r'.png', '', clean_text)
-        clean_text = re.sub(r'.gif', '', clean_text)
-        clean_text = re.sub(r'ds1a', '', clean_text)
-
+        # Remove Merriam-Webster API tokens/tags like {ds||1|a|}
+        clean_text = re.sub(r'\{[a-z_]*(\|[^}]*)?\}', '', clean_text)
+        clean_text = re.sub(r'\{/[a-z_]+\}', '', clean_text)
+        
+        # Cleanup file extensions if they leaked in
+        clean_text = re.sub(r'\.(jpg|jpeg|png|gif|webp|avif|mp4)', '', clean_text)
+        
         return clean_text
     def file_cleaner(clean_text):
         clean_text = re.sub(r".txt.txt", ".txt", clean_text)
         return clean_text
     def base_cleaner(clean_text):
+        # Remove Merriam-Webster API tokens/tags
+        clean_text = re.sub(r'\{[a-z_]*(\|[^}]*)?\}', '', clean_text)
+        clean_text = re.sub(r'\{/[a-z_]+\}', '', clean_text)
+        
         clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
-        clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
-        clean_text = re.sub(r"]", '', clean_text)
+        clean_text = re.sub(r"[\#[/@<>{}=~|?*\]]", '', clean_text) # Removed '*' via [] and added ']'
         clean_text = re.sub(r" u ", " 'u' ", clean_text)
         clean_text = re.sub(r"'", '', clean_text)
-        clean_text = clean_text.replace("*", "")
         clean_text = re.sub(Fr"{WORD}{WORD}", f'{WORD}', clean_text)
         clean_text = re.sub(r"\s+", " ", clean_text).strip()
         return clean_text

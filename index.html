@@ -71,6 +71,15 @@
         /* Word Section */
         .word-header {
             margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .word-title-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .word-title {
@@ -83,6 +92,30 @@
             font-size: 1.2rem;
             color: var(--light-text);
             font-style: italic;
+            margin-top: -5px;
+        }
+
+        .sound-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.2s;
+            color: var(--primary-color);
+        }
+
+        .sound-btn:hover {
+            background-color: rgba(148, 84, 84, 0.1);
+        }
+
+        .sound-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
         }
 
         .type-of-speech {
@@ -193,6 +226,11 @@
                 const baseClean = (text) => {
                     if (!text || text === "No info available") return "";
                     let cleanText = String(text);
+                    // Remove Merriam-Webster API tokens/tags
+                    cleanText = cleanText.replace(/\{[a-z_]*(\|[^}]*)?\}/g, '');
+                    cleanText = cleanText.replace(/\{[a-z_]+\}/g, '');
+                    cleanText = cleanText.replace(/\{\/[a-z_]+\}/g, '');
+
                     cleanText = cleanText.replace(/\s+/g, ' '); // Remove extra spaces
                     cleanText = cleanText.replace(/[#[/@<>{}=~|?*\]]/g, ''); // Remove special characters
                     cleanText = cleanText.replace(/'/g, ''); // Remove single quotes
@@ -210,32 +248,54 @@
                 const cleanEtymology = (text) => {
                     if (!text) return "";
                     let cleanText = String(text);
-                    // Patterns from cleaner_file.py
-                    const patterns = [
-                        /mat\|/g, /dx_ety}/g, /mat}/g, /bc}/g, /ma}/g, /dx}/g, /dxt/g, /it}/g,
-                        /'text',\s*/g, /]]/g, /et_link/g, /:2/g, /:1/g, /-ia/g,
-                        /et_snote',/g, /et_snote/g, /'t',/g, /andor/g
-                    ];
-                    patterns.forEach(p => cleanText = cleanText.replace(p, ''));
+                    // Standard base cleaning handles MW tags now
+                    cleanText = baseClean(cleanText);
+                    // Specific patterns from cleaner_file.py
+                    cleanText = cleanText.replace(/'text',\s*/g, '');
+                    cleanText = cleanText.replace(/]]/g, '');
+                    cleanText = cleanText.replace(/:[12]/g, '');
+                    cleanText = cleanText.replace(/-ia/g, '');
+                    cleanText = cleanText.replace(/et_snote',?/g, '');
+                    cleanText = cleanText.replace(/'t',/g, '');
                     cleanText = cleanText.replace(/'\s*,\s*'/g, ', ^');
                     cleanText = cleanText.replace(/andor/g, 'and/or');
-                    return baseClean(cleanText);
+                    return cleanText.trim();
                 };
 
                 const cleanDate = (text) => {
                     if (!text) return "";
                     let cleanText = String(text);
-                    const patterns = [
-                        /dst1a1/g, /dst2/g, /ds1a/g, /dst/g, /ds1b/g, /ds3/g, /ds5/g,
-                        /dx_ety/g, /dxt/g, /dsi1/g, /ds1/g, /ds2/g, /1a/g,
-                        /\.jpg/g, /\.jpeg/g, /\.png/g, /\.gif/g
-                    ];
-                    patterns.forEach(p => cleanText = cleanText.replace(p, ''));
-                    return baseClean(cleanText);
+                    // Standard base cleaning handles MW tags now
+                    cleanText = baseClean(cleanText);
+                    // Cleanup file extensions if they leaked in
+                    cleanText = cleanText.replace(/\.(jpg|jpeg|png|gif|webp|avif|mp4)/g, '');
+                    return cleanText.trim();
                 };
 
                 const entry = dictData[0];
+                if (!entry) throw new Error("No dictionary entry found");
+
                 document.getElementById('word').textContent = word;
+                
+                // Audio handling
+                const audioName = entry.hwi?.prs?.[0]?.sound?.audio;
+                const soundBtn = document.getElementById('sound-btn');
+                if (audioName) {
+                    let subdir = audioName.charAt(0);
+                    if (audioName.startsWith('bix')) subdir = 'bix';
+                    else if (audioName.startsWith('gg')) subdir = 'gg';
+                    else if (/^[0-9\W]/.test(audioName)) subdir = 'number';
+                    
+                    const audioUrl = `https://media.merriam-webster.com/audio/prons/en/us/mp3/${subdir}/${audioName}.mp3`;
+                    soundBtn.onclick = () => {
+                        const audio = new Audio(audioUrl);
+                        audio.play();
+                    };
+                    soundBtn.style.display = 'inline-flex';
+                } else {
+                    soundBtn.style.display = 'none';
+                }
+
                 document.getElementById('pronunciation').textContent = entry.hwi?.prs?.[0]?.mw || entry.hwi?.hw || "";
                 document.getElementById('type-of-speech').textContent = entry.fl || "";
                 document.getElementById('definition').textContent = cleanDefinition(entry.shortdef?.[0] || "No definition available");
@@ -319,12 +379,20 @@
         <!-- MAIN CONTENT CARD -->
         <main class="card">
             <div class="word-header">
-                <!-- THE WORD -->
-                <h2 id="word" class="word-title">aureole</h2>
-                <!-- PRONUNCIATION -->
-                <p id="pronunciation" class="pronunciation">/ˈôrēˌōl/</p>
-                <!-- TYPE OF SPEECH (Noun, Verb, etc.) -->
-                <p id="type-of-speech" class="type-of-speech">noun</p>
+                <div>
+                    <div class="word-title-container">
+                        <!-- THE WORD -->
+                        <h2 id="word" class="word-title">aureole</h2>
+                        <!-- SOUND BUTTON -->
+                        <button id="sound-btn" class="sound-btn" title="Listen to pronunciation" style="display: none;">
+                            <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                        </button>
+                    </div>
+                    <!-- PRONUNCIATION -->
+                    <p id="pronunciation" class="pronunciation">/ˈôrēˌōl/</p>
+                    <!-- TYPE OF SPEECH (Noun, Verb, etc.) -->
+                    <p id="type-of-speech" class="type-of-speech">noun</p>
+                </div>
             </div>
 
             <!-- DEFINITION SECTION -->
