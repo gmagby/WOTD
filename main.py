@@ -145,7 +145,6 @@ def sidebar(chosen_word, variant):
         display_instructions()
 
     if st.sidebar.button("Share the Word of the Day"):
-        st.sidebar.write("Link copied to clipboard!")
         st.sidebar.code("https://learnnewword.streamlit.app/")
 
     if st.sidebar.button('Previous words of the day.'):
