@@ -59,14 +59,14 @@ def cleaner(clean_text, sharp=None):
         return clean_text
     if sharp == 1:  # Definition cleaner
         clean_text = base_cleaner(definition_cleaner(clean_text))
-    if sharp == 2:  # Date cleaner
+    elif sharp == 2:  # Date cleaner
         clean_text = date_cleaner(base_cleaner(clean_text))
-    if sharp == 3:  # Etymology cleaner
+    elif sharp == 3:  # Etymology cleaner
         clean_text = base_cleaner(etymology_cleaner(clean_text))
-    if sharp == 4:
-        base_cleaner(clean_text)
-    if sharp == 5:
-        file_cleaner(clean_text)
+    elif sharp == 4:
+        clean_text = base_cleaner(clean_text)
+    elif sharp == 5:
+        clean_text = file_cleaner(clean_text)
     clean_text = re.sub(r"\s+", " ", clean_text).strip()
     clean_text = str(clean_text)
     print(f'Clean:        {clean_text}')

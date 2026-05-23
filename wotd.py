@@ -26,7 +26,20 @@ THESAURUS_FOLDER = r'Thesaurus'
 WOTD_ARCHIVE = r'Former Words.txt'
 PHOTO_FOLDER = r"Photos"
 OTHER_FILES = r"other_files"
+def read_data(path):
+    try:
+        if os.path.exists(path):
+            with open(path, "r") as f:
+                data = json.loads(f.read())
+                return data
+        return []
+
+    except (ValueError, FileNotFoundError, json.JSONDecodeError):
+        print("Error", "Something went wrong.")
+        return []
+
 ARCHIVE_PATH = r'other_files/Former Words.txt'
+previous_WOTD = read_data(ARCHIVE_PATH)
 
 def get_response(ref, word, key):
     url = f"https://www.dictionaryapi.com/api/v3/references/{ref}/json/{word}?key={key}"
@@ -54,13 +67,17 @@ def list_manager(data, syntax, sharp=None):
 
 def extract_synonyms(data, nyms):
     synonyms = []
+    if not data or not isinstance(data, list):
+        return [NONE_RESULT]
     for entry in data:
         try:
-            syn_group = entry['meta'].get(nyms, [])
-            synonyms.append(syn_group)
+            if isinstance(entry, dict) and 'meta' in entry:
+                syn_group = entry['meta'].get(nyms, [])
+                if syn_group:
+                    synonyms.append(syn_group)
         except (KeyError, TypeError):
-            synonyms.append(NONE_RESULT)
-    return synonyms
+            pass
+    return synonyms if synonyms else [NONE_RESULT]
 
 def extract_pronunciation(data, syntax, info):
     for entry in data:
@@ -201,6 +218,10 @@ def main(word=None):
     # first_definition(word)  # Pass word if you want it to print that specific word's data
     from update_html import update_index_html
     update_index_html(word)
+    
+    # Refresh previous_WOTD after adding a new word
+    global previous_WOTD
+    previous_WOTD = read_data(ARCHIVE_PATH)
 
 if __name__ == "__main__":
     main()
