@@ -1,0 +1,1 @@
+["disrate", "aerate", "disrated", "berate", "disrates", "decorate", "deride", "derivate", "derogate", "federate", "moderate", "derange", "iterate", "operate", "overate", "curate", "dehydrate", "denigrate", "derail", "desecrate"]

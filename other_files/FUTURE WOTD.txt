@@ -1,8 +1,4 @@
 Future WOTD = [
-"amnesties",
-"acnes",
-"Alcestis",
-"agenesis",
 "amnestied",
 "agnostic",
 "honesties",

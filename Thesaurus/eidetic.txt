@@ -1,0 +1,1 @@
+["kinetic", "mimetic", "epithetic", "dietetic", "esthetic", "exegetic", "hermetic", "ascetic", "genetic", "heretic", "noetic", "paretic", "poetic", "aesthetic", "energetic", "esthetics", "homiletic", "sidetrack", "theoretic", "epithetical"]
