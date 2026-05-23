@@ -1,9 +1,27 @@
 import os
 import re
 import json
+import subprocess
 from wotd import main as run_wotd
 
 FUTURE_WORDS_PATH = os.path.join("other_files", "FUTURE WOTD.txt")
+GIT_PATH = r"C:\Program Files\Git\bin\git.exe"
+
+def run_git_command(args):
+    try:
+        result = subprocess.run([GIT_PATH] + args, capture_output=True, text=True, check=True)
+        print(result.stdout)
+    except subprocess.CalledProcessError as e:
+        print(f"Git error: {e.stderr}")
+
+def git_push_changes(word):
+    print(f"Pushing changes for word: {word}")
+    run_git_command(["add", "txt_files/*"])
+    run_git_command(["add", "Thesaurus/*"])
+    run_git_command(["add", "other_files/*"])
+    run_git_command(["add", "index.html"])
+    run_git_command(["commit", "-m", f"Automated update: {word}", "--trailer", "Co-authored-by: Junie <junie@jetbrains.com>"])
+    run_git_command(["push", "origin", "main"]) # Assuming main branch, could detect if needed
 
 def get_next_word():
     if not os.path.exists(FUTURE_WORDS_PATH):
@@ -57,5 +75,6 @@ if __name__ == "__main__":
     if word:
         print(f"Selected next Word of the Day: {word}")
         run_wotd(word)
+        git_push_changes(word)
     else:
         print("No word to process.")
