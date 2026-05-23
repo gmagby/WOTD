@@ -52,6 +52,8 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r'.jpeg', '', clean_text)
         clean_text = re.sub(r'.png', '', clean_text)
         clean_text = re.sub(r'.gif', '', clean_text)
+        clean_text = re.sub(r'ds1a', '', clean_text)
+
         return clean_text
     def file_cleaner(clean_text):
         clean_text = re.sub(r".txt.txt", ".txt", clean_text)

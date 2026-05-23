@@ -189,19 +189,58 @@
                     if (thesResponse.ok) thesData = await thesResponse.json();
                 } catch (e) { console.log("No thesaurus data for " + word); }
 
-                // Basic cleaning logic (simplified version of Python cleaner)
-                const clean = (text) => {
+                // Enhanced cleaning logic ported from cleaner_file.py
+                const baseClean = (text) => {
                     if (!text || text === "No info available") return "";
-                    return String(text).replace(/[#[/@<>{}=~|?*\]]/g, '').replace(/\s+/g, ' ').trim();
+                    let cleanText = String(text);
+                    cleanText = cleanText.replace(/\s+/g, ' '); // Remove extra spaces
+                    cleanText = cleanText.replace(/[#[/@<>{}=~|?*\]]/g, ''); // Remove special characters
+                    cleanText = cleanText.replace(/'/g, ''); // Remove single quotes
+                    return cleanText.trim();
+                };
+
+                const cleanDefinition = (text) => {
+                    if (!text) return "";
+                    let cleanText = String(text);
+                    // Handle list representation if it was stringified
+                    cleanText = cleanText.replace(/'\s*,\s*'/g, ', ^');
+                    return baseClean(cleanText);
+                };
+
+                const cleanEtymology = (text) => {
+                    if (!text) return "";
+                    let cleanText = String(text);
+                    // Patterns from cleaner_file.py
+                    const patterns = [
+                        /mat\|/g, /dx_ety}/g, /mat}/g, /bc}/g, /ma}/g, /dx}/g, /dxt/g, /it}/g,
+                        /'text',\s*/g, /]]/g, /et_link/g, /:2/g, /:1/g, /-ia/g,
+                        /et_snote',/g, /et_snote/g, /'t',/g, /andor/g
+                    ];
+                    patterns.forEach(p => cleanText = cleanText.replace(p, ''));
+                    cleanText = cleanText.replace(/'\s*,\s*'/g, ', ^');
+                    cleanText = cleanText.replace(/andor/g, 'and/or');
+                    return baseClean(cleanText);
+                };
+
+                const cleanDate = (text) => {
+                    if (!text) return "";
+                    let cleanText = String(text);
+                    const patterns = [
+                        /dst1a1/g, /dst2/g, /ds1a/g, /dst/g, /ds1b/g, /ds3/g, /ds5/g,
+                        /dx_ety/g, /dxt/g, /dsi1/g, /ds1/g, /ds2/g, /1a/g,
+                        /\.jpg/g, /\.jpeg/g, /\.png/g, /\.gif/g
+                    ];
+                    patterns.forEach(p => cleanText = cleanText.replace(p, ''));
+                    return baseClean(cleanText);
                 };
 
                 const entry = dictData[0];
                 document.getElementById('word').textContent = word;
                 document.getElementById('pronunciation').textContent = entry.hwi?.prs?.[0]?.mw || entry.hwi?.hw || "";
                 document.getElementById('type-of-speech').textContent = entry.fl || "";
-                document.getElementById('definition').textContent = clean(entry.shortdef?.[0] || "No definition available");
-                document.getElementById('etymology').textContent = clean(entry.et?.[0]?.[1] || "No etymology available");
-                document.getElementById('date').textContent = clean(entry.date || "Unknown");
+                document.getElementById('definition').textContent = cleanDefinition(entry.shortdef?.[0] || "No definition available");
+                document.getElementById('etymology').textContent = cleanEtymology(entry.et?.[0]?.[1] || "No etymology available");
+                document.getElementById('date').textContent = cleanDate(entry.date || "Unknown");
                 
                 // Update Image
                 document.getElementById('word-image').src = `Photos/${word}.jpg`;
@@ -213,8 +252,10 @@
                 let synonyms = "None available";
                 let antonyms = "None available";
                 if (thesData && thesData[0] && thesData[0].meta) {
-                    synonyms = thesData[0].meta.syns?.flat().join(', ') || synonyms;
-                    antonyms = thesData[0].meta.ants?.flat().join(', ') || antonyms;
+                    const synList = thesData[0].meta.syns?.flat() || [];
+                    const antList = thesData[0].meta.ants?.flat() || [];
+                    synonyms = synList.map(s => baseClean(s)).join(', ') || "None available";
+                    antonyms = antList.map(a => baseClean(a)).join(', ') || "None available";
                 }
                 document.getElementById('synonyms').textContent = synonyms;
                 document.getElementById('antonyms').textContent = antonyms;
