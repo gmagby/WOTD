@@ -8,6 +8,9 @@ on:
     - cron: '0 9 * * *'
   workflow_dispatch: # Allows manual trigger
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   update-word:
     runs-on: ubuntu-latest
