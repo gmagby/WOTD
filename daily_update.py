@@ -95,10 +95,27 @@ def get_next_word():
     return next_word
 
 if __name__ == "__main__":
+    # Check for secrets first
+    dict_key = os.getenv('DICTIONARY_KEY')
+    thes_key = os.getenv('THESAURUS_KEY')
+    
+    if not dict_key or not thes_key:
+        print("ERROR: DICTIONARY_KEY or THESAURUS_KEY environment variables are missing!")
+        print("Please ensure you have added them to GitHub Secrets.")
+        # We don't exit here so we can see if the fallback in wotd.py works, 
+        # but this helps diagnose the problem.
+
     word = get_next_word()
     if word:
         print(f"Selected next Word of the Day: {word}")
-        run_wotd(word)
-        git_push_changes(word)
+        try:
+            run_wotd(word)
+            git_push_changes(word)
+        except Exception as e:
+            print(f"CRITICAL ERROR during word processing: {e}")
+            import traceback
+            traceback.print_exc()
+            exit(1)
     else:
-        print("No word to process.")
+        print("No word to process. Is FUTURE WOTD.txt empty?")
+        exit(1)

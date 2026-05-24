@@ -41,9 +41,13 @@ ARCHIVE_PATH = r'other_files/Former Words.txt'
 previous_WOTD = read_data(ARCHIVE_PATH)
 
 def get_response(ref, word, key):
+    if not key or key.strip() == "":
+        raise ValueError(f"API Key for {ref} is missing or empty. Check your environment variables/secrets.")
     url = f"https://www.dictionaryapi.com/api/v3/references/{ref}/json/{word}?key={key}"
     response = requests.get(url)
-    print(url)
+    if response.status_code != 200:
+        print(f"API Error: Received status code {response.status_code}")
+    print(f"Fetching: https://www.dictionaryapi.com/api/v3/references/{ref}/json/{word}?key=HIDDEN")
     return response.json()
 
 def get_data(word_selected):
