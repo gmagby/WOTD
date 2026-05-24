@@ -206,6 +206,7 @@
         const ARCHIVE_PATH = 'other_files/Former Words.txt';
         const TXT_FOLDER = 'txt_files/';
         const THESAURUS_FOLDER = 'Thesaurus/';
+        let initialWord = '';
 
         async function loadWord(word) {
             // Remove file extensions if present (e.g., from 'polemic.mp4')
@@ -384,8 +385,8 @@
 
         // Initialize with the current word (to be injected or hardcoded as default)
         window.onload = () => {
-            const currentWord = document.getElementById('word').textContent;
-            loadWord(currentWord);
+            initialWord = document.getElementById('word').textContent;
+            loadWord(initialWord);
         };
     </script>
 </head>
@@ -394,7 +395,7 @@
     <div class="container">
         <!-- APP HEADER SECTION -->
         <header>
-            <h1>Word of the Day</h1>
+            <h1 onclick="loadWord(initialWord)" style="cursor: pointer;">Word of the Day</h1>
             <!-- Rainbow Divider similar to the Streamlit app -->
             <div class="rainbow-divider"></div>
         </header>
@@ -459,6 +460,8 @@
             <button class="btn btn-secondary" onclick="toggleArchive()">Previous Words</button>
             <!-- Share Button -->
             <button class="btn btn-secondary" onclick="shareApp()">Share</button>
+            <!-- Donate Button -->
+            <a href="https://www.paypal.com" target="_blank" class="btn btn-secondary" style="background-color: #ffc439; color: #000;">Donate</a>
         </div>
 
         <div id="previous-words-list" class="nav-buttons" style="display: none; flex-wrap: wrap; background: var(--card-bg); padding: 15px; border-radius: var(--border-radius); box-shadow: var(--shadow);">

@@ -10,8 +10,8 @@ from cleaner_file import list_of_prev_wotd_cleaner
 WORD = 'aureole'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
-DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
-THESAURUS_KEY = '2431331e-690c-4d83-96ac-1f4e9cb350d5'
+DICTIONARY_KEY = os.getenv('DICTIONARY_KEY', 'f45f1248-4774-4d20-8d31-ecb2d70452e0')
+THESAURUS_KEY = os.getenv('THESAURUS_KEY', '2431331e-690c-4d83-96ac-1f4e9cb350d5')
 DEFINITION_KEY = 'shortdef'
 TYPE_OF_SPEECH_KEY = 'fl'
 DATE_KEY = 'date'

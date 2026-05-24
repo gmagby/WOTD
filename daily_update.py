@@ -5,11 +5,13 @@ import subprocess
 from wotd import main as run_wotd
 
 FUTURE_WORDS_PATH = os.path.join("other_files", "FUTURE WOTD.txt")
-GIT_PATH = r"C:\Program Files\Git\bin\git.exe"
+GIT_PATH = os.getenv('GIT_PATH', r"C:\Program Files\Git\bin\git.exe")
 
 def run_git_command(args):
     try:
-        result = subprocess.run([GIT_PATH] + args, capture_output=True, text=True, check=True)
+        # Use 'git' directly if GIT_PATH is not absolute, otherwise use the full path
+        cmd = [GIT_PATH] if os.path.isabs(GIT_PATH) else ["git"]
+        result = subprocess.run(cmd + args, capture_output=True, text=True, check=True)
         print(result.stdout)
     except subprocess.CalledProcessError as e:
         print(f"Git error: {e.stderr}")
