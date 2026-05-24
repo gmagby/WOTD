@@ -11,6 +11,8 @@ on:
 jobs:
   update-word:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -36,5 +38,6 @@ jobs:
         env:
           DICTIONARY_KEY: ${{ secrets.DICTIONARY_KEY }}
           THESAURUS_KEY: ${{ secrets.THESAURUS_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GIT_PATH: git
         run: python daily_update.py

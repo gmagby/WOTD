@@ -12,18 +12,40 @@ def run_git_command(args):
         # Use 'git' directly if GIT_PATH is not absolute, otherwise use the full path
         cmd = [GIT_PATH] if os.path.isabs(GIT_PATH) else ["git"]
         result = subprocess.run(cmd + args, capture_output=True, text=True, check=True)
-        print(result.stdout)
+        if result.stdout:
+            print(result.stdout)
+        return True
     except subprocess.CalledProcessError as e:
-        print(f"Git error: {e.stderr}")
+        print(f"Git error during {' '.join(args)}: {e.stderr}")
+        return False
 
 def git_push_changes(word):
     print(f"Pushing changes for word: {word}")
+    # Add CNAME explicitly to ensure custom domain persists
     run_git_command(["add", "txt_files/*"])
     run_git_command(["add", "Thesaurus/*"])
     run_git_command(["add", "other_files/*"])
     run_git_command(["add", "index.html"])
+    run_git_command(["add", "CNAME"])
+    
+    # Check if there are changes to commit
+    try:
+        cmd = [GIT_PATH] if os.path.isabs(GIT_PATH) else ["git"]
+        status = subprocess.run(cmd + ["status", "--porcelain"], capture_output=True, text=True, check=True)
+        if not status.stdout.strip():
+            print("No changes to commit.")
+            return
+    except Exception as e:
+        print(f"Error checking status: {e}")
+
     run_git_command(["commit", "-m", f"Automated update: {word}", "--trailer", "Co-authored-by: Junie <junie@jetbrains.com>"])
-    run_git_command(["push", "origin", "main"]) # Assuming main branch, could detect if needed
+    
+    # Use environment token for push if available (for GitHub Actions)
+    if os.getenv('GITHUB_TOKEN'):
+        remote_url = f"https://x-access-token:{os.getenv('GITHUB_TOKEN')}@github.com/{os.getenv('GITHUB_REPOSITORY')}.git"
+        run_git_command(["push", remote_url, "HEAD:main"])
+    else:
+        run_git_command(["push", "origin", "main"])
 
 def get_next_word():
     if not os.path.exists(FUTURE_WORDS_PATH):
