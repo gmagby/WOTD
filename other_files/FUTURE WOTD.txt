@@ -1,5 +1,4 @@
 Future WOTD = [
-"ostentatious"
 "amnestied",
 "agnostic",
 "honesties",
