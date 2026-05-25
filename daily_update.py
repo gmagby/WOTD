@@ -9,19 +9,15 @@ GIT_PATH = os.getenv('GIT_PATH', r"C:\Program Files\Git\bin\git.exe")
 
 def run_git_command(args):
     try:
-        # Use 'git' directly if GIT_PATH is not absolute, otherwise use the full path
         cmd = [GIT_PATH] if os.path.isabs(GIT_PATH) else ["git"]
         result = subprocess.run(cmd + args, capture_output=True, text=True, check=True)
-        if result.stdout:
-            print(result.stdout)
         return True
     except subprocess.CalledProcessError as e:
-        print(f"Git error during {' '.join(args)}: {e.stderr}")
+        print(f"Git error: {e.stderr}")
         return False
 
 def git_push_changes(word):
     print(f"Pushing changes for word: {word}")
-    # Add CNAME explicitly to ensure custom domain persists
     run_git_command(["add", "txt_files/*"])
     run_git_command(["add", "Thesaurus/*"])
     run_git_command(["add", "other_files/*"])
@@ -35,12 +31,11 @@ def git_push_changes(word):
         if not status.stdout.strip():
             print("No changes to commit.")
             return
-    except Exception as e:
-        print(f"Error checking status: {e}")
+    except:
+        pass
 
     run_git_command(["commit", "-m", f"Automated update: {word}", "--trailer", "Co-authored-by: Junie <junie@jetbrains.com>"])
     
-    # Use environment token for push if available (for GitHub Actions)
     if os.getenv('GITHUB_TOKEN'):
         remote_url = f"https://x-access-token:{os.getenv('GITHUB_TOKEN')}@github.com/{os.getenv('GITHUB_REPOSITORY')}.git"
         run_git_command(["push", remote_url, "HEAD:main"])
@@ -95,16 +90,6 @@ def get_next_word():
     return next_word
 
 if __name__ == "__main__":
-    # Check for secrets first
-    dict_key = os.getenv('DICTIONARY_KEY')
-    thes_key = os.getenv('THESAURUS_KEY')
-    
-    if not dict_key or not thes_key:
-        print("ERROR: DICTIONARY_KEY or THESAURUS_KEY environment variables are missing!")
-        print("Please ensure you have added them to GitHub Secrets.")
-        # We don't exit here so we can see if the fallback in wotd.py works, 
-        # but this helps diagnose the problem.
-
     word = get_next_word()
     if word:
         print(f"Selected next Word of the Day: {word}")
@@ -112,9 +97,7 @@ if __name__ == "__main__":
             run_wotd(word)
             git_push_changes(word)
         except Exception as e:
-            print(f"CRITICAL ERROR during word processing: {e}")
-            import traceback
-            traceback.print_exc()
+            print(f"Error during word processing: {e}")
             exit(1)
     else:
         print("No word to process. Is FUTURE WOTD.txt empty?")

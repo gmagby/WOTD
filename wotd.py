@@ -6,7 +6,7 @@ from cleaner_file import cleaner
 from cleaner_file import list_of_prev_wotd_cleaner
 
 
-WORD = 'ostentatious'
+WORD = 'malinger'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = os.getenv('DICTIONARY_KEY', 'f45f1248-4774-4d20-8d31-ecb2d70452e0')
@@ -41,12 +41,8 @@ ARCHIVE_PATH = r'other_files/Former Words.txt'
 previous_WOTD = read_data(ARCHIVE_PATH)
 
 def get_response(ref, word, key):
-    if not key or key.strip() == "":
-        raise ValueError(f"API Key for {ref} is missing or empty. Check your environment variables/secrets.")
     url = f"https://www.dictionaryapi.com/api/v3/references/{ref}/json/{word}?key={key}"
     response = requests.get(url)
-    if response.status_code != 200:
-        print(f"API Error: Received status code {response.status_code}")
     print(f"Fetching: https://www.dictionaryapi.com/api/v3/references/{ref}/json/{word}?key=HIDDEN")
     return response.json()
 
