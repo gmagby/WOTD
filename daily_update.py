@@ -76,7 +76,10 @@ def get_next_word():
         return None
 
     next_word = words[0]
-    remaining_words = words[1:]
+    
+    # Remove all instances of the chosen word from the list
+    # This ensures that if the word was accidentally duplicated, it's fully removed
+    remaining_words = [w for w in words[1:] if w.lower() != next_word.lower()]
     
     # Update the file by removing the used word
     # If it was originally a Python-like list, we'll keep that format.
