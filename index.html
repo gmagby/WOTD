@@ -334,24 +334,39 @@
         }
 
         async function shareApp() {
+            const word = document.getElementById('word').textContent;
             const shareData = {
                 title: 'Word of the Day',
-                text: `Check out today's Word of the Day: ${document.getElementById('word').textContent}!`,
+                text: `Check out today's Word of the Day: ${word}!`,
                 url: window.location.href
             };
 
             try {
                 if (navigator.share) {
                     await navigator.share(shareData);
-                } else {
+                    console.log('Shared successfully');
+                } else if (navigator.clipboard && navigator.clipboard.writeText) {
                     await navigator.clipboard.writeText(window.location.href);
                     alert('Link copied to clipboard!');
+                } else {
+                    throw new Error('Share and Clipboard API not available');
                 }
             } catch (err) {
-                console.error('Error sharing:', err);
-                // Fallback for cases where navigator.share is cancelled or fails
-                await navigator.clipboard.writeText(window.location.href);
-                alert('Link copied to clipboard!');
+                if (err.name !== 'AbortError') {
+                    console.error('Error sharing:', err);
+                    // Final fallback: try to copy to clipboard if not already tried, 
+                    // or just show the link if everything else fails
+                    try {
+                        if (navigator.clipboard && navigator.clipboard.writeText) {
+                            await navigator.clipboard.writeText(window.location.href);
+                            alert('Link copied to clipboard!');
+                        } else {
+                            prompt('Copy this link to share:', window.location.href);
+                        }
+                    } catch (clipboardErr) {
+                        prompt('Copy this link to share:', window.location.href);
+                    }
+                }
             }
         }
 
