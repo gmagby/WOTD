@@ -1,5 +1,4 @@
 Future WOTD = [
-"honesties",
 "achinesses",
 "testis",
 "agonistic",
