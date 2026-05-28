@@ -1,5 +1,4 @@
 Future WOTD = [
-"indemnity",
 "testis",
 "agonistic",
 "anamnestic",
