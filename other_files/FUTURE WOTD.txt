@@ -1,5 +1,4 @@
 Future WOTD = [
-"immure",
 "agonistic",
 "anamnestic",
 "agnosticism",
