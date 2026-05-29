@@ -1,5 +1,4 @@
 Future WOTD = [
-"testis",
 "agonistic",
 "anamnestic",
 "agnosticism",
