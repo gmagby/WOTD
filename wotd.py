@@ -214,7 +214,7 @@ def main(word=None):
         word = WORD
     add_new_word(word)
     create_archive(word)
-    # first_definition(word)  # Pass word if you want it to print that specific word's data
+    first_definition()  # Pass word if you want it to print that specific word's data
     from update_html import update_index_html
     update_index_html(word)
     
