@@ -1,13 +1,4 @@
 Future WOTD = [
-"agonistic",
-"anamnestic",
-"agnosticism",
-"anapestics",
-"achenes",
-"anapestic",
-"achiness",
-"arresting",
-"ageneses",
-"attesting",
-"Affable"
+"dichotomy"
+
 ]
