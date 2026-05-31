@@ -85,7 +85,7 @@ def first_definition(chosen_word, variant):
     formated_definition = format_text(variant[favored].definition)
     for t in range(len(formated_definition)):
         st.write(
-            f'{formated_definition[t]}')
+            f'the body of a human or animal especially when dead: the main part or body of a bodily structure or organ: the main body or corporeal substance of a thing; specifically : the principal of a fund or estate as distinct from income or interest')
 
 def more_definitions(chosen_word, variant):
     for t in range(1, len(variant)):  # Start from 1 to avoid accessing index 0
