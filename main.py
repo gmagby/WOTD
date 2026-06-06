@@ -109,9 +109,9 @@ def check_for_nyms(nym_list, text):
         for group in nym_list:
              st.sidebar.markdown(", ".join(group))
 
-# def print_nyms(variant, iteration):
-#     check_for_nyms(variant[iteration].synonyms, "Synonyms:")
-#     # check_for_nyms(variant[iteration].antonyms, "Antonyms:")
+def print_nyms(variant, iteration):
+    check_for_nyms(variant[iteration].synonyms, "Synonyms:")
+    # check_for_nyms(variant[iteration].antonyms, "Antonyms:")
 
 def display_instructions():
     st.sidebar.markdown('Instructions on how to make WOTD into a widget on your homescreen.')
@@ -130,8 +130,8 @@ def sidebar(chosen_word, variant):
                 if check_for_data(variant[t].etymology) and variant[t].etymology != NONE_RESULT:
                     st.sidebar.markdown(variant[t].etymology)
 
-    if st.sidebar.button('Thesaurus'):
-        print_nyms(variant, favored)
+    # if st.sidebar.button('Thesaurus'):
+    #     print_nyms(variant, favored)
 
     def create_merriam_url(word):
         return f'https://www.merriam-webster.com/dictionary/{word}'
