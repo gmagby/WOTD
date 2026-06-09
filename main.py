@@ -130,8 +130,8 @@ def sidebar(chosen_word, variant):
                 if check_for_data(variant[t].etymology) and variant[t].etymology != NONE_RESULT:
                     st.sidebar.markdown(variant[t].etymology)
 
-    # if st.sidebar.button('Thesaurus'):
-    #     print_nyms(variant, favored)
+    if st.sidebar.button('Thesaurus'):
+        print_nyms(variant, favored)
 
     def create_merriam_url(word):
         return f'https://www.merriam-webster.com/dictionary/{word}'
