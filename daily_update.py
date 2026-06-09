@@ -26,7 +26,6 @@ def git_push_changes(word):
     run_git_command(["add", f"Photos/{word}.jpg"])
     run_git_command(["add", "other_files/*"])
     run_git_command(["add", "index.html"])
-    run_git_command(["add", "CNAME"])
 
     
     # Check if there are changes to commit
