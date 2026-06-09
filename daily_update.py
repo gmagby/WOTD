@@ -38,7 +38,7 @@ def git_push_changes(word):
     except:
         pass
 
-    run_git_command(["commit", "-m", f"Automated update: {word}", "--trailer", "Co-authored-by: Junie <junie@jetbrains.com>"])
+    run_git_command(["commit", "-m", f"Automated update: {word}"])
     
     if os.getenv('GITHUB_TOKEN'):
         remote_url = f"https://x-access-token:{os.getenv('GITHUB_TOKEN')}@github.com/{os.getenv('GITHUB_REPOSITORY')}.git"
