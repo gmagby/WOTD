@@ -4,6 +4,7 @@ import json
 import subprocess
 from wotd import main as run_wotd
 
+
 FUTURE_WORDS_PATH = os.path.join("other_files", "FUTURE WOTD.txt")
 GIT_PATH = os.getenv('GIT_PATH', r"C:\Program Files\Git\bin\git.exe")
 
@@ -18,11 +19,14 @@ def run_git_command(args):
 
 def git_push_changes(word):
     print(f"Pushing changes for word: {word}")
+    run_git_command(["add", "main.py"])
+    run_git_command(["add", "wotd.py"])
     run_git_command(["add", "txt_files/*"])
     run_git_command(["add", "Thesaurus/*"])
     run_git_command(["add", "other_files/*"])
     run_git_command(["add", "index.html"])
     run_git_command(["add", "CNAME"])
+
     
     # Check if there are changes to commit
     try:
