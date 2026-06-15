@@ -120,10 +120,11 @@ def display_instructions():
     st.sidebar.markdown(
         'Chrome instructions: [Here](https://docs.google.com/presentation/d/1B5HWIi_X_8wNhbKWEcTfKhnWs4DfLsemZEEiym612Y8/edit?usp=sharing)')
 
+
+
 def sidebar(chosen_word, variant):
     st.sidebar.title(chosen_word)
     st.sidebar.markdown(f'**{variant[favored].type_of_speech}**')
-
     if check_for_data(variant[favored].etymology) and variant[favored].etymology != NONE_RESULT:
         if st.sidebar.button("Etymology"):
             for t in range(len(variant)):
