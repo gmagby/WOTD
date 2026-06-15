@@ -120,6 +120,8 @@ def display_instructions():
     st.sidebar.markdown(
         'Chrome instructions: [Here](https://docs.google.com/presentation/d/1B5HWIi_X_8wNhbKWEcTfKhnWs4DfLsemZEEiym612Y8/edit?usp=sharing)')
 
+
+
 def sidebar(chosen_word, variant):
     st.sidebar.title(chosen_word)
     st.sidebar.markdown(f'**{variant[favored].type_of_speech}**')
