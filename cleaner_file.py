@@ -1,7 +1,7 @@
 import re
 def cleaner(clean_text, sharp=None):
     from wotd import WORD
-    # print(f'Old:          {clean_text}')
+    print(f'Old:          {clean_text}')
     clean_text = str(clean_text)
     def etymology_cleaner(clean_text):
         # Remove Merriam-Webster API tokens/tags
@@ -54,7 +54,6 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r"[\#[/@<>{}=~|?*\]]", '', clean_text) # Removed '*' via [] and added ']'
         clean_text = re.sub(r" u ", " 'u' ", clean_text)
         clean_text = re.sub(r"'", '', clean_text)
-        clean_text = re.sub(Fr"{WORD}{WORD}", f'{WORD}', clean_text)
         clean_text = re.sub(r"\s+", " ", clean_text).strip()
         return clean_text
     if sharp == 1:  # Definition cleaner
