@@ -7,6 +7,7 @@ def cleaner(clean_text, sharp=None):
         # Remove Merriam-Webster API tokens/tags
         # Pattern matches {tag|data} or {tag} or {/tag}
         clean_text = re.sub(r'\{[a-z_]+(\|[^}]*)?\}', '', clean_text)
+        clean_text = re.sub(r'\{/[a-z_]+\}', '', clean_text)
         # Specific patterns and cleanup
         clean_text = re.sub(r"'text', ", '', clean_text)
         clean_text = re.sub(r']]', '', clean_text)
