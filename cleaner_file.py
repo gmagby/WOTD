@@ -8,7 +8,6 @@ def cleaner(clean_text, sharp=None):
         # Pattern matches {tag|data} or {tag} or {/tag}
         clean_text = re.sub(r'\{[a-z_]+(\|[^}]*)?\}', '', clean_text)
         clean_text = re.sub(r'\{/[a-z_]+\}', '', clean_text)
-        
         # Specific patterns and cleanup
         clean_text = re.sub(r"'text', ", '', clean_text)
         clean_text = re.sub(r']]', '', clean_text)
@@ -20,12 +19,9 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r"'t',", '', clean_text)
         clean_text = re.sub(r"', '", ', ^', clean_text)
         clean_text = re.sub(r"andor", 'and/or', clean_text)
-        
         # Remove specific artifacts
         clean_text = re.sub(r"ǵehinf2infr-", r'', clean_text)
-        
         # Double WORD occurrences
-        clean_text = re.sub(Fr"{WORD}{WORD}", f'{WORD}', clean_text)
         clean_text = re.sub(r"-ed-ed", f'-ed', clean_text)
         clean_text = re.sub(r"addleaddle", r'addle', clean_text)
         
