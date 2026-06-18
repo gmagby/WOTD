@@ -156,5 +156,10 @@ def sidebar(chosen_word, variant):
                 seen_words.add(t)
 
 
+
+
+
+
+
 if __name__ == "__main__":
     main(WORD)
