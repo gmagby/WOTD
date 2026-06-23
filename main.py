@@ -111,7 +111,7 @@ def check_for_nyms(nym_list, text):
 
 def print_nyms(variant, iteration):
     check_for_nyms(variant[iteration].synonyms, "Synonyms:")
-    #check_for_nyms(variant[iteration].antonyms, "Antonyms:")
+    check_for_nyms(variant[iteration].antonyms, "Antonyms:")
 
 
 def display_instructions():
@@ -131,8 +131,8 @@ def sidebar(chosen_word, variant):
             for t in range(len(variant)):
                     st.sidebar.markdown(variant[t].etymology)
 
-    # if st.sidebar.button('Thesaurus'):
-    #     print_nyms(variant, favored)
+    if st.sidebar.button('Thesaurus'):
+       print_nyms(variant, favored)
 
     def create_merriam_url(word):
         return f'https://www.merriam-webster.com/dictionary/{word}'
