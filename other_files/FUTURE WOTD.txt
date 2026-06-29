@@ -1,2 +1,4 @@
 Future WOTD = [
+"lucubration",
+"susurrus"
 ]
