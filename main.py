@@ -126,10 +126,10 @@ def display_instructions():
 def sidebar(chosen_word, variant):
     st.sidebar.title(chosen_word)
     st.sidebar.markdown(f'**{variant[favored].type_of_speech}**')
-    if check_for_data(variant[favored].etymology) and variant[favored].etymology != NONE_RESULT:
-        if st.sidebar.button("Etymology"):
-            for t in range(len(variant)):
-                    st.sidebar.markdown(variant[t].etymology)
+    # if check_for_data(variant[favored].etymology) and variant[favored].etymology != NONE_RESULT:
+    #     if st.sidebar.button("Etymology"):
+    #         for t in range(len(variant)):
+    #                 st.sidebar.markdown(variant[t].etymology)
 
     if st.sidebar.button('Thesaurus'):
        print_nyms(variant, favored)
