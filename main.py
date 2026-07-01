@@ -10,6 +10,7 @@ import os
 
 favored = 0
 
+
 def create_new_variants(chosen_word):
     list_of_word_variants = create_variants(chosen_word)
     print(list_of_word_variants)
@@ -154,6 +155,15 @@ def sidebar(chosen_word, variant):
             if t not in seen_words:
                 create_merriam_button(t, t)
                 seen_words.add(t)
+
+                def change_main():
+                    number = 0
+                    for t in seen_words:
+                        number = + 1
+                change_main()
+
+
+
 
 
 

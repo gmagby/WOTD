@@ -3,6 +3,7 @@ import re
 import json
 import subprocess
 from wotd import main as run_wotd
+from format import format_photo
 
 
 FUTURE_WORDS_PATH = os.path.join("other_files", "FUTURE WOTD.txt")
@@ -116,6 +117,7 @@ if __name__ == "__main__":
         print(f"Selected next Word of the Day: {word}")
         try:
             run_wotd(word)
+            format_photo()
             git_push_changes(word)
         except Exception as e:
             print(f"Error during word processing: {e}")
