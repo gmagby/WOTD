@@ -1,2 +1,7 @@
 Future WOTD = [
+'oppugn'
+'atrabilious'
+'brevity'
+'crepuscular'
+
 ]
