@@ -1,8 +1,5 @@
 Future WOTD = [
-'susurrus'
-'oppugn'
-'atrabilious'
-'brevity'
-'crepuscular'
-
+"atrabilious",
+"brevity",
+"crepuscular"
 ]
