@@ -162,5 +162,13 @@ def sidebar(chosen_word, variant):
                         number = + 1
                 change_main()
 
+
+
+
+
+
+
+
+
 if __name__ == "__main__":
     main(WORD)
