@@ -28,7 +28,6 @@ def git_push_changes(word):
         f"txt_files/{word}.txt",
         f"Thesaurus/{word}.txt",
         f"Photos/{word}.jpg",
-        f"Photos/{word}.png",
         "other_files/*",
         "index.html"
     ]
