@@ -142,10 +142,6 @@ def sidebar(chosen_word, variant):
 
     create_merriam_button('Merriam-Webster', chosen_word)
 
-
-
-
-
     if st.sidebar.button("Instructions to add WOTD to your homescreen"):
         display_instructions()
 
