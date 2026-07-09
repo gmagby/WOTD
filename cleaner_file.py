@@ -23,8 +23,8 @@ def cleaner(clean_text, sharp=None):
         # Double WORD occurrences
         clean_text = re.sub(r"-ed-ed", f'-ed', clean_text)
         clean_text = re.sub(r"addleaddle", r'addle', clean_text)
-        
         return clean_text
+
     def definition_cleaner(clean_text):
         clean_text = re.sub(r"', '", ', ^', clean_text)
         return clean_text
@@ -35,8 +35,8 @@ def cleaner(clean_text, sharp=None):
         
         # Cleanup file extensions if they leaked in
         clean_text = re.sub(r'\.(jpg|jpeg|png|gif|webp|avif|mp4)', '', clean_text)
-        
         return clean_text
+
     def file_cleaner(clean_text):
         clean_text = re.sub(r".txt.txt", ".txt", clean_text)
         return clean_text
