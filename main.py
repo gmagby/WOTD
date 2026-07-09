@@ -159,7 +159,7 @@ def sidebar(chosen_word, variant):
                 def change_main():
                     number = 0
                     for t in seen_words:
-                        number = + 1
+                        number = number + 1
                 change_main()
 
 if __name__ == "__main__":
