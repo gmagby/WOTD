@@ -148,9 +148,6 @@ def sidebar(chosen_word, variant):
     if st.sidebar.button("Share the Word of the Day"):
         st.sidebar.code("https://learnnewword.streamlit.app/")
 
-
-
-
     if st.sidebar.button('Previous words of the day.'):
         # Using a set to keep track of words we've already displayed to avoid duplicates
         seen_words = set()
