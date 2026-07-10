@@ -6,7 +6,7 @@ from cleaner_file import cleaner
 from cleaner_file import list_of_prev_wotd_cleaner
 
 
-WORD = 'aberrant'
+WORD = 'obverse'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = os.getenv('DICTIONARY_KEY', 'f45f1248-4774-4d20-8d31-ecb2d70452e0')
@@ -170,13 +170,14 @@ def add_new_word(chosen_word):
     print(previous_WOTD)
     if chosen_word in previous_WOTD:
         print("Word already added")
-        # Ensure it's at the end if we are appending (Oldest First file)
-        previous_WOTD.remove(chosen_word)
-        previous_WOTD.append(chosen_word)
-        save_new_data(ARCHIVE_PATH, previous_WOTD)
+
     else:
-        previous_WOTD.append(chosen_word)  # Append to the end for chronological log
-        save_new_data(ARCHIVE_PATH, previous_WOTD)
+        answer = input("Enter '1' to add the word to the archive: ")
+        if answer == '1':
+            previous_WOTD.append(chosen_word)  # Append to the end for chronological log
+            save_new_data(ARCHIVE_PATH, previous_WOTD)
+        else:
+            print("Word not added")
     return previous_WOTD
 
 def create_archive(chosen_word):
@@ -209,7 +210,7 @@ def first_definition():
     print(list_of_word_variants[0].antonyms)
 
 
-def main(word=None):
+def run_wotd_func(word=None):
     if word is None:
         word = WORD
     add_new_word(word)
@@ -223,4 +224,4 @@ def main(word=None):
     previous_WOTD = read_data(ARCHIVE_PATH)
 
 if __name__ == "__main__":
-    main()
+    run_wotd_func()
