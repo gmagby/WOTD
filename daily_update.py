@@ -2,7 +2,7 @@ import os
 import re
 import json
 import subprocess
-from wotd import main as run_wotd
+from wotd import run_wotd_func as run_wotd
 from format import format_photo
 
 
