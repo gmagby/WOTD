@@ -169,6 +169,11 @@ def create_variants(word_selected):
     variants = create_word_variants(definition_list, date_list, etymology_list, type_of_speech_list, synonyms_list, antonyms_list, pronunciation_list)
     return variants
 
+def add_toFuture_list(chosen_word):
+    path = read_data(FUTURE_LIST)
+    path.append(chosen_word)
+    save_new_data(FUTURE_LIST, path)
+
 def add_new_word(chosen_word):
     previous_WOTD = read_data(ARCHIVE_PATH)
     print(previous_WOTD)
@@ -180,14 +185,12 @@ def add_new_word(chosen_word):
         if answer == '1':
             previous_WOTD.append(chosen_word)  # Append to the end for chronological log
             save_new_data(ARCHIVE_PATH, previous_WOTD)
+            add_toFuture_list(WORD)
         else:
             print("Word not added")
     return previous_WOTD
 
-def add_toFuture_list(chosen_word):
-    path = read_data(FUTURE_LIST)
-    path.append(chosen_word)
-    save_new_data(FUTURE_LIST, path)
+
 
 def create_archive(chosen_word):
     create_file(TXT_FOLDER, chosen_word)
@@ -223,7 +226,6 @@ def run_wotd_func(word=None):
     if word is None:
         word = WORD
     add_new_word(word)
-    add_toFuture_list(WORD)
     create_archive(word)
     first_definition()  # Pass word if you want it to print that specific word's data
     from update_html import update_index_html
