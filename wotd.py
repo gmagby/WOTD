@@ -23,8 +23,12 @@ NONE_RESULT = 'No info available'
 TXT_FOLDER = r'txt_files'
 THESAURUS_FOLDER = r'Thesaurus'
 WOTD_ARCHIVE = r'Former Words.txt'
+FUTURE_LIST = r'other_files/FUTURE WOTD.txt'
 PHOTO_FOLDER = r"Photos"
 OTHER_FILES = r"other_files"
+ARCHIVE_PATH = r'other_files/Former Words.txt'
+
+
 def read_data(path):
     try:
         if os.path.exists(path):
@@ -37,8 +41,8 @@ def read_data(path):
         print("Error", "Something went wrong.")
         return []
 
-ARCHIVE_PATH = r'other_files/Former Words.txt'
 previous_WOTD = read_data(ARCHIVE_PATH)
+
 
 def get_response(ref, word, key):
     url = f"https://www.dictionaryapi.com/api/v3/references/{ref}/json/{word}?key={key}"
@@ -180,6 +184,11 @@ def add_new_word(chosen_word):
             print("Word not added")
     return previous_WOTD
 
+def add_toFuture_list(chosen_word):
+    path = read_data(FUTURE_LIST)
+    path.append(chosen_word)
+    save_new_data(FUTURE_LIST, path)
+
 def create_archive(chosen_word):
     create_file(TXT_FOLDER, chosen_word)
     create_file(THESAURUS_FOLDER, chosen_word, is_thesaurus=True)
@@ -214,6 +223,7 @@ def run_wotd_func(word=None):
     if word is None:
         word = WORD
     add_new_word(word)
+    add_toFuture_list(WORD)
     create_archive(word)
     first_definition()  # Pass word if you want it to print that specific word's data
     from update_html import update_index_html
@@ -222,6 +232,9 @@ def run_wotd_func(word=None):
     # Refresh previous_WOTD after adding a new word
     global previous_WOTD
     previous_WOTD = read_data(ARCHIVE_PATH)
+
+
+
 
 if __name__ == "__main__":
     run_wotd_func()
