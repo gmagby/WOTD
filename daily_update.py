@@ -80,7 +80,7 @@ def get_next_word():
     # If no quotes found, try to split by whitespace/newlines, excluding the structural parts
     if not words:
         # Remove structural parts if they exist
-        clean_content = content.replace("Future WOTD = [", "").replace("]", "").replace(",", "")
+        clean_content = content.replace("[", "").replace("]", "").replace(",", "")
         words = [w.strip() for w in clean_content.split() if w.strip()]
 
     if not words:
@@ -102,7 +102,7 @@ def get_next_word():
     
     # Update the file by removing the used word
     with open(FUTURE_WORDS_PATH, "w", encoding="utf-8") as f:
-        f.write("Future WOTD = [\n")
+        f.write("[\n")
         for i, w in enumerate(remaining_words):
             comma = "," if i < len(remaining_words) - 1 else ""
             f.write(f'"{w}"{comma}\n')
