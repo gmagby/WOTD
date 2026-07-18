@@ -114,10 +114,6 @@ def print_nyms(variant, iteration):
     # check_for_nyms(variant[iteration].antonyms, "Antonyms:")
 
 
-
-
-
-
 def display_instructions():
     st.sidebar.markdown('Instructions on how to make WOTD into a widget on your homescreen.')
     st.sidebar.markdown(
