@@ -152,9 +152,9 @@ def sidebar(chosen_word, variant):
         # Using a set to keep track of words we've already displayed to avoid duplicates
         seen_words = set()
         for t in reversed(previous_WOTD):
-            if t not in seen_words:
-                create_merriam_button(t, t-1)
-                seen_words.add(t)
+            if t not in (seen_words):
+                create_merriam_button(t, t)
+                seen_words.add(t-1)
 
 
 if __name__ == "__main__":
