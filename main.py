@@ -154,7 +154,7 @@ def sidebar(chosen_word, variant):
         for t in reversed(previous_WOTD):
             if t not in (seen_words):
                 create_merriam_button(t, t)
-                seen_words.add(t-1)
+                seen_words.add(t)
 
 
 if __name__ == "__main__":
