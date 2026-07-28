@@ -227,7 +227,6 @@ def run_wotd_func(word=None):
         create_archive(word)
     else:
         pass
-
     from update_html import update_index_html
     update_index_html(word)
     
