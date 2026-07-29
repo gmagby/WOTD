@@ -108,6 +108,8 @@ def check_for_nyms(nym_list, text):
         st.sidebar.markdown(f"**{text}**")
         for group in nym_list:
              st.sidebar.markdown(", ".join(group))
+    else:
+        pass
 
 def print_nyms(variant, iteration):
     check_for_nyms(variant[iteration].synonyms, "Synonyms:")
