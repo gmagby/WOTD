@@ -36,7 +36,5 @@
 "miasma",
 "oneiric",
 "tesseract",
-"redolence",
-"nystagmus",
-"peregrine"
+"redolence"
 ]
