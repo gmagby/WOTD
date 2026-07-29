@@ -104,7 +104,7 @@ def more_definitions(chosen_word, variant):
                 st.markdown(f'Date first used: {variant[t].date}')
 
 def check_for_nyms(nym_list, text):
-    if nym_list and nym_list != [NONE_RESULT]:
+    if nym_list and nym_list != 'No info available':
         st.sidebar.markdown(f"**{text}**")
         for group in nym_list:
              st.sidebar.markdown(", ".join(group))
