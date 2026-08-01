@@ -34,11 +34,11 @@ def read_data(path):
             with open(path, "r") as f:
                 data = json.loads(f.read())
                 return data
-        return []
+        else:
+            return []
 
-    except (ValueError, FileNotFoundError, json.JSONDecodeError):
+    except ValueError:
         print("Error", "Something went wrong.")
-        return []
 
 previous_WOTD = read_data(ARCHIVE_PATH)
 
@@ -106,15 +106,7 @@ def save_new_data(file_name, data):
     with open(file_name, "w") as f:
         f.write(json.dumps(data))
 
-def read_data(path):
-    try:
-        if os.path.exists(path):
-            with open(path, "r") as f:
-                data = json.loads(f.read())
-                return data
 
-    except ValueError:
-        print("Error", "Something went wrong.")
 
 def create_folder_path(folder_name, file_name):
     return os.path.join(folder_name, add_dottxt_to_file_name(file_name))
@@ -220,7 +212,7 @@ def enter_input():
 def run_wotd_func(word=None):
     if word is None:
         word = WORD
-    # first_definition()  # Pass word if you want it to print that specific word's data
+    first_definition()  # Pass word if you want it to print that specific word's data
     if enter_input():
         add_new_word(word)
         create_archive(word)
