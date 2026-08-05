@@ -5,7 +5,7 @@ import os
 from cleaner_file import cleaner
 from cleaner_file import list_of_prev_wotd_cleaner
 
-WORD = 'rebarbative'
+WORD = 'sere'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = os.getenv('DICTIONARY_KEY', 'f45f1248-4774-4d20-8d31-ecb2d70452e0')
@@ -212,7 +212,7 @@ def enter_input():
 def run_wotd_func(word=None):
     if word is None:
         word = WORD
-    first_definition()  # Pass word if you want it to print that specific word's data
+    # first_definition()  # Pass word if you want it to print that specific word's data
     if enter_input():
         add_new_word(word)
         create_archive(word)
