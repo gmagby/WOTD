@@ -115,8 +115,8 @@ if __name__ == "__main__":
     if word:
         print(f"Selected next Word of the Day: {word}")
         try:
-            run_wotd(word)
             format_photo()
+            run_wotd(word)
             git_push_changes(word)
         except Exception as e:
             print(f"Error during word processing: {e}")
